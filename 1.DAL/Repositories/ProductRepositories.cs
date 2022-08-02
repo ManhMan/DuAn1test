@@ -35,10 +35,7 @@ namespace _1.DAL.Repositories
 
         public List<Product> GetProductFromDB()
         {
-            _lstproducts = (from a in _context.Products
-                           select a).ToList();
-                           
-
+            _lstproducts = _context.Products.ToList();
             return _lstproducts;
         }
 

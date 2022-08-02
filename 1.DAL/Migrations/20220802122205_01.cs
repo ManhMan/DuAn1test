@@ -5,10 +5,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _1.DAL.Migrations
 {
-    public partial class _1 : Migration
+    public partial class _01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Customer",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Sex = table.Column<bool>(type: "bit", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customer", x => x.ID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
@@ -22,7 +38,8 @@ namespace _1.DAL.Migrations
                     Sex = table.Column<bool>(type: "bit", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Dob = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    Phone = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Roles = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,7 +52,7 @@ namespace _1.DAL.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProducerName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false, defaultValue: 1)
                 },
                 constraints: table =>
@@ -50,11 +67,20 @@ namespace _1.DAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     dateCreate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EmployeeID = table.Column<int>(type: "int", nullable: false)
+                    EmployeeID = table.Column<int>(type: "int", nullable: false),
+                    CustomerID = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Customer_CustomerID",
+                        column: x => x.CustomerID,
+                        principalTable: "Customer",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_Employees_EmployeeID",
                         column: x => x.EmployeeID,
@@ -69,6 +95,7 @@ namespace _1.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProducerID = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -86,6 +113,34 @@ namespace _1.DAL.Migrations
                         column: x => x.ProducerID,
                         principalTable: "Producer",
                         principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ImportHistories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeID = table.Column<int>(type: "int", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    dateCreate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Amount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImportHistories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ImportHistories_Employees_EmployeeID",
+                        column: x => x.EmployeeID,
+                        principalTable: "Employees",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ImportHistories_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -116,9 +171,24 @@ namespace _1.DAL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ImportHistories_EmployeeID",
+                table: "ImportHistories",
+                column: "EmployeeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ImportHistories_ProductID",
+                table: "ImportHistories",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OderDetails_ProducID",
                 table: "OderDetails",
                 column: "ProducID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_CustomerID",
+                table: "Orders",
+                column: "CustomerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_EmployeeID",
@@ -134,6 +204,9 @@ namespace _1.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ImportHistories");
+
+            migrationBuilder.DropTable(
                 name: "OderDetails");
 
             migrationBuilder.DropTable(
@@ -141,6 +214,9 @@ namespace _1.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Customer");
 
             migrationBuilder.DropTable(
                 name: "Employees");

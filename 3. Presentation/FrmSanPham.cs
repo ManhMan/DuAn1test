@@ -26,8 +26,6 @@ namespace _3._Presentation
         }
         public void LoadData()
         {
-
-
             dtgv_frmSP.Rows.Clear();
             //dtgv_frmSP.DataSource = _IQLProductServices.ShowProduct();
             foreach (var item in _IQLProductServices.GetProductFromDB())

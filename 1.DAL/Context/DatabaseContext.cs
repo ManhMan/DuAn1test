@@ -12,45 +12,56 @@ namespace _1.DAL.Context
     public class DatabaseContext : DbContext
     {
 
-        public DatabaseContext(DbContextOptions options) : base(options)
-        {
-        }
-
         public DatabaseContext()
         {
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.ApplyConfiguration(new EmployeeConfigguration()); 
-        //    //chỗ này truyền configuration 
-        //    modelBuilder.ApplyConfiguration(new OderConfiguration()); 
-        //    modelBuilder.ApplyConfiguration(new CustomerConfiguration()); 
-        //    modelBuilder.ApplyConfiguration(new OderDetailConfiguration()); 
-        //    modelBuilder.ApplyConfiguration(new ProducerConfiguration());  
-        //    modelBuilder.ApplyConfiguration(new ProductConfiguration()); 
-        //    modelBuilder.ApplyConfiguration(new ImportHistoryConfiguration());   
-        //    //modelBuilder.ApplyConfiguration(new ProductInProducerConfiguration());  
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
+        {
+        }
 
-        //    //modelBuilder.Seed(); //gọi cái này để seeding data
-        //}
+        
+
+        
         //chỗ này truyền các table
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Employee> Employees { get; set; } 
-        public DbSet<Order> Oders { get; set; } 
-        public DbSet<OrderDetail> OderDetails { get; set; } 
-        public DbSet<Producer> Producers { get; set; } 
-        public DbSet<Product> Products { get; set; } 
-        public DbSet<ImportHistory> ImportHistories { get; set; }
-        //public DbSet<ProductInEmployee> ProductInEmployees { get; set; } 
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; } 
+        public virtual DbSet<Order> Oders { get; set; } 
+        public virtual DbSet<OrderDetail> OderDetails { get; set; } 
+        public virtual DbSet<Producer> Producers { get; set; } 
+        public virtual DbSet<Product> Products { get; set; } 
+        public virtual DbSet<ImportHistory> ImportHistories { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new EmployeeConfigguration()); 
+            modelBuilder.ApplyConfiguration(new OderConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+            modelBuilder.ApplyConfiguration(new OderDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new ProducerConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ImportHistoryConfiguration());
+
+            //modelBuilder.Seed(); //gọi cái này để seeding data
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //lưu ý chỉ cần thay tên  ở Data Source= tên servername ở máy tính của bạn và phần catalog là tên đb bạn muốn đặt
-                optionsBuilder.UseSqlServer(@"Server=DESKTOP-JNDR021\SQLEXPRESS;Database=databaseDuAn1;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-JNDR021\\SQLEXPRESS;Initial Catalog=databaseDuAn1;Persist Security Info=True; User ID =manh2806; Password =123");
 
             }
         }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        //lưu ý chỉ cần thay tên  ở Data Source= tên servername ở máy tính của bạn và phần catalog là tên đb bạn muốn đặt
+        //        optionsBuilder.UseSqlServer(@"Server=DESKTOP-JNDR021\\SQLEXPRESS;Database=databaseDuAn1;Trusted_Connection=True;");
+
+        //    }
+        //}
     }
 }

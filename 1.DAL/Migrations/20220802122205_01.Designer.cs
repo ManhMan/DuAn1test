@@ -12,8 +12,8 @@ using _1.DAL.Context;
 namespace _1.DAL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220802082546_020822-3")]
-    partial class _0208223
+    [Migration("20220802122205_01")]
+    partial class _01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
