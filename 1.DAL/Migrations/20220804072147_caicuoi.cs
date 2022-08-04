@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _1.DAL.Migrations
 {
-    public partial class _0222 : Migration
+    public partial class caicuoi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,6 +73,7 @@ namespace _1.DAL.Migrations
                     MaSp = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProducerID = table.Column<int>(type: "int", nullable: false),
+                    CategoryID = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
@@ -84,6 +85,12 @@ namespace _1.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_Producer_ProducerID",
                         column: x => x.ProducerID,
@@ -118,30 +125,6 @@ namespace _1.DAL.Migrations
                         column: x => x.IDRoles,
                         principalTable: "Roles",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductInCategories",
-                columns: table => new
-                {
-                    CategoryID = table.Column<int>(type: "int", nullable: false),
-                    ProductID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductInCategories", x => new { x.CategoryID, x.ProductID });
-                    table.ForeignKey(
-                        name: "FK_ProductInCategories_Categories_CategoryID",
-                        column: x => x.CategoryID,
-                        principalTable: "Categories",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductInCategories_Products_ProductID",
-                        column: x => x.ProductID,
-                        principalTable: "Products",
-                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -261,9 +244,9 @@ namespace _1.DAL.Migrations
                 column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductInCategories_ProductID",
-                table: "ProductInCategories",
-                column: "ProductID");
+                name: "IX_Products_CategoryID",
+                table: "Products",
+                column: "CategoryID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ProducerID",
@@ -280,13 +263,7 @@ namespace _1.DAL.Migrations
                 name: "OderDetails");
 
             migrationBuilder.DropTable(
-                name: "ProductInCategories");
-
-            migrationBuilder.DropTable(
                 name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Products");
@@ -296,6 +273,9 @@ namespace _1.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Producer");

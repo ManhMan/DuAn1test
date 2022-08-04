@@ -12,8 +12,8 @@ using _1.DAL.Context;
 namespace _1.DAL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220804053809_0222")]
-    partial class _0222
+    [Migration("20220804072147_caicuoi")]
+    partial class caicuoi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -243,6 +243,9 @@ namespace _1.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
@@ -282,24 +285,11 @@ namespace _1.DAL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryID");
+
                     b.HasIndex("ProducerID");
 
                     b.ToTable("Products", (string)null);
-                });
-
-            modelBuilder.Entity("_1.DAL.Entities.ProductInCategory", b =>
-                {
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryID", "ProductID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("ProductInCategories", (string)null);
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Role", b =>
@@ -389,37 +379,26 @@ namespace _1.DAL.Migrations
 
             modelBuilder.Entity("_1.DAL.Entities.Product", b =>
                 {
+                    b.HasOne("_1.DAL.Entities.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("_1.DAL.Entities.Producer", "Producer")
                         .WithMany("Product")
                         .HasForeignKey("ProducerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Producer");
-                });
-
-            modelBuilder.Entity("_1.DAL.Entities.ProductInCategory", b =>
-                {
-                    b.HasOne("_1.DAL.Entities.Category", "Category")
-                        .WithMany("ProductInCategories")
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_1.DAL.Entities.Product", "Product")
-                        .WithMany("ProductInCategories")
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
 
-                    b.Navigation("Product");
+                    b.Navigation("Producer");
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Category", b =>
                 {
-                    b.Navigation("ProductInCategories");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Customer", b =>
@@ -449,8 +428,6 @@ namespace _1.DAL.Migrations
                     b.Navigation("ImportHistories");
 
                     b.Navigation("OderDetails");
-
-                    b.Navigation("ProductInCategories");
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Role", b =>
