@@ -23,6 +23,7 @@ namespace _1.DAL.Configurations
             builder.Property(x => x.LinkImage).IsRequired();
             builder.Property(x => x.Note).IsRequired().HasMaxLength(200);
             builder.HasOne(t => t.Producer).WithMany(p => p.Product).HasForeignKey(p => p.ProducerID);
+            builder.HasOne(t => t.Category).WithMany(p => p.Products).HasForeignKey(p => p.CategoryID);
 
         }
     }

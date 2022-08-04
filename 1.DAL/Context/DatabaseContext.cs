@@ -33,7 +33,7 @@ namespace _1.DAL.Context
         public virtual DbSet<ImportHistory> ImportHistories { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<ProductInCategory> ProductInCategories { get; set; }
+        //public virtual DbSet<ProductInCategory> ProductInCategories { get; set; }
 
 
 
@@ -48,7 +48,7 @@ namespace _1.DAL.Context
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new ImportHistoryConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
+            //modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
 
             //modelBuilder.Seed(); //gọi cái này để seeding data
         }

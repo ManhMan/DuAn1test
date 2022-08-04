@@ -10,6 +10,7 @@ namespace _1.DAL.Entities
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public List<ProductInCategory> ProductInCategories { get; set; }
+        //public int ProductID { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

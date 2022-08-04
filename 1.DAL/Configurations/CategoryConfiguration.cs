@@ -18,6 +18,7 @@ namespace _1.DAL.Configurations
             builder.Property(x => x.ID).UseIdentityColumn();
             builder.Property(x => x.Name).HasMaxLength(200);
             
+
         }
     }
 }

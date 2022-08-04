@@ -13,6 +13,7 @@ namespace _1.DAL.Entities
         public string MaSp { get; set; } //chỗ này cần quết mã vạch
         public string Name { get; set; }
         public int ProducerID { get; set; }
+        public int CategoryID { get; set; }
         public decimal Price { set; get; }
         public decimal OriginalPrice { set; get; }
         public int Stock { set; get; }
@@ -21,10 +22,11 @@ namespace _1.DAL.Entities
         public string? Note { set; get; }
         public bool Status { set; get; }
         public Producer Producer { set; get; }
+        public Category Category { set; get; }
         
         public List<OrderDetail> OderDetails { get; set; }
         public List<ImportHistory> ImportHistories { get; set; }
-        public List<ProductInCategory> ProductInCategories { get; set; }
+       // public List<ProductInCategory> ProductInCategories { get; set; }
 
 
     }
