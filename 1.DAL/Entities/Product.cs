@@ -18,7 +18,7 @@ namespace _1.DAL.Entities
         public decimal OriginalPrice { set; get; }
         public int Stock { set; get; }
         public DateTime DateCreated { set; get; }
-        public string LinkImage { set; get; }
+        public string? LinkImage { set; get; }
         public string? Note { set; get; }
         public bool Status { set; get; }
         public Producer Producer { set; get; }

@@ -12,7 +12,6 @@ namespace _1.DAL.Entities
         public int OderID { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
-        public decimal PriceTotal { get; set; }
         public Order Oder { get; set; }
         public Product Product { get; set; }
              

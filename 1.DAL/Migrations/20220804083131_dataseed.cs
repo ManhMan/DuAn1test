@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _1.DAL.Migrations
 {
-    public partial class caicuoi : Migration
+    public partial class dataseed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -115,7 +115,7 @@ namespace _1.DAL.Migrations
                     Dob = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IDRoles = table.Column<int>(type: "int", nullable: false),
-                    LinkAnh = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    LinkAnh = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -167,7 +167,7 @@ namespace _1.DAL.Migrations
                     CustomerID = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Note = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -193,8 +193,7 @@ namespace _1.DAL.Migrations
                     ProducID = table.Column<int>(type: "int", nullable: false),
                     OderID = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PriceTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -211,6 +210,87 @@ namespace _1.DAL.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Đồ ăn vặt" },
+                    { 2, "Nước giải khát" },
+                    { 3, "Đồ uống có cồn" },
+                    { 4, "Nhu yếu phẩm" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                columns: new[] { "ID", "Address", "Name", "Phone", "Sex" },
+                values: new object[,]
+                {
+                    { 1, " 10 Minh Khai, Hà Nội", "Nguyễn Công Tiến", "0987654321", true },
+                    { 2, " 69 Trịnh Văn Bô, Hà Nội", "Nguyễn Mạnh Thắng", "0987777777", true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Producer",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Oishi" },
+                    { 2, "Coca Cola" },
+                    { 3, "Vodka" },
+                    { 4, "Clear" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "ID", "RoleName" },
+                values: new object[,]
+                {
+                    { 1, "Quản lý" },
+                    { 2, "Nhân viên" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "ID", "Address", "Dob", "Email", "FullName", "IDRoles", "LinkAnh", "MaNV", "Password", "Phone", "Sex", "Status" },
+                values: new object[,]
+                {
+                    { 1, "174 Phương Canh", new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2386), "manhman2806@gmail.com", "Bùi Thế Mạnh", 1, null, "NV1", "123", "0379200866", false, true },
+                    { 2, "173 Phương Canh", new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2389), "khoanhph18902@gmail.com", "Nguyễn Hữu Khoa", 2, null, "NV2", "123", "0972439693", true, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "CategoryID", "DateCreated", "LinkImage", "MaSp", "Name", "Note", "OriginalPrice", "Price", "ProducerID", "Status", "Stock" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2315), "", "01", "Bim bim", "", 5000m, 6000m, 1, true, 10 },
+                    { 2, 2, new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2326), "", "02", "Coca Cola", "", 10000m, 12000m, 2, true, 20 },
+                    { 3, 3, new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2328), "", "03", "Vodka 69%", "", 10000m, 60000m, 3, true, 50 },
+                    { 4, 4, new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2330), "", "04", "Clear Men Active Vibe", "", 100000m, 150000m, 4, true, 5 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CustomerID", "EmployeeID", "Note", "Status", "TotalPrice", "dateCreate" },
+                values: new object[] { 1, 1, 1, null, true, 60000m, new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2350) });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CustomerID", "EmployeeID", "Note", "Status", "TotalPrice", "dateCreate" },
+                values: new object[] { 2, 2, 2, null, true, 210000m, new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2352) });
+
+            migrationBuilder.InsertData(
+                table: "OderDetails",
+                columns: new[] { "OderID", "ProducID", "Price", "Quantity" },
+                values: new object[,]
+                {
+                    { 1, 1, 6000m, 6 },
+                    { 1, 2, 12000m, 2 },
+                    { 2, 3, 60000m, 1 },
+                    { 2, 4, 150000m, 1 }
                 });
 
             migrationBuilder.CreateIndex(
