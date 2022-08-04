@@ -15,7 +15,7 @@ namespace _1.DAL.Entities
         public int CustomerID { get; set; }
         public decimal TotalPrice { get; set; }
         public bool Status { get; set; }
-        public string Note { get; set; }
+        public string? Note { get; set; }
         public Employee Employee { get; set; }
         //trong oder có 1 employee tức là 1 thằng đăng nhập 
 

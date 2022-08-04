@@ -15,7 +15,7 @@ namespace _1.DAL.Entities
         public DateTime Dob { get; set; }
         public string Phone { get; set; }
         public int IDRoles { get; set; }
-        public  string LinkAnh { get; set; }    
+        public string? LinkAnh { get; set; }    
         public Role Roles { get; set; }
         public List<Order> Oders { get; set; }
         public List<ImportHistory> ImportHistories { get; set; }

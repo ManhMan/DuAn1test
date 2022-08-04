@@ -1,5 +1,6 @@
 ﻿using _1.DAL.Configurations;
 using _1.DAL.Entities;
+using _1.DAL.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace _1.DAL.Context
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             //modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
 
-            //modelBuilder.Seed(); //gọi cái này để seeding data
+            modelBuilder.Seed(); //gọi cái này để seeding data
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

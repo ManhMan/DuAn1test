@@ -38,6 +38,28 @@ namespace _1.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Đồ ăn vặt"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Nước giải khát"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Đồ uống có cồn"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Nhu yếu phẩm"
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Customer", b =>
@@ -69,6 +91,24 @@ namespace _1.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Customer", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Address = " 10 Minh Khai, Hà Nội",
+                            Name = "Nguyễn Công Tiến",
+                            Phone = "0987654321",
+                            Sex = true
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Address = " 69 Trịnh Văn Bô, Hà Nội",
+                            Name = "Nguyễn Mạnh Thắng",
+                            Phone = "0987777777",
+                            Sex = true
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Employee", b =>
@@ -98,7 +138,6 @@ namespace _1.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LinkAnh")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MaNV")
@@ -124,6 +163,36 @@ namespace _1.DAL.Migrations
                     b.HasIndex("IDRoles");
 
                     b.ToTable("Employees", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Address = "174 Phương Canh",
+                            Dob = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2386),
+                            Email = "manhman2806@gmail.com",
+                            FullName = "Bùi Thế Mạnh",
+                            IDRoles = 1,
+                            MaNV = "NV1",
+                            Password = "123",
+                            Phone = "0379200866",
+                            Sex = false,
+                            Status = true
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Address = "173 Phương Canh",
+                            Dob = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2389),
+                            Email = "khoanhph18902@gmail.com",
+                            FullName = "Nguyễn Hữu Khoa",
+                            IDRoles = 2,
+                            MaNV = "NV2",
+                            Password = "123",
+                            Phone = "0972439693",
+                            Sex = true,
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.ImportHistory", b =>
@@ -170,7 +239,6 @@ namespace _1.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
@@ -189,6 +257,26 @@ namespace _1.DAL.Migrations
                     b.HasIndex("EmployeeID");
 
                     b.ToTable("Orders", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CustomerID = 1,
+                            EmployeeID = 1,
+                            Status = true,
+                            TotalPrice = 60000m,
+                            dateCreate = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2350)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CustomerID = 2,
+                            EmployeeID = 2,
+                            Status = true,
+                            TotalPrice = 210000m,
+                            dateCreate = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2352)
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.OrderDetail", b =>
@@ -202,9 +290,6 @@ namespace _1.DAL.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("PriceTotal")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -213,6 +298,36 @@ namespace _1.DAL.Migrations
                     b.HasIndex("ProducID");
 
                     b.ToTable("OderDetails", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            OderID = 1,
+                            ProducID = 1,
+                            Price = 6000m,
+                            Quantity = 6
+                        },
+                        new
+                        {
+                            OderID = 1,
+                            ProducID = 2,
+                            Price = 12000m,
+                            Quantity = 2
+                        },
+                        new
+                        {
+                            OderID = 2,
+                            ProducID = 4,
+                            Price = 150000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            OderID = 2,
+                            ProducID = 3,
+                            Price = 60000m,
+                            Quantity = 1
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Producer", b =>
@@ -231,6 +346,28 @@ namespace _1.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Producer", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Oishi"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Coca Cola"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Vodka"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Clear"
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Product", b =>
@@ -288,6 +425,68 @@ namespace _1.DAL.Migrations
                     b.HasIndex("ProducerID");
 
                     b.ToTable("Products", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryID = 1,
+                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2315),
+                            LinkImage = "",
+                            MaSp = "01",
+                            Name = "Bim bim",
+                            Note = "",
+                            OriginalPrice = 5000m,
+                            Price = 6000m,
+                            ProducerID = 1,
+                            Status = true,
+                            Stock = 10
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryID = 2,
+                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2326),
+                            LinkImage = "",
+                            MaSp = "02",
+                            Name = "Coca Cola",
+                            Note = "",
+                            OriginalPrice = 10000m,
+                            Price = 12000m,
+                            ProducerID = 2,
+                            Status = true,
+                            Stock = 20
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryID = 3,
+                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2328),
+                            LinkImage = "",
+                            MaSp = "03",
+                            Name = "Vodka 69%",
+                            Note = "",
+                            OriginalPrice = 10000m,
+                            Price = 60000m,
+                            ProducerID = 3,
+                            Status = true,
+                            Stock = 50
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryID = 4,
+                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2330),
+                            LinkImage = "",
+                            MaSp = "04",
+                            Name = "Clear Men Active Vibe",
+                            Note = "",
+                            OriginalPrice = 100000m,
+                            Price = 150000m,
+                            ProducerID = 4,
+                            Status = true,
+                            Stock = 5
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Role", b =>
@@ -305,6 +504,18 @@ namespace _1.DAL.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            RoleName = "Quản lý"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            RoleName = "Nhân viên"
+                        });
                 });
 
             modelBuilder.Entity("_1.DAL.Entities.Employee", b =>
