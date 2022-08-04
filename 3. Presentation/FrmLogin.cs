@@ -15,6 +15,7 @@ namespace _3._Presentation
         public FrmLogin()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void tbt_tk_MouseClick(object sender, MouseEventArgs e)
@@ -25,6 +26,12 @@ namespace _3._Presentation
         private void tbt_matk_MouseClick(object sender, MouseEventArgs e)
         {
             tbt_matk.Text = "";
+        }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            FrmMain frmMain = new FrmMain();    
+            frmMain.ShowDialog();
         }
     }
 }

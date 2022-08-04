@@ -16,14 +16,11 @@ namespace _2.BUS.Services
         private IProductRepositories _iQLProduct;
         private IProducerRepositories _iQLProducer;
         private List<Product> _lstProduct;
-        //private List<HienThiThongTin> _lstView;
-        //private INhanVienRepositories _iQlNhanVIen;
+
         public QLProductServices()
         {
             _iQLProduct = new ProductRepositories();
-            //_iQlNhanVIen = new NhanVienRepositorie();
             _lstProduct = new List<Product>();
-            //_lstView = new List<HienThiThongTin>();
             _iQLProducer = new ProducerRepositories();
         }
         public bool AddProduct(Product product)
@@ -57,14 +54,14 @@ namespace _2.BUS.Services
                         join b in _iQLProducer.GetProducerFromDB() on a.ProducerID equals b.ID
                         select new ProductVm
                         {
-                            Id = a.Id,
+                            //Id = a.Id,
                             Name = a.Name,
                             ProducerName = b.Name,
                             Price = a.Price,
                             OriginalPrice = a.OriginalPrice,
                             Stock = a.Stock,
                             DateCreated = a.DateCreated,
-                            linkImage = a.linkImage,
+                            linkImage = a.LinkImage,
                             Note = a.Note,
                             Status = a.Status
                         }).ToList();

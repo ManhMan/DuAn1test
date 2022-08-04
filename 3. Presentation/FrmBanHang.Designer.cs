@@ -52,10 +52,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_xoaGioHang = new System.Windows.Forms.Button();
             this.btn_XoaSP = new System.Windows.Forms.Button();
             this.dtg_giohang = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_danhsachSP)).BeginInit();
@@ -72,7 +72,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(-5, -4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(872, 508);
+            this.panel1.Size = new System.Drawing.Size(1053, 546);
             this.panel1.TabIndex = 0;
             // 
             // groupBox3
@@ -82,7 +82,7 @@
             this.groupBox3.Controls.Add(this.dtg_danhsachSP);
             this.groupBox3.Location = new System.Drawing.Point(17, 229);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(491, 261);
+            this.groupBox3.Size = new System.Drawing.Size(614, 302);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách sản phẩm";
@@ -111,7 +111,7 @@
             this.dtg_danhsachSP.Location = new System.Drawing.Point(6, 84);
             this.dtg_danhsachSP.Name = "dtg_danhsachSP";
             this.dtg_danhsachSP.RowTemplate.Height = 25;
-            this.dtg_danhsachSP.Size = new System.Drawing.Size(479, 171);
+            this.dtg_danhsachSP.Size = new System.Drawing.Size(602, 212);
             this.dtg_danhsachSP.TabIndex = 1;
             // 
             // groupBox2
@@ -132,9 +132,9 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(514, 5);
+            this.groupBox2.Location = new System.Drawing.Point(637, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(337, 485);
+            this.groupBox2.Size = new System.Drawing.Size(337, 526);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Đơn hàng";
@@ -290,16 +290,28 @@
             this.groupBox1.Controls.Add(this.dtg_giohang);
             this.groupBox1.Location = new System.Drawing.Point(17, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(491, 218);
+            this.groupBox1.Size = new System.Drawing.Size(614, 218);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giỏ hàng";
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(477, 112);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 33);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Tạo hóa đơn";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // btn_xoaGioHang
             // 
             this.btn_xoaGioHang.Image = ((System.Drawing.Image)(resources.GetObject("btn_xoaGioHang.Image")));
             this.btn_xoaGioHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_xoaGioHang.Location = new System.Drawing.Point(375, 73);
+            this.btn_xoaGioHang.Location = new System.Drawing.Point(477, 73);
             this.btn_xoaGioHang.Name = "btn_xoaGioHang";
             this.btn_xoaGioHang.Size = new System.Drawing.Size(110, 33);
             this.btn_xoaGioHang.TabIndex = 8;
@@ -311,7 +323,7 @@
             // 
             this.btn_XoaSP.Image = ((System.Drawing.Image)(resources.GetObject("btn_XoaSP.Image")));
             this.btn_XoaSP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_XoaSP.Location = new System.Drawing.Point(375, 35);
+            this.btn_XoaSP.Location = new System.Drawing.Point(477, 35);
             this.btn_XoaSP.Name = "btn_XoaSP";
             this.btn_XoaSP.Size = new System.Drawing.Size(110, 33);
             this.btn_XoaSP.TabIndex = 7;
@@ -325,26 +337,14 @@
             this.dtg_giohang.Location = new System.Drawing.Point(0, 35);
             this.dtg_giohang.Name = "dtg_giohang";
             this.dtg_giohang.RowTemplate.Height = 25;
-            this.dtg_giohang.Size = new System.Drawing.Size(366, 171);
+            this.dtg_giohang.Size = new System.Drawing.Size(471, 171);
             this.dtg_giohang.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(375, 112);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 33);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Tạo hóa đơn";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmBanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 499);
+            this.ClientSize = new System.Drawing.Size(1046, 539);
             this.Controls.Add(this.panel1);
             this.Name = "FrmBanHang";
             this.Text = "FrmBanHang";

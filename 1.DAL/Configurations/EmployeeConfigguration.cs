@@ -1,5 +1,5 @@
 ﻿using _1.DAL.Entities;
-using _1.DAL.Enums;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -17,21 +17,16 @@ namespace _1.DAL.Configurations
             builder.ToTable("Employees");
 
             builder.HasKey(x => x.ID);
-            
-            builder.Property(x => x.ID).UseIdentityColumn();
+            builder.Property(x => x.ID).UseIdentityColumn(1, 1);
+            builder.HasOne(t => t.Roles).WithMany(p => p.Employees).HasForeignKey(p => p.IDRoles);
 
-            
-            builder.Property(x => x.UserName).IsRequired();
+            //builder.Property(x => x.Email).IsRequired();
+            //builder.Property(x => x.Password).IsRequired();
+            //builder.Property(x => x.FullName).IsRequired().HasMaxLength(200);
+            //builder.Property(x => x.Address).HasMaxLength(200);
+            //builder.Property(x => x.Dob).IsRequired();
+            //builder.Property(x => x.Phone).IsRequired().HasMaxLength(10);
 
-            builder.Property(x => x.Password).IsRequired();
-
-            builder.Property(x => x.FullName).IsRequired().HasMaxLength(200);
-            builder.Property(x => x.Status).HasDefaultValue(Status.Active);
-            builder.Property(x => x.Sex);
-            builder.Property(x => x.Address).HasMaxLength(200);
-            builder.Property(x => x.Dob).IsRequired();
-
-            builder.Property(x => x.Phone).IsRequired().HasMaxLength(10);
         }
     }
 }

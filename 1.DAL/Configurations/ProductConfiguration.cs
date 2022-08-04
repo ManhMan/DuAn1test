@@ -16,11 +16,11 @@ namespace _1.DAL.Configurations
             builder.ToTable("Products");
 
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Id).UseIdentityColumn(1, 1);
             builder.Property(x => x.Price).IsRequired();
             builder.Property(x => x.OriginalPrice).IsRequired();
             builder.Property(x => x.Stock).IsRequired().HasDefaultValue(0);
-            builder.Property(x => x.linkImage).IsRequired();
+            builder.Property(x => x.LinkImage).IsRequired();
             builder.Property(x => x.Note).IsRequired().HasMaxLength(200);
             builder.HasOne(t => t.Producer).WithMany(p => p.Product).HasForeignKey(p => p.ProducerID);
 

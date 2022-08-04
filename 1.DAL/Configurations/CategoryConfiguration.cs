@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.Configurations
 {
-    public class ProducerConfiguration : IEntityTypeConfiguration<Producer>
+    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Producer> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("Producer");
-
+            builder.ToTable("Categories");
             builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).UseIdentityColumn(1,1);
+            builder.Property(x => x.ID).UseIdentityColumn();
             builder.Property(x => x.Name).HasMaxLength(200);
             
         }

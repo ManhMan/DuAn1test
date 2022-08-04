@@ -22,6 +22,7 @@ namespace _3._Presentation
             InitializeComponent();
             _IQLProductServices = new QLProductServices();
             _IQLProducerServices = new QLProducerServises();
+            this.CenterToScreen();
             LoadData();
         }
         public void LoadData()
@@ -34,15 +35,17 @@ namespace _3._Presentation
             }
 
         }
-
-        private void tbt_ghichu_TextChanged(object sender, EventArgs e)
+        private void btn_them_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btn_them_Click(object sender, EventArgs e)
+        private void FrmSanPham_Load(object sender, EventArgs e)
         {
-
+            //int w = Screen.PrimaryScreen.Bounds.Width;
+            //int h = Screen.PrimaryScreen.Bounds.Height;
+            //this.Location = new Point(0, 0);
+            //this.Size = new Size(w, h);
         }
     }
 }

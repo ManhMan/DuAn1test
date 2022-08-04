@@ -83,7 +83,7 @@
   <data name="btn_thongke.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qwAAAKsB1E2SqwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKoSURBVEhLY6AW
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKoSURBVEhLY6AW
         yDwdezvycNZ/dAyVphwUnQ8vKDwbsRiEk44nfyfagkUv3Lin3rcygHIJgrzTUQdABsMsgQpjBzOfGXPN
         uGuzb9o92y8z7tnZQYVxgrzT0QdBhuadidpXcC5yGV4Lpl514Jl+z/YgEH8G4nNA/HHGA3tLqDQGyD0d
         cxhs+OnoPSA+XgsghtscAhk+7Z697dwb1rzT79seBVlScikiFaoMDnJORx8DGZZ/OmoXVIih9Fx4btbp
@@ -123,7 +123,7 @@
   <data name="btn_nv.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qwAAAKsB1E2SqwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAOFSURBVEhLrZNr
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAOFSURBVEhLrZNr
         SFNhHMYlMdLtbNNztrmrZzbnLXfL1NqcllZUOm3r4iJrpd1YrQhTsqiwC5RRol3MjAoqqC9dqIiiC1ZG
         SVREX/pQVBZestAIs6X/zns8O2TbSlcP/ODlvM//eTjve07IXxUWZgwXCJswkeI1V6RoQ4zh469Dw8Pn
         Mo7gNZrLKxIoNB0TS7dD9ro6FsuaGuAKFe8pixXZaHMQCuNLx77NctcMCfcSa7KCJDmjj4NL31Fe7uDI
@@ -187,7 +187,7 @@
   <data name="btn_banhang.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qwAAAKsB1E2SqwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMfSURBVEhLrZZr
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMfSURBVEhLrZZr
         SFNhGMeHfYno8iWiL0UYlKaZ13lJc1jbmYaCuLOTGl1t5WXWNIwwa3Rjc2daCUUUmdoHlShT3DTUvGBT
         WXlDzQuJWdnNTFFz1np6j3u9pEfd0h/82DjPOf8/2zm87+EsBTte1GpbrjTH1l06hKza5iazxqPlYYdH
         rBwFjyKv2HpIe2y4Ui0eLR04TG2N9ZZUS31O1AKf9L3oE/Hw6O6TA8x3CJSswqf9H3A8PAwOhQI4hrDL
@@ -204,4 +204,7 @@
         1i6SdXiE4HD+Atq8SwrNT3koAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="timerChayChu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

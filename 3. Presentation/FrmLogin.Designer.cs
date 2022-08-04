@@ -60,6 +60,7 @@
             this.btn_login.TabIndex = 13;
             this.btn_login.Text = "ĐĂNG NHẬP";
             this.btn_login.UseVisualStyleBackColor = false;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // lb_quenmk
             // 
@@ -98,10 +99,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SVN-Russell", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(112, 129);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(101, 141);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 39);
+            this.label1.Size = new System.Drawing.Size(219, 37);
             this.label1.TabIndex = 9;
             this.label1.Text = "ĐĂNG NHẬP";
             // 

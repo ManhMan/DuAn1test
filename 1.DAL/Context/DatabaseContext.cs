@@ -31,6 +31,11 @@ namespace _1.DAL.Context
         public virtual DbSet<Producer> Producers { get; set; } 
         public virtual DbSet<Product> Products { get; set; } 
         public virtual DbSet<ImportHistory> ImportHistories { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<ProductInCategory> ProductInCategories { get; set; }
+
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,6 +47,8 @@ namespace _1.DAL.Context
             modelBuilder.ApplyConfiguration(new ProducerConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new ImportHistoryConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
 
             //modelBuilder.Seed(); //gọi cái này để seeding data
         }
@@ -54,14 +61,6 @@ namespace _1.DAL.Context
 
             }
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        //lưu ý chỉ cần thay tên  ở Data Source= tên servername ở máy tính của bạn và phần catalog là tên đb bạn muốn đặt
-        //        optionsBuilder.UseSqlServer(@"Server=DESKTOP-JNDR021\\SQLEXPRESS;Database=databaseDuAn1;Trusted_Connection=True;");
-
-        //    }
-        //}
+        
     }
 }

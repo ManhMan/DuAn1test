@@ -15,7 +15,7 @@ namespace _1.DAL.Configurations
         {
             builder.ToTable("Orders");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Id).UseIdentityColumn(1,1);
             builder.Property(x => x.dateCreate);           
             builder.HasOne(x => x.Employee).WithMany(x => x.Oders).HasForeignKey(x => x.EmployeeID);
             builder.HasOne(x => x.Customer).WithMany(x => x.Oders).HasForeignKey(x => x.CustomerID);

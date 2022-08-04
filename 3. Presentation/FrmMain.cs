@@ -5,6 +5,7 @@ namespace _3._Presentation
         public FrmMain()
         {
             InitializeComponent();
+            //GoFullscreen(AutoSize);
         }
         private Form activeForm;
         public void ChangeForm(Form form)
@@ -20,39 +21,78 @@ namespace _3._Presentation
             form.Dock = DockStyle.Fill;
             form.Show();
         }
-        private void btn_banhang_Click(object sender, EventArgs e)
+
+        private void GoFullscreen(bool fullscreen)
         {
-            FrmBanHang frmBanHang = new FrmBanHang();
-            ChangeForm(frmBanHang);
+            if (fullscreen)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                this.Bounds = Screen.PrimaryScreen.Bounds;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            }
         }
 
-        private void btn_sanpham_Click(object sender, EventArgs e)
-        {
-            FrmSanPham frmSanPham = new FrmSanPham();
-            ChangeForm(frmSanPham);
-        }
 
-        private void btn_hoadon_Click(object sender, EventArgs e)
-        {
-            FrmHoaDon frmHoaDon = new FrmHoaDon();
-            ChangeForm(frmHoaDon);
-        }
 
-        private void btn_nhanvien_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btn_nv_Click(object sender, EventArgs e)
         {
             FrmNhanVien frmNhanVien = new FrmNhanVien();
             ChangeForm(frmNhanVien);
         }
 
-        private void btn_thongke_Click(object sender, EventArgs e)
+        private void btn_banhang_Click_1(object sender, EventArgs e)
+        {
+            FrmBanHang frmBanHang = new FrmBanHang();
+            ChangeForm(frmBanHang);
+        }
+
+        private void btn_hoadon_Click_1(object sender, EventArgs e)
+        {
+            FrmHoaDon frmHoaDon = new FrmHoaDon();
+            ChangeForm(frmHoaDon);
+        }
+
+        private void btn_sp_Click(object sender, EventArgs e)
+        {
+            FrmSanPham frmSanPham = new FrmSanPham();
+            ChangeForm(frmSanPham);
+        }
+
+        private void btn_thongke_Click_1(object sender, EventArgs e)
         {
             FrmThongKe frmThongKe = new FrmThongKe();
             ChangeForm(frmThongKe);
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        int x = 260; int y = 20; int a = 1;
+        private void timerChayChu_Tick(object sender, EventArgs e)
         {
+            try
+            {
+                x += a;
+                labelChaychu.Location = new Point(x, y);
+                if (x >= 660)
+                {
+                    a = -2;
+                }
+                if (x <= 260)
+                {
+                    a = 2;
+                }
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
         }
     }
 }

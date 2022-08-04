@@ -16,7 +16,7 @@ namespace _1.DAL.Configurations
             builder.ToTable("ImportHistories");
 
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(x => x.Id).UseIdentityColumn(1,1);
 
 
             builder.Property(x => x.dateCreate).IsRequired();

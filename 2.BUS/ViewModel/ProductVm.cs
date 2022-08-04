@@ -1,4 +1,4 @@
-﻿using _1.DAL.Enums;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +20,6 @@ namespace _2.BUS.ViewModel
         public string linkImage { set; get; }
         public string Note { set; get; }
 
-        public Status Status { set; get; }
+        public bool Status { set; get; }
     }
 }

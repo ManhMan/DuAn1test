@@ -1,4 +1,4 @@
-﻿using _1.DAL.Enums;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,8 @@ namespace _1.DAL.Entities
         public int EmployeeID { get; set; }
         public int CustomerID { get; set; }
         public decimal TotalPrice { get; set; }
-        public Status Status { get; set; }
+        public bool Status { get; set; }
+        public string Note { get; set; }
         public Employee Employee { get; set; }
         //trong oder có 1 employee tức là 1 thằng đăng nhập 
 
