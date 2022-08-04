@@ -29,25 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            this.lb_taotk = new System.Windows.Forms.Label();
             this.btn_login = new System.Windows.Forms.Button();
             this.lb_quenmk = new System.Windows.Forms.Label();
             this.tbt_matk = new System.Windows.Forms.TextBox();
             this.tbt_tk = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ptb_logo = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_logo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lb_taotk
-            // 
-            this.lb_taotk.AutoSize = true;
-            this.lb_taotk.ForeColor = System.Drawing.Color.Red;
-            this.lb_taotk.Location = new System.Drawing.Point(47, 300);
-            this.lb_taotk.Name = "lb_taotk";
-            this.lb_taotk.Size = new System.Drawing.Size(78, 15);
-            this.lb_taotk.TabIndex = 15;
-            this.lb_taotk.Text = "Tạo tài khoản";
             // 
             // btn_login
             // 
@@ -117,13 +107,25 @@
             this.ptb_logo.TabIndex = 8;
             this.ptb_logo.TabStop = false;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.Khaki;
+            this.checkBox1.ForeColor = System.Drawing.Color.Red;
+            this.checkBox1.Location = new System.Drawing.Point(53, 300);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 19);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Nhớ mật khẩu";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(424, 443);
-            this.Controls.Add(this.lb_taotk);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.lb_quenmk);
             this.Controls.Add(this.tbt_matk);
@@ -139,13 +141,12 @@
         }
 
         #endregion
-
-        private Label lb_taotk;
         private Button btn_login;
         private Label lb_quenmk;
         private TextBox tbt_matk;
         private TextBox tbt_tk;
         private Label label1;
         private PictureBox ptb_logo;
+        private CheckBox checkBox1;
     }
 }
