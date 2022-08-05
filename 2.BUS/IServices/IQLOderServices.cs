@@ -1,4 +1,5 @@
 ﻿using _1.DAL.Entities;
+using _2.BUS.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,8 @@ namespace _2.BUS.IServices
         bool UpdateOder(Order oder);
         bool DeleteOder(Order oder);
         List<Order> GetOderFromDB();
+        List<OrderVM> ShowOrder();
+
+
     }
 }
