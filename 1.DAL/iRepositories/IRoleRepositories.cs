@@ -9,6 +9,7 @@ namespace _1.DAL.iRepositories
 {
     public interface IRoleRepositories
     {
+        bool AddRole(Role role);
         List<Role> GetRoleFromDB();
     }
 }

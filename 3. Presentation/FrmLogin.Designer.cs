@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.btn_login = new System.Windows.Forms.Button();
             this.lb_quenmk = new System.Windows.Forms.Label();
-            this.tbt_matk = new System.Windows.Forms.TextBox();
+            this.tbt_mk = new System.Windows.Forms.TextBox();
             this.tbt_tk = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ptb_logo = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cb_save = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,17 +62,17 @@
             this.lb_quenmk.TabIndex = 12;
             this.lb_quenmk.Text = "Quên mật khẩu?";
             // 
-            // tbt_matk
+            // tbt_mk
             // 
-            this.tbt_matk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbt_matk.Location = new System.Drawing.Point(47, 256);
-            this.tbt_matk.Multiline = true;
-            this.tbt_matk.Name = "tbt_matk";
-            this.tbt_matk.PasswordChar = '*';
-            this.tbt_matk.PlaceholderText = "Nhập mật khẩu";
-            this.tbt_matk.Size = new System.Drawing.Size(324, 23);
-            this.tbt_matk.TabIndex = 11;
-            this.tbt_matk.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbt_matk_MouseClick);
+            this.tbt_mk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbt_mk.Location = new System.Drawing.Point(47, 256);
+            this.tbt_mk.Multiline = true;
+            this.tbt_mk.Name = "tbt_mk";
+            this.tbt_mk.PasswordChar = '*';
+            this.tbt_mk.PlaceholderText = "Nhập mật khẩu";
+            this.tbt_mk.Size = new System.Drawing.Size(324, 23);
+            this.tbt_mk.TabIndex = 11;
+            this.tbt_mk.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbt_matk_MouseClick);
             // 
             // tbt_tk
             // 
@@ -107,17 +107,18 @@
             this.ptb_logo.TabIndex = 8;
             this.ptb_logo.TabStop = false;
             // 
-            // checkBox1
+            // cb_save
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Khaki;
-            this.checkBox1.ForeColor = System.Drawing.Color.Red;
-            this.checkBox1.Location = new System.Drawing.Point(53, 300);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 19);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "Nhớ mật khẩu";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.cb_save.AutoSize = true;
+            this.cb_save.BackColor = System.Drawing.Color.Khaki;
+            this.cb_save.ForeColor = System.Drawing.Color.Red;
+            this.cb_save.Location = new System.Drawing.Point(53, 300);
+            this.cb_save.Name = "cb_save";
+            this.cb_save.Size = new System.Drawing.Size(102, 19);
+            this.cb_save.TabIndex = 14;
+            this.cb_save.Text = "Nhớ mật khẩu";
+            this.cb_save.UseVisualStyleBackColor = false;
+
             // 
             // FrmLogin
             // 
@@ -125,10 +126,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(424, 443);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cb_save);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.lb_quenmk);
-            this.Controls.Add(this.tbt_matk);
+            this.Controls.Add(this.tbt_mk);
             this.Controls.Add(this.tbt_tk);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ptb_logo);
@@ -143,10 +144,10 @@
         #endregion
         private Button btn_login;
         private Label lb_quenmk;
-        private TextBox tbt_matk;
+        private TextBox tbt_mk;
         private TextBox tbt_tk;
         private Label label1;
         private PictureBox ptb_logo;
-        private CheckBox checkBox1;
+        private CheckBox cb_save;
     }
 }

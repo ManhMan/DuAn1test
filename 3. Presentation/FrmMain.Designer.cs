@@ -36,13 +36,17 @@
             this.btn_sp = new System.Windows.Forms.Button();
             this.lb_tenNV = new System.Windows.Forms.Label();
             this.btn_nv = new System.Windows.Forms.Button();
-            this.pcb_avtNV = new System.Windows.Forms.PictureBox();
+            this.pic_avtNV = new System.Windows.Forms.PictureBox();
             this.btn_banhang = new System.Windows.Forms.Button();
             this.pn_main = new System.Windows.Forms.Panel();
+            this.panel_ttnv = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.labelChaychu = new System.Windows.Forms.Label();
             this.timerChayChu = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_avtNV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_avtNV)).BeginInit();
+            this.pn_main.SuspendLayout();
+            this.panel_ttnv.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,7 +58,7 @@
             this.panel1.Controls.Add(this.btn_sp);
             this.panel1.Controls.Add(this.lb_tenNV);
             this.panel1.Controls.Add(this.btn_nv);
-            this.panel1.Controls.Add(this.pcb_avtNV);
+            this.panel1.Controls.Add(this.pic_avtNV);
             this.panel1.Controls.Add(this.btn_banhang);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -112,9 +116,10 @@
             // lb_tenNV
             // 
             this.lb_tenNV.AutoSize = true;
-            this.lb_tenNV.Location = new System.Drawing.Point(103, 180);
+            this.lb_tenNV.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_tenNV.Location = new System.Drawing.Point(24, 196);
             this.lb_tenNV.Name = "lb_tenNV";
-            this.lb_tenNV.Size = new System.Drawing.Size(44, 15);
+            this.lb_tenNV.Size = new System.Drawing.Size(59, 21);
             this.lb_tenNV.TabIndex = 1;
             this.lb_tenNV.Text = "Tên NV";
             this.lb_tenNV.Click += new System.EventHandler(this.label1_Click);
@@ -135,16 +140,17 @@
             this.btn_nv.UseVisualStyleBackColor = false;
             this.btn_nv.Click += new System.EventHandler(this.btn_nv_Click);
             // 
-            // pcb_avtNV
+            // pic_avtNV
             // 
-            this.pcb_avtNV.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pcb_avtNV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pcb_avtNV.BackgroundImage")));
-            this.pcb_avtNV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pcb_avtNV.Location = new System.Drawing.Point(50, 33);
-            this.pcb_avtNV.Name = "pcb_avtNV";
-            this.pcb_avtNV.Size = new System.Drawing.Size(156, 144);
-            this.pcb_avtNV.TabIndex = 0;
-            this.pcb_avtNV.TabStop = false;
+            this.pic_avtNV.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pic_avtNV.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic_avtNV.BackgroundImage")));
+            this.pic_avtNV.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_avtNV.Location = new System.Drawing.Point(24, 23);
+            this.pic_avtNV.Name = "pic_avtNV";
+            this.pic_avtNV.Size = new System.Drawing.Size(201, 170);
+            this.pic_avtNV.TabIndex = 0;
+            this.pic_avtNV.TabStop = false;
+            this.pic_avtNV.Click += new System.EventHandler(this.pcb_avtNV_Click);
             // 
             // btn_banhang
             // 
@@ -164,10 +170,29 @@
             // 
             // pn_main
             // 
+            this.pn_main.Controls.Add(this.panel_ttnv);
             this.pn_main.Location = new System.Drawing.Point(261, 76);
             this.pn_main.Name = "pn_main";
             this.pn_main.Size = new System.Drawing.Size(972, 535);
             this.pn_main.TabIndex = 1;
+            // 
+            // panel_ttnv
+            // 
+            this.panel_ttnv.Controls.Add(this.button1);
+            this.panel_ttnv.Location = new System.Drawing.Point(19, 17);
+            this.panel_ttnv.Name = "panel_ttnv";
+            this.panel_ttnv.Size = new System.Drawing.Size(903, 425);
+            this.panel_ttnv.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(451, 212);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelChaychu
             // 
@@ -196,9 +221,12 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmMain";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_avtNV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_avtNV)).EndInit();
+            this.pn_main.ResumeLayout(false);
+            this.panel_ttnv.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,7 +237,7 @@
         private Panel panel1;
         private Panel pn_main;
         private Label lb_tenNV;
-        private PictureBox pcb_avtNV;
+        private PictureBox pic_avtNV;
         private Button btn_hoadon;
         private Button btn_thongke;
         private Button btn_sp;
@@ -217,5 +245,7 @@
         private Button btn_banhang;
         private Label labelChaychu;
         private System.Windows.Forms.Timer timerChayChu;
+        private Panel panel_ttnv;
+        private Button button1;
     }
 }

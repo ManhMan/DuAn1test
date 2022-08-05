@@ -1,11 +1,38 @@
+using _2.BUS.IServices;
+using _2.BUS.Services;
+
 namespace _3._Presentation
 {
     public partial class FrmMain : Form
     {
+        IQLEmployeeServices _iQLEmployee;
+
+        public static bool session = false;
+        
         public FrmMain()
         {
             InitializeComponent();
+            _iQLEmployee = new QLEmployeeServices();
+            this.CenterToScreen();
             //GoFullscreen(AutoSize);
+            panel_ttnv.Visible = false;
+
+        }
+        public void chekCLose()
+        {
+            if (session == true)
+            {
+                this.Close();
+            }
+        }
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            var layEmail = Properties.Settings.Default.TKdaLogin;
+            var nhanvien = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault(p => p.Email == layEmail);
+            string linkanh = nhanvien.LinkAnh.Replace(@"\", @"/");
+            pic_avtNV.Image = Image.FromFile(linkanh);
+            pic_avtNV.SizeMode = PictureBoxSizeMode.StretchImage;
+            lb_tenNV.Text = "NV : " + nhanvien.FullName;
         }
         private Form activeForm;
         public void ChangeForm(Form form)
@@ -93,6 +120,21 @@ namespace _3._Presentation
 
                 throw;
             }
+        }
+
+        private void pcb_avtNV_Click(object sender, EventArgs e)
+        {
+            //FormThongTinNhanVien ttnv = new FormThongTinNhanVien();
+            //ChangeForm(ttnv);
+            panel_ttnv.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmLogin logibn = new FrmLogin();
+            logibn.ShowDialog();
+            this.Close();
         }
     }
 }
