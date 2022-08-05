@@ -1,4 +1,4 @@
-using _2.BUS.IServices;
+﻿using _2.BUS.IServices;
 using _2.BUS.Services;
 
 namespace _3._Presentation
@@ -7,7 +7,7 @@ namespace _3._Presentation
     {
         IQLEmployeeServices _iQLEmployee;
 
-        public static bool session = false;
+        
         
         public FrmMain()
         {
@@ -18,13 +18,7 @@ namespace _3._Presentation
             panel_ttnv.Visible = false;
 
         }
-        public void chekCLose()
-        {
-            if (session == true)
-            {
-                this.Close();
-            }
-        }
+        
         private void FrmMain_Load(object sender, EventArgs e)
         {
             var layEmail = Properties.Settings.Default.TKdaLogin;
@@ -66,38 +60,48 @@ namespace _3._Presentation
 
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btn_nv_Click(object sender, EventArgs e)
         {
-            FrmNhanVien frmNhanVien = new FrmNhanVien();
-            ChangeForm(frmNhanVien);
+
+            var idRole = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Email == Properties.Settings.Default.TKdaLogin).Select(p=>p.IDRoles).FirstOrDefault();
+            if (idRole == 1)
+            {
+                FrmNhanVien frmNhanVien = new FrmNhanVien();
+                ChangeForm(frmNhanVien);
+            }
+            else if (idRole != 1 )
+            {
+                MessageBox.Show("Nhân viên không có quyền sử dụng chức năng này");
+            }
+            panel_ttnv.Visible = false;
         }
 
         private void btn_banhang_Click_1(object sender, EventArgs e)
         {
             FrmBanHang frmBanHang = new FrmBanHang();
             ChangeForm(frmBanHang);
+            panel_ttnv.Visible = false;
         }
 
         private void btn_hoadon_Click_1(object sender, EventArgs e)
         {
             FrmHoaDon frmHoaDon = new FrmHoaDon();
             ChangeForm(frmHoaDon);
+            panel_ttnv.Visible = false;
         }
 
         private void btn_sp_Click(object sender, EventArgs e)
         {
             FrmSanPham frmSanPham = new FrmSanPham();
             ChangeForm(frmSanPham);
+            panel_ttnv.Visible = false;
         }
 
         private void btn_thongke_Click_1(object sender, EventArgs e)
         {
             FrmThongKe frmThongKe = new FrmThongKe();
             ChangeForm(frmThongKe);
+            panel_ttnv.Visible = false;
         }
         int x = 260; int y = 20; int a = 1;
         private void timerChayChu_Tick(object sender, EventArgs e)
@@ -124,8 +128,17 @@ namespace _3._Presentation
 
         private void pcb_avtNV_Click(object sender, EventArgs e)
         {
-            //FormThongTinNhanVien ttnv = new FormThongTinNhanVien();
-            //ChangeForm(ttnv);
+            var nhanvien = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault(p => p.Email == Properties.Settings.Default.TKdaLogin);
+
+            lb_maNV.Text = nhanvien.MaNV.ToString();
+            labe_ten.Text = nhanvien.FullName;
+            label_sdt.Text = nhanvien.Phone;
+            label_email.Text = nhanvien.Email;
+            label_gioitinh.Text = nhanvien.Sex == true ? "Nam" : "Nữ";
+            string formattedDate = nhanvien.Dob.ToString("dd-MM-yyyy");  //chuyển đổi sang dd/mm/yyyy 
+            label_ngaysinh.Text = Convert.ToString(formattedDate);
+            label_diachi.Text = nhanvien.Address;
+
             panel_ttnv.Visible = true;
         }
 
@@ -135,6 +148,46 @@ namespace _3._Presentation
             FrmLogin logibn = new FrmLogin();
             logibn.ShowDialog();
             this.Close();
+        }
+
+        private void button_doimk_Click(object sender, EventArgs e)
+        {
+            var mk = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault(p => p.Password == textBox_mkcu.Text);
+            if (mk == null)
+            {
+                MessageBox.Show("Mật khẩu cũ không chính xác");
+
+            }
+            else if (textBox_mkmoi.Text.Length < 6)
+            {
+                MessageBox.Show("Mật khẩu phải có ít nhất 6 kí tự");
+
+            }
+            else if (textBox_nhaplaimk.Text != textBox_mkmoi.Text)
+            {
+                MessageBox.Show("Nhập lại mật khẩu không chính xác");
+            }
+
+
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn đổi mật khẩu không ?", "Thông Báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var mkmoi = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault();
+                    mkmoi.Password = textBox_mkmoi.Text;
+                    _iQLEmployee.UpdateEmployee(mkmoi);
+                    MessageBox.Show("Đổi mật khẩu thành công");
+
+
+
+                }
+
+                this.Hide();
+                FrmLogin login = new FrmLogin();
+                login.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

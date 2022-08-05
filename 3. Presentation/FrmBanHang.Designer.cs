@@ -72,7 +72,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(-5, -4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1053, 546);
+            this.panel1.Size = new System.Drawing.Size(1053, 540);
             this.panel1.TabIndex = 0;
             // 
             // groupBox3
@@ -82,24 +82,24 @@
             this.groupBox3.Controls.Add(this.dtg_danhsachSP);
             this.groupBox3.Location = new System.Drawing.Point(17, 229);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(614, 302);
+            this.groupBox3.Size = new System.Drawing.Size(614, 291);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách sản phẩm";
             // 
             // tbt_timkSP
             // 
-            this.tbt_timkSP.Location = new System.Drawing.Point(16, 38);
+            this.tbt_timkSP.Location = new System.Drawing.Point(148, 17);
             this.tbt_timkSP.Multiline = true;
             this.tbt_timkSP.Name = "tbt_timkSP";
-            this.tbt_timkSP.Size = new System.Drawing.Size(170, 33);
+            this.tbt_timkSP.Size = new System.Drawing.Size(170, 27);
             this.tbt_timkSP.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(16, 20);
+            this.label1.Location = new System.Drawing.Point(28, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 15);
             this.label1.TabIndex = 2;
@@ -108,10 +108,10 @@
             // dtg_danhsachSP
             // 
             this.dtg_danhsachSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_danhsachSP.Location = new System.Drawing.Point(6, 84);
+            this.dtg_danhsachSP.Location = new System.Drawing.Point(6, 50);
             this.dtg_danhsachSP.Name = "dtg_danhsachSP";
             this.dtg_danhsachSP.RowTemplate.Height = 25;
-            this.dtg_danhsachSP.Size = new System.Drawing.Size(602, 212);
+            this.dtg_danhsachSP.Size = new System.Drawing.Size(602, 225);
             this.dtg_danhsachSP.TabIndex = 1;
             // 
             // groupBox2
@@ -134,7 +134,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(637, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(337, 526);
+            this.groupBox2.Size = new System.Drawing.Size(337, 515);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Đơn hàng";
