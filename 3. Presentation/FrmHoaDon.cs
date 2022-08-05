@@ -29,7 +29,7 @@ namespace _3._Presentation
             dtg_hoadonchitiet.Rows.Clear();
             foreach (var item in _order.ShowOrder())
             {
-                dtg_hoadon.Rows.Add(item.ID, item.DateCreated, item.EmployeeEmail, item.CustomerPhoneNumber, item.TotalPrice,item.Status?"Đã thanh toán":"Chờ thanh toán",item.Note);
+                dtg_hoadon.Rows.Add(item.ID, item.DateCreated, item.EmployeeEmail, item.CustomerPhoneNumber, item.TotalPrice, item.Status ? "Đã thanh toán" : "Chờ thanh toán", item.Note);
             }
         }
         public void loadOrderDetail(int orderID)
@@ -37,7 +37,7 @@ namespace _3._Presentation
             dtg_hoadonchitiet.Rows.Clear();
             foreach (var item in _orderDetail.ShowOrderDetail(orderID))
             {
-                dtg_hoadonchitiet.Rows.Add(item.ProductID,item.ProductName,item.Quantity,item.Price);
+                dtg_hoadonchitiet.Rows.Add(item.ProductID, item.ProductName, item.Quantity, item.Price);
             }
         }
 
@@ -45,10 +45,30 @@ namespace _3._Presentation
         {
             dtg_hoadon.Rows.Clear();
             dtg_hoadonchitiet.Rows.Clear();
-            var items = _order.ShowOrder().Where(x => x.ID == Convert.ToInt32(tbt_timk.Text));
-            foreach (var item in items)
+            int value;
+            if (tbt_timk.Text != "")
             {
-                dtg_hoadon.Rows.Add(item.ID, item.DateCreated, item.EmployeeEmail, item.CustomerPhoneNumber, item.TotalPrice, item.Status ? "Đã thanh toán" : "Chờ thanh toán", item.Note);
+                if (int.TryParse(tbt_timk.Text, out value))
+                {
+                    var items = _order.ShowOrder().Where(x => x.ID.ToString().Contains(value.ToString()));
+                    if (items.Any())
+                    {
+                        foreach (var item in items)
+                        {
+                            dtg_hoadon.Rows.Add(item.ID, item.DateCreated, item.EmployeeEmail, item.CustomerPhoneNumber, item.TotalPrice, item.Status ? "Đã thanh toán" : "Chờ thanh toán", item.Note);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy mã hóa đơn tương ứng");
+                        loadOrder();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Mã hóa đơn phải là số");
+                    loadOrder();
+                }
             }
         }
 
