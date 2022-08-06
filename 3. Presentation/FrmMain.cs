@@ -14,7 +14,7 @@ namespace _3._Presentation
             InitializeComponent();
             _iQLEmployee = new QLEmployeeServices();
             this.CenterToScreen();
-            //GoFullscreen(AutoSize);
+            GoFullscreen(AutoSize);
             panel_ttnv.Visible = false;
 
         }
@@ -23,9 +23,9 @@ namespace _3._Presentation
         {
             var layEmail = Properties.Settings.Default.TKdaLogin;
             var nhanvien = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault(p => p.Email == layEmail);
-            string linkanh = nhanvien.LinkAnh.Replace(@"\", @"/");
-            pic_avtNV.Image = Image.FromFile(linkanh);
-            pic_avtNV.SizeMode = PictureBoxSizeMode.StretchImage;
+            //string linkanh = nhanvien.LinkAnh.Replace(@"\", @"/");
+            //pic_avtNV.Image = Image.FromFile(linkanh);
+            //pic_avtNV.SizeMode = PictureBoxSizeMode.StretchImage;
             lb_tenNV.Text = "NV : " + nhanvien.FullName;
         }
         private Form activeForm;

@@ -161,8 +161,8 @@ namespace _3._Presentation
             rad_khd.Checked = r.Cells[6].Value.ToString() == "Không hoạt động" ? true : false;
             linkAnh = employee.LinkAnh;
             layEmail = tbt_Email.Text;
-            pictureBox_avt.Image = Image.FromFile(linkAnh);
-            pictureBox_avt.SizeMode = PictureBoxSizeMode.StretchImage;
+            //pictureBox_avt.Image = Image.FromFile(linkAnh);
+            //pictureBox_avt.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void btn_sua_Click(object sender, EventArgs e)
         {

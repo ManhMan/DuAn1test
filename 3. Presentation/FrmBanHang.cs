@@ -114,9 +114,9 @@ namespace _3._Presentation
                 {
                     total += item.Price * item.Quantity;
                 }
-                //int eID = _employee.GetEmployeeFromDB().FirstOrDefault(x => x.Email == Properties.Settings.Default.TKdaLogin).ID;
+                int eID = _employee.GetEmployeeFromDB().FirstOrDefault(x => x.Email == Properties.Settings.Default.TKdaLogin).ID;
                 //int cID = _customer.GetCustomerFromDB().FirstOrDefault(x => x.Phone == "").ID;
-                int eID = 1;
+                //int eID = 1;
                 int cID = 1;
                 Order o = new Order()
                 {
@@ -138,11 +138,16 @@ namespace _3._Presentation
                         Quantity = item.Quantity
                     };
                     _orderDetail.AddOderDetail(od);
+                    var p = _product.GetProductFromDB().FirstOrDefault(x => x.Id == item.ProductID);
+                    p.Stock -= item.Quantity;
+                    _product.UpdateProduct(p);
                 }
 
                 tbt_mahd.Text = o.Id.ToString();
                 lb_tongtien.Text = o.TotalPrice.ToString();
                 MessageBox.Show($"Tạo hóa đơn thành công. ID: {o.Id}");
+                loadGioHang();
+                dtg_giohang.Rows.Clear();
             }
             else
             {
@@ -222,6 +227,156 @@ namespace _3._Presentation
                     lb_tienthua.Text = (Convert.ToDecimal(tbt_tienkhachdua.Text) - Convert.ToDecimal(lb_tongtien.Text) + Convert.ToDecimal(tbt_giamgia.Text)).ToString();
                 }
             }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbt_mahd_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbt_tienkhachdua_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbt_giamgia_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_thanhtoan_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rtb_ghichu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_tienthua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_tongtien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_XoaSP_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_xoaGioHang_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtg_danhsachSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
