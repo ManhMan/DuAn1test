@@ -9,6 +9,7 @@ namespace _2.BUS.IServices
 {
     public interface IQLRoleServices
     {
-        List<Role> GetProductFromDB();
+        bool AddRole(Role role);
+        List<Role> GetRoleFromDB();
     }
 }

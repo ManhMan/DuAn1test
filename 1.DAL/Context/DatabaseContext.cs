@@ -58,8 +58,8 @@ namespace _1.DAL.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-JNDR021\\SQLEXPRESS;Initial Catalog=databaseDuAn1;Persist Security Info=True; User ID =manh2806; Password =123");
-
+                // Lấy code về muốn kết nối database thì phải sửa lại dòng này
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-FOSRL05\THANG;Initial Catalog=databaseDuAn1;Persist Security Info=True; User ID =thangnm; Password =123");
             }
         }
         

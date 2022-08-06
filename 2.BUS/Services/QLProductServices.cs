@@ -54,7 +54,7 @@ namespace _2.BUS.Services
                         join b in _iQLProducer.GetProducerFromDB() on a.ProducerID equals b.ID
                         select new ProductVm
                         {
-                            //Id = a.Id,
+                            Id = a.Id,
                             Name = a.Name,
                             ProducerName = b.Name,
                             Price = a.Price,

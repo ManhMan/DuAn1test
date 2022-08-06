@@ -18,6 +18,14 @@ namespace _1.DAL.Repositories
             _context = new DatabaseContext();
             _lstRole = new List<Role>();
         }
+
+        public bool AddRole(Role role)
+        {
+           _context.Roles.Add(role);
+            _context.SaveChanges();
+            return true;
+        }
+
         public List<Role> GetRoleFromDB()
         {
             _lstRole = _context.Roles.ToList();

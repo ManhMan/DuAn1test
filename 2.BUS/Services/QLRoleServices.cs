@@ -19,7 +19,14 @@ namespace _2.BUS.Services
             _iqlRole = new RoleRepositories();
             _lstRole = new List<Role>();
         }
-        public List<Role> GetProductFromDB()
+
+        public bool AddRole(Role role)
+        {
+            _iqlRole.AddRole(role);
+            return true;
+        }
+
+        public List<Role> GetRoleFromDB()
         {
             _lstRole = _iqlRole.GetRoleFromDB();
             return _lstRole;
