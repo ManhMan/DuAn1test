@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System;
+using System.Net.Mail; // this namespace is required to send emails with SMTP
+using System.Net;
 
 namespace _3._Presentation
 {
@@ -49,16 +52,16 @@ namespace _3._Presentation
             {
                 Properties.Settings.Default.tk = "";
                 Properties.Settings.Default.mk = "";
-                Properties.Settings.Default.TKdaLogin = tbt_tk.Text; 
+                Properties.Settings.Default.TKdaLogin = tbt_tk.Text;
                 Properties.Settings.Default.MKdaLogin = tbt_mk.Text;
                 Properties.Settings.Default.Save();
             }
         }
         private void btn_login_Click(object sender, EventArgs e)
         {
-            
-            var login = _iQLEmployee.GetEmployeeFromDB().Where(p=>p.Email == tbt_tk.Text && p.Password == tbt_mk.Text).FirstOrDefault();
-            
+
+            var login = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Email == tbt_tk.Text && p.Password == tbt_mk.Text).FirstOrDefault();
+
             if (login != null)
             {
                 saveInfor();
@@ -70,9 +73,15 @@ namespace _3._Presentation
             else
             {
                 MessageBox.Show("Đăng nhập thất bại");
-                
+
             }
-            
         }
+
+        private void lb_quenmk_Click(object sender, EventArgs e)
+        {
+            FrmForgotPW frmForgotPW = new FrmForgotPW();
+            frmForgotPW.ShowDialog();
+        }
+        
     }
 }
