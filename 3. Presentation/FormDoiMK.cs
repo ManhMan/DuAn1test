@@ -50,7 +50,7 @@ namespace _3._Presentation
                     var mkmoi = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault();
                     mkmoi.Password = textBox_mkmoi.Text;
                     _iQLEmployee.UpdateEmployee(mkmoi);
-                    MessageBox.Show("Đổi mật khẩu thành công");
+                    MessageBox.Show("Đổi mật khẩu thành công. Vui lòng đăng nhập lại");
                 }
                 //this.Hide();
                 //Application.Exit();

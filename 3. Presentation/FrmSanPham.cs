@@ -29,9 +29,9 @@ namespace _3._Presentation
         {
             dtgv_frmSP.Rows.Clear();
             //dtgv_frmSP.DataSource = _IQLProductServices.ShowProduct();
-            foreach (var item in _IQLProductServices.GetProductFromDB())
+            foreach (var item in _IQLProductServices.ShowProduct())
             {
-                dtgv_frmSP.Rows.Add(item.Id,item.Name,item.Price,item.OriginalPrice,item.DateCreated,item.OriginalPrice,item.Note);
+                dtgv_frmSP.Rows.Add(item.Id,item.Name,item.ProducerName,item.Price,item.OriginalPrice,item.DateCreated,item.OriginalPrice,item.Note);
             }
 
         }
