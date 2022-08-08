@@ -40,6 +40,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lb_giamgia = new System.Windows.Forms.Label();
             this.tbt_mahd = new System.Windows.Forms.TextBox();
             this.tbt_tienkhachdua = new System.Windows.Forms.TextBox();
             this.tbt_giamgia = new System.Windows.Forms.TextBox();
@@ -67,7 +68,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btn_xoaGioHang = new System.Windows.Forms.Button();
             this.btn_XoaSP = new System.Windows.Forms.Button();
-            this.lb_totalprice = new System.Windows.Forms.Label();
+            this.lb_totalcart = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtg_giohang = new System.Windows.Forms.DataGridView();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,7 +95,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1446, 860);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // groupBox3
             // 
@@ -109,7 +109,6 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách sản phẩm";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // tbt_timkSP
             // 
@@ -147,7 +146,6 @@
             this.dtg_danhsachSP.Size = new System.Drawing.Size(688, 283);
             this.dtg_danhsachSP.TabIndex = 1;
             this.dtg_danhsachSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_danhsachSP_CellClick);
-            this.dtg_danhsachSP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_danhsachSP_CellContentClick);
             // 
             // Column3
             // 
@@ -186,6 +184,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lb_giamgia);
             this.groupBox2.Controls.Add(this.tbt_mahd);
             this.groupBox2.Controls.Add(this.tbt_tienkhachdua);
             this.groupBox2.Controls.Add(this.tbt_giamgia);
@@ -210,7 +209,15 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thanh toán";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // lb_giamgia
+            // 
+            this.lb_giamgia.AutoSize = true;
+            this.lb_giamgia.Location = new System.Drawing.Point(342, 92);
+            this.lb_giamgia.Name = "lb_giamgia";
+            this.lb_giamgia.Size = new System.Drawing.Size(80, 20);
+            this.lb_giamgia.TabIndex = 43;
+            this.lb_giamgia.Text = "(Tối đa : 0)";
             // 
             // tbt_mahd
             // 
@@ -219,7 +226,7 @@
             this.tbt_mahd.Name = "tbt_mahd";
             this.tbt_mahd.Size = new System.Drawing.Size(114, 27);
             this.tbt_mahd.TabIndex = 42;
-            this.tbt_mahd.TextChanged += new System.EventHandler(this.tbt_mahd_TextChanged_1);
+            this.tbt_mahd.TextChanged += new System.EventHandler(this.tbt_mahd_TextChanged);
             // 
             // tbt_tienkhachdua
             // 
@@ -228,7 +235,7 @@
             this.tbt_tienkhachdua.Name = "tbt_tienkhachdua";
             this.tbt_tienkhachdua.Size = new System.Drawing.Size(114, 27);
             this.tbt_tienkhachdua.TabIndex = 41;
-            this.tbt_tienkhachdua.TextChanged += new System.EventHandler(this.tbt_tienkhachdua_TextChanged_1);
+            this.tbt_tienkhachdua.TextChanged += new System.EventHandler(this.tbt_tienkhachdua_TextChanged);
             // 
             // tbt_giamgia
             // 
@@ -237,7 +244,7 @@
             this.tbt_giamgia.Name = "tbt_giamgia";
             this.tbt_giamgia.Size = new System.Drawing.Size(114, 27);
             this.tbt_giamgia.TabIndex = 40;
-            this.tbt_giamgia.TextChanged += new System.EventHandler(this.tbt_giamgia_TextChanged_1);
+            this.tbt_giamgia.TextChanged += new System.EventHandler(this.tbt_giamgia_TextChanged);
             // 
             // btn_thanhtoan
             // 
@@ -252,7 +259,7 @@
             this.btn_thanhtoan.TabIndex = 39;
             this.btn_thanhtoan.Text = "THANH TOÁN";
             this.btn_thanhtoan.UseVisualStyleBackColor = false;
-            this.btn_thanhtoan.Click += new System.EventHandler(this.btn_thanhtoan_Click_1);
+            this.btn_thanhtoan.Click += new System.EventHandler(this.btn_thanhtoan_Click);
             // 
             // rtb_ghichu
             // 
@@ -262,7 +269,6 @@
             this.rtb_ghichu.Size = new System.Drawing.Size(187, 27);
             this.rtb_ghichu.TabIndex = 38;
             this.rtb_ghichu.Text = "";
-            this.rtb_ghichu.TextChanged += new System.EventHandler(this.rtb_ghichu_TextChanged);
             // 
             // label21
             // 
@@ -272,7 +278,6 @@
             this.label21.Size = new System.Drawing.Size(58, 20);
             this.label21.TabIndex = 37;
             this.label21.Text = "Ghi chú";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // label20
             // 
@@ -282,7 +287,6 @@
             this.label20.Size = new System.Drawing.Size(40, 20);
             this.label20.TabIndex = 36;
             this.label20.Text = "VNĐ";
-            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // label19
             // 
@@ -292,7 +296,6 @@
             this.label19.Size = new System.Drawing.Size(40, 20);
             this.label19.TabIndex = 35;
             this.label19.Text = "VNĐ";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // label16
             // 
@@ -302,7 +305,6 @@
             this.label16.Size = new System.Drawing.Size(40, 20);
             this.label16.TabIndex = 34;
             this.label16.Text = "VNĐ";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // lb_tienthua
             // 
@@ -312,7 +314,6 @@
             this.lb_tienthua.Size = new System.Drawing.Size(17, 20);
             this.lb_tienthua.TabIndex = 33;
             this.lb_tienthua.Text = "0";
-            this.lb_tienthua.Click += new System.EventHandler(this.lb_tienthua_Click);
             // 
             // lb_tongtien
             // 
@@ -322,7 +323,6 @@
             this.lb_tongtien.Size = new System.Drawing.Size(17, 20);
             this.lb_tongtien.TabIndex = 32;
             this.lb_tongtien.Text = "0";
-            this.lb_tongtien.Click += new System.EventHandler(this.lb_tongtien_Click);
             // 
             // label8
             // 
@@ -332,7 +332,6 @@
             this.label8.Size = new System.Drawing.Size(71, 20);
             this.label8.TabIndex = 31;
             this.label8.Text = "Tiền thừa";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -342,7 +341,6 @@
             this.label7.Size = new System.Drawing.Size(109, 20);
             this.label7.TabIndex = 30;
             this.label7.Text = "Tiền khách đưa";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label5
             // 
@@ -352,7 +350,6 @@
             this.label5.Size = new System.Drawing.Size(69, 20);
             this.label5.TabIndex = 29;
             this.label5.Text = "Giảm giá";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -362,7 +359,6 @@
             this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 28;
             this.label4.Text = "Tổng tiền";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -372,7 +368,6 @@
             this.label3.Size = new System.Drawing.Size(93, 20);
             this.label3.TabIndex = 27;
             this.label3.Text = "Mã hóa đơn ";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // groupBox1
             // 
@@ -386,7 +381,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btn_xoaGioHang);
             this.groupBox1.Controls.Add(this.btn_XoaSP);
-            this.groupBox1.Controls.Add(this.lb_totalprice);
+            this.groupBox1.Controls.Add(this.lb_totalcart);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtg_giohang);
             this.groupBox1.Location = new System.Drawing.Point(19, 7);
@@ -397,7 +392,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giỏ hàng";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lb_point
             // 
@@ -434,7 +428,6 @@
             this.lb_tenkh.Size = new System.Drawing.Size(18, 20);
             this.lb_tenkh.TabIndex = 20;
             this.lb_tenkh.Text = "...";
-            this.lb_tenkh.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 
@@ -444,7 +437,6 @@
             this.label10.Size = new System.Drawing.Size(111, 20);
             this.label10.TabIndex = 19;
             this.label10.Text = "Tên khách hàng";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
             // 
@@ -454,7 +446,6 @@
             this.label9.Size = new System.Drawing.Size(110, 20);
             this.label9.TabIndex = 18;
             this.label9.Text = "Sđt khách hàng";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // tb_sdt
             // 
@@ -506,16 +497,15 @@
             this.btn_XoaSP.UseVisualStyleBackColor = true;
             this.btn_XoaSP.Click += new System.EventHandler(this.btn_XoaSP_Click_1);
             // 
-            // lb_totalprice
+            // lb_totalcart
             // 
-            this.lb_totalprice.AutoSize = true;
-            this.lb_totalprice.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lb_totalprice.Location = new System.Drawing.Point(733, 260);
-            this.lb_totalprice.Name = "lb_totalprice";
-            this.lb_totalprice.Size = new System.Drawing.Size(27, 31);
-            this.lb_totalprice.TabIndex = 12;
-            this.lb_totalprice.Text = "0";
-            this.lb_totalprice.Click += new System.EventHandler(this.label6_Click);
+            this.lb_totalcart.AutoSize = true;
+            this.lb_totalcart.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lb_totalcart.Location = new System.Drawing.Point(733, 260);
+            this.lb_totalcart.Name = "lb_totalcart";
+            this.lb_totalcart.Size = new System.Drawing.Size(27, 31);
+            this.lb_totalcart.TabIndex = 12;
+            this.lb_totalcart.Text = "0";
             // 
             // label2
             // 
@@ -526,7 +516,6 @@
             this.label2.Size = new System.Drawing.Size(117, 31);
             this.label2.TabIndex = 11;
             this.label2.Text = "Tổng tiền";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dtg_giohang
             // 
@@ -544,6 +533,7 @@
             this.dtg_giohang.Size = new System.Drawing.Size(562, 253);
             this.dtg_giohang.TabIndex = 0;
             this.dtg_giohang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_giohang_CellClick);
+            this.dtg_giohang.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_giohang_CellValueChanged);
             // 
             // Column6
             // 
@@ -635,7 +625,7 @@
         private Button button1;
         private Button btn_xoaGioHang;
         private Button btn_XoaSP;
-        private Label lb_totalprice;
+        private Label lb_totalcart;
         private Label lb_tenkh;
         private Label label10;
         private Label label9;
@@ -643,5 +633,6 @@
         private PictureBox pictureBox1;
         private Label label11;
         private Label lb_point;
+        private Label lb_giamgia;
     }
 }

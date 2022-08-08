@@ -40,8 +40,6 @@
             this.btn_XoaHD = new System.Windows.Forms.Button();
             this.btn_timk = new System.Windows.Forms.Button();
             this.dtg_hoadon = new System.Windows.Forms.DataGridView();
-            this.tbt_timk = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +47,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbt_timk = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_hoadonchitiet)).BeginInit();
@@ -150,6 +150,7 @@
             this.btn_XoaHD.Text = "Xóa hoá đơn";
             this.btn_XoaHD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_XoaHD.UseVisualStyleBackColor = true;
+            this.btn_XoaHD.Click += new System.EventHandler(this.btn_XoaHD_Click);
             // 
             // btn_timk
             // 
@@ -185,24 +186,6 @@
             this.dtg_hoadon.Size = new System.Drawing.Size(1245, 268);
             this.dtg_hoadon.TabIndex = 2;
             this.dtg_hoadon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_hoadon_CellClick);
-            // 
-            // tbt_timk
-            // 
-            this.tbt_timk.Location = new System.Drawing.Point(156, 19);
-            this.tbt_timk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbt_timk.Name = "tbt_timk";
-            this.tbt_timk.Size = new System.Drawing.Size(217, 27);
-            this.tbt_timk.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(15, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tìm kiếm hóa đơn";
             // 
             // Column1
             // 
@@ -252,6 +235,24 @@
             this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
             this.Column7.Width = 125;
+            // 
+            // tbt_timk
+            // 
+            this.tbt_timk.Location = new System.Drawing.Point(156, 19);
+            this.tbt_timk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbt_timk.Name = "tbt_timk";
+            this.tbt_timk.Size = new System.Drawing.Size(217, 27);
+            this.tbt_timk.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(15, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tìm kiếm hóa đơn";
             // 
             // FrmHoaDon
             // 

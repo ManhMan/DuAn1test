@@ -1,4 +1,5 @@
-﻿using _2.BUS.IServices;
+﻿using _1.DAL.Entities;
+using _2.BUS.IServices;
 using _2.BUS.Services;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,15 @@ namespace _3._Presentation
     {
         private IQLOderServices _order;
         private IQLOderDetailServices _orderDetail;
+        private IQLProductServices _product;
+        public int oID;
         public FrmHoaDon()
         {
             InitializeComponent();
             _order = new QLOderServices();
             _orderDetail = new QLOderDetailServices();
+            _product = new QLProductServices();
+            oID = 0;
             loadOrder();
         }
         public void loadOrder()
@@ -34,6 +39,7 @@ namespace _3._Presentation
         }
         public void loadOrderDetail(int orderID)
         {
+            oID = orderID;
             dtg_hoadonchitiet.Rows.Clear();
             foreach (var item in _orderDetail.ShowOrderDetail(orderID))
             {
@@ -74,9 +80,43 @@ namespace _3._Presentation
 
         private void dtg_hoadon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow r = dtg_hoadon.Rows[e.RowIndex];
-            loadOrderDetail(Convert.ToInt32(r.Cells[0].Value));
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow r = dtg_hoadon.Rows[e.RowIndex];
+                loadOrderDetail(Convert.ToInt32(r.Cells[0].Value));
+            }
+        }
 
+        private void btn_XoaHD_Click(object sender, EventArgs e)
+        {
+            if (oID == 0)
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn");
+            }
+            else
+            {
+                Order o = _order.GetOderFromDB().FirstOrDefault(x => x.Id == oID);
+                if (o.Status == true)
+                {
+                    MessageBox.Show("Chỉ được xóa các hóa đơn chưa thanh toán");
+                }
+                else
+                {
+                    var _lstOd = _orderDetail.GetOderDetailFromDB().Where(x => x.OderID == oID);
+                    foreach(var item in _lstOd)
+                    {
+                        var p = _product.GetProductFromDB().FirstOrDefault(x => x.Id == item.ProducID);
+                        p.Stock += item.Quantity;
+                        _product.UpdateProduct(p);
+                        _orderDetail.DeleteOderDetail(item);
+                    }
+                    _order.DeleteOder(o);
+                    oID = 0;
+                    MessageBox.Show("Xóa thành công");
+                    loadOrder();
+                    dtg_hoadonchitiet.Rows.Clear();
+                }
+            }
         }
     }
 }

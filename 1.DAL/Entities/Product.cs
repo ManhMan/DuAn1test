@@ -10,7 +10,7 @@ namespace _1.DAL.Entities
     public class Product
     {
         public int Id { get; set; }
-        public string MaSp { get; set; } //chỗ này cần quết mã vạch
+        public string? MaSp { get; set; } //chỗ này cần quết mã vạch
         public string Name { get; set; }
         public int ProducerID { get; set; }
         public int CategoryID { get; set; }
