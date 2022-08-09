@@ -473,7 +473,7 @@
             this.labelChaychu.AutoSize = true;
             this.labelChaychu.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.labelChaychu.ForeColor = System.Drawing.Color.Black;
-            this.labelChaychu.Location = new System.Drawing.Point(455, 23);
+            this.labelChaychu.Location = new System.Drawing.Point(419, 23);
             this.labelChaychu.Name = "labelChaychu";
             this.labelChaychu.Size = new System.Drawing.Size(569, 40);
             this.labelChaychu.TabIndex = 2;
@@ -490,7 +490,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
-            this.ClientSize = new System.Drawing.Size(1258, 749);
+            this.ClientSize = new System.Drawing.Size(1301, 749);
             this.Controls.Add(this.labelChaychu);
             this.Controls.Add(this.pn_main);
             this.Controls.Add(this.panel1);
