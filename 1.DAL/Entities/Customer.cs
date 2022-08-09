@@ -13,6 +13,7 @@ namespace _1.DAL.Entities
         public string Phone { get; set; }
         public bool Sex { get; set; }
         public string Address { get; set; }
+        public int? Point { get; set; }
         public List<Order> Oders { get; set; }
     }
 }

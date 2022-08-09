@@ -43,6 +43,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -67,6 +68,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_frmSP)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_anhSP)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +79,7 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(-4, -6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 523);
+            this.panel1.Size = new System.Drawing.Size(1127, 584);
             this.panel1.TabIndex = 0;
             // 
             // groupBox2
@@ -86,9 +88,9 @@
             this.groupBox2.Controls.Add(this.tbt_timkSP);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.dtgv_frmSP);
-            this.groupBox2.Location = new System.Drawing.Point(16, 257);
+            this.groupBox2.Location = new System.Drawing.Point(16, 280);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(888, 248);
+            this.groupBox2.Size = new System.Drawing.Size(1101, 290);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách sản phẩm";
@@ -98,7 +100,7 @@
             this.btn_timk.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btn_timk.Image = ((System.Drawing.Image)(resources.GetObject("btn_timk.Image")));
             this.btn_timk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_timk.Location = new System.Drawing.Point(317, 28);
+            this.btn_timk.Location = new System.Drawing.Point(328, 26);
             this.btn_timk.Name = "btn_timk";
             this.btn_timk.Size = new System.Drawing.Size(85, 23);
             this.btn_timk.TabIndex = 8;
@@ -108,7 +110,7 @@
             // 
             // tbt_timkSP
             // 
-            this.tbt_timkSP.Location = new System.Drawing.Point(137, 28);
+            this.tbt_timkSP.Location = new System.Drawing.Point(150, 28);
             this.tbt_timkSP.Name = "tbt_timkSP";
             this.tbt_timkSP.Size = new System.Drawing.Size(174, 23);
             this.tbt_timkSP.TabIndex = 3;
@@ -136,46 +138,57 @@
             this.Column7});
             this.dtgv_frmSP.Location = new System.Drawing.Point(11, 57);
             this.dtgv_frmSP.Name = "dtgv_frmSP";
+            this.dtgv_frmSP.RowHeadersWidth = 51;
             this.dtgv_frmSP.RowTemplate.Height = 25;
-            this.dtgv_frmSP.Size = new System.Drawing.Size(812, 176);
+            this.dtgv_frmSP.Size = new System.Drawing.Size(899, 176);
             this.dtgv_frmSP.TabIndex = 0;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "ID ";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.Width = 50;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Tên sản phẩm";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.Width = 150;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Nhà sản xuất";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.Width = 150;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Giá bán";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Giá nhập";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
+            this.Column5.Width = 125;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Ngày nhập";
+            this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
+            this.Column6.Width = 125;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "Ghi chú";
+            this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
             this.Column7.Width = 120;
             // 
@@ -184,6 +197,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label10);
@@ -202,12 +216,22 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(16, 18);
+            this.groupBox1.Location = new System.Drawing.Point(16, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(888, 233);
+            this.groupBox1.Size = new System.Drawing.Size(1101, 259);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin sản phẩm";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FloralWhite;
+            this.pictureBox1.Location = new System.Drawing.Point(698, 30);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 141);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // comboBox1
             // 
@@ -237,9 +261,9 @@
             // 
             this.groupBox3.Controls.Add(this.btn_sua);
             this.groupBox3.Controls.Add(this.btn_them);
-            this.groupBox3.Location = new System.Drawing.Point(723, 13);
+            this.groupBox3.Location = new System.Drawing.Point(856, 30);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(147, 214);
+            this.groupBox3.Size = new System.Drawing.Size(152, 141);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức năng";
@@ -249,11 +273,11 @@
             this.btn_sua.BackColor = System.Drawing.Color.Aquamarine;
             this.btn_sua.Image = ((System.Drawing.Image)(resources.GetObject("btn_sua.Image")));
             this.btn_sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_sua.Location = new System.Drawing.Point(12, 59);
+            this.btn_sua.Location = new System.Drawing.Point(23, 60);
             this.btn_sua.Name = "btn_sua";
             this.btn_sua.Size = new System.Drawing.Size(115, 33);
             this.btn_sua.TabIndex = 3;
-            this.btn_sua.Text = "Sửa";
+            this.btn_sua.Text = "Cập Nhập";
             this.btn_sua.UseVisualStyleBackColor = false;
             // 
             // btn_them
@@ -261,7 +285,7 @@
             this.btn_them.BackColor = System.Drawing.Color.Aquamarine;
             this.btn_them.Image = ((System.Drawing.Image)(resources.GetObject("btn_them.Image")));
             this.btn_them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_them.Location = new System.Drawing.Point(12, 20);
+            this.btn_them.Location = new System.Drawing.Point(23, 21);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(115, 33);
             this.btn_them.TabIndex = 2;
@@ -316,9 +340,9 @@
             // 
             this.pcb_anhSP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pcb_anhSP.Image = ((System.Drawing.Image)(resources.GetObject("pcb_anhSP.Image")));
-            this.pcb_anhSP.Location = new System.Drawing.Point(570, 33);
+            this.pcb_anhSP.Location = new System.Drawing.Point(555, 30);
             this.pcb_anhSP.Name = "pcb_anhSP";
-            this.pcb_anhSP.Size = new System.Drawing.Size(120, 125);
+            this.pcb_anhSP.Size = new System.Drawing.Size(138, 141);
             this.pcb_anhSP.TabIndex = 9;
             this.pcb_anhSP.TabStop = false;
             // 
@@ -390,7 +414,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
-            this.ClientSize = new System.Drawing.Size(965, 527);
+            this.ClientSize = new System.Drawing.Size(1131, 562);
             this.Controls.Add(this.panel1);
             this.Name = "FrmSanPham";
             this.Text = "FrmSanPham";
@@ -401,6 +425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_frmSP)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcb_anhSP)).EndInit();
             this.ResumeLayout(false);
@@ -443,5 +468,6 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
+        private PictureBox pictureBox1;
     }
 }

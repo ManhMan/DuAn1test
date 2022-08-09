@@ -13,5 +13,6 @@ namespace _1.DAL.iRepositories
         bool UpdateOderDetail(OrderDetail oderDetail);
         bool DeleteOderDetail(OrderDetail oderDetail);
         List<OrderDetail> GetOderDetailFromDB();
+
     }
 }

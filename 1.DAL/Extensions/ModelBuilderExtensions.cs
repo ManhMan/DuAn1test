@@ -13,8 +13,8 @@ namespace _1.DAL.Extensions
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().HasData(
-                new Customer() { ID = 1, Name = "Nguyễn Công Tiến", Phone = "0987654321", Sex = true, Address = " 10 Minh Khai, Hà Nội" },
-                new Customer() { ID = 2, Name = "Nguyễn Mạnh Thắng", Phone = "0987777777", Sex = true, Address = " 69 Trịnh Văn Bô, Hà Nội" }
+                new Customer() { ID = 1, Name = "Nguyễn Công Tiến", Phone = "0987654321", Sex = true, Address = " 10 Minh Khai, Hà Nội", Point=10000 },
+                new Customer() { ID = 2, Name = "Nguyễn Mạnh Thắng", Phone = "0987777777", Sex = true, Address = " 69 Trịnh Văn Bô, Hà Nội", Point = 10000 }
                 );
             modelBuilder.Entity<Role>().HasData(
                 new Role() { ID = 1, RoleName = "Quản lý" },

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1.DAL", "1.DAL\1.DAL.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2.BUS", "2.BUS\2.BUS.csproj", "{AEDA8346-2DEB-400D-A8EF-E58B236F614F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. Presentation", "3. Presentation\3. Presentation.csproj", "{DAD0C386-E510-4FE1-9957-9185C67A204E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3. Presentation", "3. Presentation\3. Presentation.csproj", "{DAD0C386-E510-4FE1-9957-9185C67A204E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
