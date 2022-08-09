@@ -92,8 +92,8 @@ namespace _3._Presentation
 
         private void btn_sp_Click(object sender, EventArgs e)
         {
-            FrmSanPham frmSanPham = new FrmSanPham();
-            ChangeForm(frmSanPham);
+            FrmQuanLy frmQuanLy = new FrmQuanLy();
+            ChangeForm(frmQuanLy);
             panel_ttnv.Visible = false;
         }
 
@@ -188,6 +188,18 @@ namespace _3._Presentation
                 login.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_KhachHang_Click(object sender, EventArgs e)
+        {
+            FrmKhachHang frmKhachHang = new FrmKhachHang();
+            ChangeForm(frmKhachHang);
+            panel_ttnv.Visible = false;
         }
     }
 }

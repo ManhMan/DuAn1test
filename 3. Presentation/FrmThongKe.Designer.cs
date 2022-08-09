@@ -41,9 +41,15 @@
             this.dtp_ngay = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_timkiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgv_show = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lb_khachhang = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -94,7 +100,7 @@
             this.groupBox4.Size = new System.Drawing.Size(476, 105);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Theo tháng, năm";
+            this.groupBox4.Text = "Theo khách hàng";
             // 
             // tb_sdt
             // 
@@ -103,6 +109,7 @@
             this.tb_sdt.Name = "tb_sdt";
             this.tb_sdt.Size = new System.Drawing.Size(241, 27);
             this.tb_sdt.TabIndex = 6;
+            this.tb_sdt.TextChanged += new System.EventHandler(this.tb_sdt_TextChanged);
             // 
             // label7
             // 
@@ -151,6 +158,7 @@
             this.cbb_nam.Name = "cbb_nam";
             this.cbb_nam.Size = new System.Drawing.Size(151, 28);
             this.cbb_nam.TabIndex = 1;
+            this.cbb_nam.TextChanged += new System.EventHandler(this.cbb_nam_TextChanged);
             // 
             // cbb_thang
             // 
@@ -159,6 +167,7 @@
             this.cbb_thang.Name = "cbb_thang";
             this.cbb_thang.Size = new System.Drawing.Size(151, 28);
             this.cbb_thang.TabIndex = 0;
+            this.cbb_thang.TextChanged += new System.EventHandler(this.cbb_thang_TextChanged);
             // 
             // groupBox2
             // 
@@ -181,7 +190,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tb_timkiem);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtgv_show);
             this.groupBox1.Location = new System.Drawing.Point(18, 392);
@@ -202,13 +211,14 @@
             this.button1.Text = "Tìm kiếm";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tb_timkiem
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 39);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 27);
-            this.textBox1.TabIndex = 4;
+            this.tb_timkiem.Location = new System.Drawing.Point(97, 39);
+            this.tb_timkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tb_timkiem.Name = "tb_timkiem";
+            this.tb_timkiem.Size = new System.Drawing.Size(254, 27);
+            this.tb_timkiem.TabIndex = 4;
+            this.tb_timkiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -224,6 +234,13 @@
             // dtgv_show
             // 
             this.dtgv_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6});
             this.dtgv_show.Location = new System.Drawing.Point(17, 96);
             this.dtgv_show.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtgv_show.Name = "dtgv_show";
@@ -231,6 +248,48 @@
             this.dtgv_show.RowTemplate.Height = 25;
             this.dtgv_show.Size = new System.Drawing.Size(1227, 264);
             this.dtgv_show.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã hóa đơn";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên sản phẩm";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Số lượng";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Đơn giá";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Tổng tiền";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Số điện thoại khách hàng";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 125;
             // 
             // panel5
             // 
@@ -393,7 +452,7 @@
 
         private Panel panel1;
         private Panel panel2;
-        private TextBox textBox1;
+        private TextBox tb_timkiem;
         private Label label1;
         private GroupBox groupBox1;
         private DataGridView dtgv_show;
@@ -420,5 +479,11 @@
         private GroupBox groupBox4;
         private TextBox tb_sdt;
         private Label label7;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
     }
 }
