@@ -30,8 +30,8 @@ namespace _3._Presentation
         {
             MailAddress fromAddress = new MailAddress("thangnmph18817@fpt.edu.vn", "Admin");
             MailAddress toAddress = new MailAddress(email, "User");
-            const string subject = "Reset mật khẩu App Winmart";
-            string body = @"Bạn đã yêu cầu đổi mật khẩu. Mật khẩu mới của bạn là: "+ pw;
+            const string subject = "Reset mật khẩu App BeeMart";
+            string body = @"Bạn đã yêu cầu đổi mật khẩu. Mật khẩu mới của bạn là: <b>" + pw + "</b>";
 
             System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage(fromAddress.Address, toAddress.Address, subject, body);
             msg.IsBodyHtml = true;
