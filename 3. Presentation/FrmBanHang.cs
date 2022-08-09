@@ -158,7 +158,7 @@ namespace _3._Presentation
             {
                 var customer = _customer.GetCustomerFromDB().FirstOrDefault(x => x.ID == o.CustomerID);
                 int x;
-                if (Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text))
+                if (tbt_giamgia.Text=="" || Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text))
                 {
                     MessageBox.Show("Vui lòng nhập đúng số tiền");
                 }
@@ -204,6 +204,15 @@ namespace _3._Presentation
                 Order o = _order.GetOderFromDB().FirstOrDefault(x => x.Id == Convert.ToInt32(tbt_mahd.Text) && x.Status == false);
                 if (o != null)
                 {
+
+                    //var od = _orderDetail.GetOderDetailFromDB().Where(x => x.OderID == o.Id).ToList();
+                    //dtg_giohang.Rows.Clear();
+                    //foreach (var item in od)
+                    //{
+                    //    dtg_giohang.Rows.Add(item.ProducID, item.OderID, item.Price, item.Quantity);
+                    //}
+                    //totalCart();
+
                     lb_tongtien.Text = o.TotalPrice.ToString();
                     var customer = _customer.GetCustomerFromDB().FirstOrDefault(x => x.ID == o.CustomerID);
                     lb_giamgia.Text = $"(Tối đa : {customer.Point})";
