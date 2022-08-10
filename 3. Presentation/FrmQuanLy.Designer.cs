@@ -38,6 +38,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Goldenrod;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sảnPhẩmToolStripMenuItem,
             this.danhMụcToolStripMenuItem,
@@ -73,7 +74,7 @@
             // 
             this.pn_quanly.Location = new System.Drawing.Point(0, 27);
             this.pn_quanly.Name = "pn_quanly";
-            this.pn_quanly.Size = new System.Drawing.Size(1127, 530);
+            this.pn_quanly.Size = new System.Drawing.Size(1127, 649);
             this.pn_quanly.TabIndex = 1;
             // 
             // FrmQuanLy
@@ -81,7 +82,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
-            this.ClientSize = new System.Drawing.Size(1131, 561);
+            this.ClientSize = new System.Drawing.Size(1131, 641);
             this.Controls.Add(this.pn_quanly);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

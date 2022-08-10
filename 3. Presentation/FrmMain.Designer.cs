@@ -90,7 +90,7 @@
             this.panel1.Controls.Add(this.btn_banhang);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 704);
+            this.panel1.Size = new System.Drawing.Size(255, 754);
             this.panel1.TabIndex = 0;
             // 
             // btn_KhachHang
@@ -101,7 +101,7 @@
             this.btn_KhachHang.ForeColor = System.Drawing.Color.White;
             this.btn_KhachHang.Image = ((System.Drawing.Image)(resources.GetObject("btn_KhachHang.Image")));
             this.btn_KhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_KhachHang.Location = new System.Drawing.Point(12, 500);
+            this.btn_KhachHang.Location = new System.Drawing.Point(12, 525);
             this.btn_KhachHang.Name = "btn_KhachHang";
             this.btn_KhachHang.Size = new System.Drawing.Size(224, 57);
             this.btn_KhachHang.TabIndex = 13;
@@ -117,7 +117,7 @@
             this.btn_dangxuat.ForeColor = System.Drawing.Color.White;
             this.btn_dangxuat.Image = ((System.Drawing.Image)(resources.GetObject("btn_dangxuat.Image")));
             this.btn_dangxuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_dangxuat.Location = new System.Drawing.Point(12, 626);
+            this.btn_dangxuat.Location = new System.Drawing.Point(12, 651);
             this.btn_dangxuat.Name = "btn_dangxuat";
             this.btn_dangxuat.Size = new System.Drawing.Size(224, 57);
             this.btn_dangxuat.TabIndex = 12;
@@ -133,7 +133,7 @@
             this.btn_hoadon.ForeColor = System.Drawing.Color.White;
             this.btn_hoadon.Image = ((System.Drawing.Image)(resources.GetObject("btn_hoadon.Image")));
             this.btn_hoadon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_hoadon.Location = new System.Drawing.Point(12, 311);
+            this.btn_hoadon.Location = new System.Drawing.Point(12, 336);
             this.btn_hoadon.Name = "btn_hoadon";
             this.btn_hoadon.Size = new System.Drawing.Size(224, 57);
             this.btn_hoadon.TabIndex = 8;
@@ -149,7 +149,7 @@
             this.btn_thongke.ForeColor = System.Drawing.Color.White;
             this.btn_thongke.Image = ((System.Drawing.Image)(resources.GetObject("btn_thongke.Image")));
             this.btn_thongke.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_thongke.Location = new System.Drawing.Point(12, 563);
+            this.btn_thongke.Location = new System.Drawing.Point(12, 588);
             this.btn_thongke.Name = "btn_thongke";
             this.btn_thongke.Size = new System.Drawing.Size(224, 57);
             this.btn_thongke.TabIndex = 11;
@@ -165,7 +165,7 @@
             this.btn_sp.ForeColor = System.Drawing.Color.White;
             this.btn_sp.Image = ((System.Drawing.Image)(resources.GetObject("btn_sp.Image")));
             this.btn_sp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_sp.Location = new System.Drawing.Point(12, 437);
+            this.btn_sp.Location = new System.Drawing.Point(12, 462);
             this.btn_sp.Name = "btn_sp";
             this.btn_sp.Size = new System.Drawing.Size(224, 57);
             this.btn_sp.TabIndex = 10;
@@ -191,7 +191,7 @@
             this.btn_nv.ForeColor = System.Drawing.Color.White;
             this.btn_nv.Image = ((System.Drawing.Image)(resources.GetObject("btn_nv.Image")));
             this.btn_nv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_nv.Location = new System.Drawing.Point(12, 374);
+            this.btn_nv.Location = new System.Drawing.Point(12, 399);
             this.btn_nv.Name = "btn_nv";
             this.btn_nv.Size = new System.Drawing.Size(224, 57);
             this.btn_nv.TabIndex = 9;
@@ -219,7 +219,7 @@
             this.btn_banhang.ForeColor = System.Drawing.Color.White;
             this.btn_banhang.Image = ((System.Drawing.Image)(resources.GetObject("btn_banhang.Image")));
             this.btn_banhang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_banhang.Location = new System.Drawing.Point(12, 248);
+            this.btn_banhang.Location = new System.Drawing.Point(12, 273);
             this.btn_banhang.Name = "btn_banhang";
             this.btn_banhang.Size = new System.Drawing.Size(224, 57);
             this.btn_banhang.TabIndex = 7;
@@ -230,9 +230,10 @@
             // pn_main
             // 
             this.pn_main.Controls.Add(this.panel_ttnv);
+            this.pn_main.ImeMode = System.Windows.Forms.ImeMode.On;
             this.pn_main.Location = new System.Drawing.Point(261, 76);
             this.pn_main.Name = "pn_main";
-            this.pn_main.Size = new System.Drawing.Size(1178, 593);
+            this.pn_main.Size = new System.Drawing.Size(1178, 650);
             this.pn_main.TabIndex = 1;
             // 
             // panel_ttnv
@@ -241,7 +242,7 @@
             this.panel_ttnv.Controls.Add(this.groupBox1);
             this.panel_ttnv.Location = new System.Drawing.Point(3, 3);
             this.panel_ttnv.Name = "panel_ttnv";
-            this.panel_ttnv.Size = new System.Drawing.Size(966, 587);
+            this.panel_ttnv.Size = new System.Drawing.Size(1064, 644);
             this.panel_ttnv.TabIndex = 0;
             // 
             // groupBox2
@@ -472,7 +473,7 @@
             this.labelChaychu.AutoSize = true;
             this.labelChaychu.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.labelChaychu.ForeColor = System.Drawing.Color.Black;
-            this.labelChaychu.Location = new System.Drawing.Point(455, 23);
+            this.labelChaychu.Location = new System.Drawing.Point(419, 23);
             this.labelChaychu.Name = "labelChaychu";
             this.labelChaychu.Size = new System.Drawing.Size(569, 40);
             this.labelChaychu.TabIndex = 2;
@@ -489,7 +490,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
-            this.ClientSize = new System.Drawing.Size(1199, 699);
+            this.ClientSize = new System.Drawing.Size(1301, 749);
             this.Controls.Add(this.labelChaychu);
             this.Controls.Add(this.pn_main);
             this.Controls.Add(this.panel1);

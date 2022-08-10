@@ -12,8 +12,8 @@ using _1.DAL.Context;
 namespace _1.DAL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220804083131_dataseed")]
-    partial class dataseed
+    [Migration("20220809141617_tien")]
+    partial class tien
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,6 +87,9 @@ namespace _1.DAL.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<int?>("Point")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Sex")
                         .HasColumnType("bit");
 
@@ -101,6 +104,7 @@ namespace _1.DAL.Migrations
                             Address = " 10 Minh Khai, Hà Nội",
                             Name = "Nguyễn Công Tiến",
                             Phone = "0987654321",
+                            Point = 10000,
                             Sex = true
                         },
                         new
@@ -109,6 +113,7 @@ namespace _1.DAL.Migrations
                             Address = " 69 Trịnh Văn Bô, Hà Nội",
                             Name = "Nguyễn Mạnh Thắng",
                             Phone = "0987777777",
+                            Point = 10000,
                             Sex = true
                         });
                 });
@@ -171,7 +176,7 @@ namespace _1.DAL.Migrations
                         {
                             ID = 1,
                             Address = "174 Phương Canh",
-                            Dob = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2386),
+                            Dob = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(435),
                             Email = "manhman2806@gmail.com",
                             FullName = "Bùi Thế Mạnh",
                             IDRoles = 1,
@@ -185,7 +190,7 @@ namespace _1.DAL.Migrations
                         {
                             ID = 2,
                             Address = "173 Phương Canh",
-                            Dob = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2389),
+                            Dob = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(439),
                             Email = "khoanhph18902@gmail.com",
                             FullName = "Nguyễn Hữu Khoa",
                             IDRoles = 2,
@@ -268,7 +273,7 @@ namespace _1.DAL.Migrations
                             EmployeeID = 1,
                             Status = true,
                             TotalPrice = 60000m,
-                            dateCreate = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2350)
+                            dateCreate = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(373)
                         },
                         new
                         {
@@ -277,7 +282,7 @@ namespace _1.DAL.Migrations
                             EmployeeID = 2,
                             Status = true,
                             TotalPrice = 210000m,
-                            dateCreate = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2352)
+                            dateCreate = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(377)
                         });
                 });
 
@@ -391,7 +396,6 @@ namespace _1.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MaSp")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -433,7 +437,7 @@ namespace _1.DAL.Migrations
                         {
                             Id = 1,
                             CategoryID = 1,
-                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2315),
+                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(316),
                             LinkImage = "",
                             MaSp = "01",
                             Name = "Bim bim",
@@ -448,7 +452,7 @@ namespace _1.DAL.Migrations
                         {
                             Id = 2,
                             CategoryID = 2,
-                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2326),
+                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(332),
                             LinkImage = "",
                             MaSp = "02",
                             Name = "Coca Cola",
@@ -463,7 +467,7 @@ namespace _1.DAL.Migrations
                         {
                             Id = 3,
                             CategoryID = 3,
-                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2328),
+                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(335),
                             LinkImage = "",
                             MaSp = "03",
                             Name = "Vodka 69%",
@@ -478,7 +482,7 @@ namespace _1.DAL.Migrations
                         {
                             Id = 4,
                             CategoryID = 4,
-                            DateCreated = new DateTime(2022, 8, 4, 15, 31, 31, 396, DateTimeKind.Local).AddTicks(2330),
+                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(338),
                             LinkImage = "",
                             MaSp = "04",
                             Name = "Clear Men Active Vibe",
