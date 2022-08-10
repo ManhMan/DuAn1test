@@ -31,6 +31,8 @@ namespace _3._Presentation
         public FrmBanHang()
         {
             InitializeComponent();
+            textBox1.Visible = false;
+            cbb_listcamera.Visible=false;
             _product = new QLProductServices();
             _orderDetail = new QLOderDetailServices();
             _order = new QLOderServices();
@@ -39,6 +41,7 @@ namespace _3._Presentation
             _lstOrderDetail = new List<OrderDetailVM>();
             c = new Customer();
             oID = -1;
+
             loadHDcho();
             loadSanPham();
             
@@ -57,7 +60,7 @@ namespace _3._Presentation
             dtg_giohang.Rows.Clear();
             foreach (var item in _lstOrderDetail)
             {
-                dtg_giohang.Rows.Add(item.ProductID, item.MaSp, item.ProductName, item.Price, item.Quantity);
+                dtg_giohang.Rows.Add( item.MaSp, item.ProductName, item.Quantity, item.Price);
             }
             totalCart();
             //dtg_giohang.ColumnCount = 4;
@@ -514,10 +517,12 @@ namespace _3._Presentation
                 cbb_listcamera.Items.Add(device.Name);
             }
             cbb_listcamera.SelectedIndex = 0;
+            //videoCaptureDevice = new VideoCaptureDevice();
             videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_listcamera.SelectedIndex].MonikerString);
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
             
             videoCaptureDevice.Start();
+            timer1.Start();
             
 
 
@@ -526,60 +531,88 @@ namespace _3._Presentation
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
-            BarcodeReader reader = new BarcodeReader();
-            var result = reader.Decode(bitmap);
-            if (result != null)
-            {
-                var p = _product.GetProductFromDB().FirstOrDefault(x => x.MaSp == result.ToString());
-                if (p == null)
-                {
-                    MessageBox.Show("Không tìm thấy sản phẩm", "Cảnh báo");
-                }
-                else
-                {
-                    var data = _lstOrderDetail.FirstOrDefault(x => x.ProductID == p.Id);
-                    if (data == null)
-                    {
-                        OrderDetailVM orderDetailVM = new OrderDetailVM()
-                        {
-                            ProductID = p.Id,
-                            ProductName = p.Name,
-                            Price = p.Price,
-                            Quantity = 1,
-                            MaSp = p.MaSp
-                        };
-                        _lstOrderDetail.Add(orderDetailVM);
-                        
-                        
-                    }
-                    else
-                    {
-                        if (data.Quantity == p.Stock)
-                        {
-                            MessageBox.Show("Sản phẩm trong giỏ hàng đã vượt quá số lượng cho phép");
-                        }
-                        else
-                        {
-                            data.Quantity++;
-                        }
-                    }
-                    
+            //BarcodeReader reader = new BarcodeReader();
+            //var result = reader.Decode(bitmap);
+            //if (result != null)
+            //{
+            //    textBox1.Invoke(new MethodInvoker(delegate { textBox1.Text = result.ToString(); }));
 
-                }
-
-            }
+            //}
             pictureBox1.Image = bitmap;
             
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            loadGioHang();
+        { 
+            if(pictureBox1.Image != null)
+            {
+                BarcodeReader reader = new BarcodeReader();
+                var result = reader.Decode((Bitmap)pictureBox1.Image);
+                if (result != null)
+                {
+                    textBox1.Text = result.ToString();
+                    //timer1.Stop();
+                    if (videoCaptureDevice.IsRunning)
+                    {
+                        //videoCaptureDevice.Stop();
+                    }
 
-            
-            
+                }
+                /*pictureBox1.Image = bitmap*/;
+            }
         }
 
-        
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            var p = _product.GetProductFromDB().FirstOrDefault(x => x.MaSp == textBox1.Text);
+            if (p == null)
+            {
+                //MessageBox.Show("Không tìm thấy sản phẩm", "Cảnh báo");
+            }
+            else
+            {
+                var data = _lstOrderDetail.FirstOrDefault(x => x.ProductID == p.Id);
+                if (data == null)
+                {
+                    OrderDetailVM orderDetailVM = new OrderDetailVM()
+                    {
+                        ProductID = p.Id,
+                        ProductName = p.Name,
+                        Price = p.Price,
+                        Quantity = 1,
+                        MaSp = p.MaSp
+                    };
+                    _lstOrderDetail.Add(orderDetailVM);
+
+
+                }
+                else
+                {
+                    if (data.Quantity == p.Stock)
+                    {
+                        MessageBox.Show("Sản phẩm trong giỏ hàng đã vượt quá số lượng cho phép");
+                    }
+                    else
+                    {
+                        data.Quantity++;
+                    }
+                }
+
+
+            }
+            loadGioHang();
+            textBox1.Text = "";
+        }
+
+        private void FrmBanHang_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+
+        }
+
+        private void FrmBanHang_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }

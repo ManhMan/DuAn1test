@@ -24,6 +24,7 @@ namespace _3._Presentation
         
         public Product _product;
         string linkavatar ="";
+        string tensp = "";
 
         public FrmSanPham()
         {
@@ -57,6 +58,7 @@ namespace _3._Presentation
         }
         public void LoadData()
         {
+            
             dtgv_frmSP.ColumnCount = 9;
             dtgv_frmSP.Columns[0].Name = "Mã SP";
             dtgv_frmSP.Columns[1].Name = "Tên SP";
@@ -67,6 +69,7 @@ namespace _3._Presentation
             dtgv_frmSP.Columns[6].Name = "Giá bán";
             dtgv_frmSP.Columns[7].Name = "Trạng thái";
             dtgv_frmSP.Columns[8].Name = "Ghi chú";
+            dtgv_frmSP.Rows.Clear();
             var data = (from a in _IQLProductServices.GetProductFromDB()
                         join b in _IQLProducerServices.GetProducerFromDB() on a.ProducerID equals b.ID
                         join c in _CategoryrServices.GetCategoryFromDB() on a.CategoryID equals c.ID
@@ -94,55 +97,45 @@ namespace _3._Presentation
             //}
 
         }
+        public bool checknhap()
+        {
+            if (tbt_maSP.Text == "" || tb_tensp.Text == "" || tbt_gianhap.Text == "" || tbt_giaban.Text == "" || tbt_stock.Text == "" || cbb_nhasanxuat.Text == "" || cbb_loaihang.Text == "") return false;
+            return true;
+        }
         private void btn_them_Click(object sender, EventArgs e)
         {
-            bool checksp = true;
-            var sp = _IQLProductServices.GetProductFromDB().FirstOrDefault(p => p.MaSp == tbt_maSP.Text);
-            if(sp != null) { checksp= false;}
-            var tsp = _IQLProductServices.GetProductFromDB().FirstOrDefault(p => p.Name == tbt_maSP.Text);
-            if (sp != null) { checksp = false; }
-            int gn;
-            if (!int.TryParse(tbt_gianhap.Text, out gn))
+            
+            _product = _IQLProductServices.GetProductFromDB().FirstOrDefault(p => p.MaSp == tbt_maSP.Text);
+            var tsp = _IQLProductServices.GetProductFromDB().FirstOrDefault(p => p.Name == tb_tensp.Text);
+            int gn, gb;
+            
+            if (checknhap() == false)
             {
-                checksp = false;
+                MessageBox.Show("Không được để trống các trường", "Chú ý");
+            }
+            else if (_product != null) 
+            {
+                MessageBox.Show("Mã sản phẩm đã tồn tại", "Chú ý");
+            }
+            else if(tsp != null)
+            {
+                MessageBox.Show("Tên sản phẩm đã tồn tại", "Chú ý");     
+            }else if(Convert.ToDecimal(tbt_gianhap.Text) > Convert.ToDecimal(tbt_giaban.Text))
+            {
+                MessageBox.Show("Giá bán phải cao hơn giá nhập", "Chú ý");
+            }else if (linkavatar == "")
+            {
+                MessageBox.Show("Bạn chưa thêm ảnh cho sản phẩm", "Chú ý");
             }
             else
             {
-                if (gn < 0) { checksp = false; }
-            }
-            int gb;
-            if (!int.TryParse(tbt_giaban.Text, out gb)){
-                checksp = false;
-            }
-            else
-            {
-                if (gb < gn) { checksp = false; }
-            }
-            int sl;
-            if (!int.TryParse(tbt_giaban.Text, out sl))
-            {
-                checksp = false;
-            }
-            else
-            {
-                if (sl < 0) { checksp = false; }
-            }
-            if(cbb_nhasanxuat.Text == null)
-            {
-                checksp = false;
-            }
-            if(cbb_loaihang.Text == null) checksp = false;
-            if(linkavatar =="") checksp = false;
-            if(checksp == false)
-            {
-                MessageBox.Show("Có gì đó sai sai", "Cảnh báo");
-            }
-            else
-            {
+                string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                File.Copy(linkavatar, Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar)), true);
+                linkavatar = Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar));
                 _product.MaSp = tbt_maSP.Text;
                 _product.Name = tb_tensp.Text;
-                _product.OriginalPrice = Convert.ToInt32(tbt_gianhap.Text);
-                _product.Price = Convert.ToInt32(tbt_giaban.Text);
+                _product.OriginalPrice = Convert.ToDecimal(tbt_gianhap.Text);
+                _product.Price = Convert.ToDecimal(tbt_giaban.Text);
                 _product.Stock = Convert.ToInt32(tbt_stock.Text);
                 _product.ProducerID = cbb_nhasanxuat.SelectedIndex + 1;
                 _product.CategoryID = cbb_loaihang.SelectedIndex + 1;
@@ -152,9 +145,8 @@ namespace _3._Presentation
                 _product.Status = rd_kd.Checked == true ? true : false;
                 _IQLProductServices.AddProduct(_product);
                 LoadData();
-                
-
             }
+
 
 
         }
@@ -172,6 +164,7 @@ namespace _3._Presentation
                 cbb_listcamera.Items.Add(device.Name);
             }
             cbb_listcamera.SelectedIndex = 1;
+            //videoCaptureDevice = new VideoCaptureDevice();
             videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_listcamera.SelectedIndex].MonikerString);
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
             videoCaptureDevice.Start();
@@ -191,13 +184,13 @@ namespace _3._Presentation
 
         private void FrmSanPham_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (videoCaptureDevice != null)
-            {
-                if (videoCaptureDevice.IsRunning)
-                {
-                    videoCaptureDevice.Stop();
-                }
-            }
+            //if (videoCaptureDevice != null)
+            //{
+            //    if (videoCaptureDevice.IsRunning)
+            //    {
+            //        videoCaptureDevice.Stop();
+            //    }
+            //}
         }
 
         
@@ -252,6 +245,118 @@ namespace _3._Presentation
             
             videoCaptureDevice.Stop();
 
+        }
+
+        private void tbt_gianhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void tbt_giaban_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void tbt_stock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void btn_sua_Click(object sender, EventArgs e)
+        {
+            _product = _IQLProductServices.GetProductFromDB().FirstOrDefault(p => p.MaSp == tbt_maSP.Text);
+            if (_product == null)
+            {
+                MessageBox.Show("Không tìm thấy mã sản phẩm", "Cảnh báo");
+            }
+            else
+            {
+                var tsp = _IQLProductServices.GetProductFromDB().FirstOrDefault(p => p.Name == tb_tensp.Text && tb_tensp.Text != tensp);
+                
+
+                if (checknhap() == false)
+                {
+                    MessageBox.Show("Không được để trống các trường", "Chú ý");
+                }
+                else if (tensp != tb_tensp.Text && tsp != null)
+                {
+                    MessageBox.Show("Tên sản phẩm đã tồn tại", "Chú ý");
+                }
+                else if (Convert.ToDecimal(tbt_gianhap.Text) > Convert.ToDecimal(tbt_giaban.Text))
+                {
+                    MessageBox.Show("Giá bán phải cao hơn giá nhập", "Chú ý");
+                }
+                else if (linkavatar == "")
+                {
+                    MessageBox.Show("Bạn chưa thêm ảnh cho sản phẩm", "Chú ý");
+                }
+                else
+                {
+                    string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                    File.Copy(linkavatar, Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar)), true);
+                    linkavatar = Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar));
+                    _product.Name = tb_tensp.Text;
+                    _product.OriginalPrice = Convert.ToDecimal(tbt_gianhap.Text);
+                    _product.Price = Convert.ToDecimal(tbt_giaban.Text);
+                    _product.Stock = Convert.ToInt32(tbt_stock.Text);
+                    _product.ProducerID = cbb_nhasanxuat.SelectedIndex + 1;
+                    _product.CategoryID = cbb_loaihang.SelectedIndex + 1;
+                    _product.DateCreated = DateTime.Now;
+                    _product.LinkImage = linkavatar;
+                    _product.Note = tb_ghichu.Text;
+                    _product.Status = rd_kd.Checked == true ? true : false;
+                    _IQLProductServices.UpdateProduct(_product);
+                    LoadData();
+                }
+            }
+        }
+
+        private void dtgv_frmSP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow r = dtgv_frmSP.Rows[e.RowIndex];
+                var data = _IQLProductServices.GetProductFromDB().FirstOrDefault(p => p.MaSp.ToString() == r.Cells[0].Value.ToString());
+                if(data != null)
+                {
+                    tbt_maSP.Text = data.MaSp;
+                    tb_tensp.Text = data.Name;
+                    tbt_gianhap.Text = data.OriginalPrice.ToString();
+                    tbt_giaban.Text = data.Price.ToString();
+                    tbt_stock.Text = data.Stock.ToString();
+                    cbb_loaihang.SelectedIndex = data.CategoryID - 1;
+                    cbb_nhasanxuat.SelectedIndex = data.ProducerID - 1;
+                    if(data.Status == true)
+                    {
+                        rd_kd.Checked=true;
+                        rd_ngungkd.Checked=false;
+                    }
+                    else
+                    {
+                        rd_ngungkd.Checked = true;
+                        rd_kd.Checked = true;
+                    }
+                    tb_ghichu.Text = data.Note;
+                    if (data.LinkImage != null/* && File.Exists(data.LinkImage)*/)
+                    {
+                        pictureBox1.Image = Image.FromFile(data.LinkImage);
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    else
+                    {
+                        pictureBox1.Image = null;
+                    }
+                    tensp=tb_tensp.Text;
+                }
+            }
+        }
+
+        private void tb_tensp_TextChanged(object sender, EventArgs e)
+        {
+            tensp = tb_tensp.Text;
         }
     }
 }

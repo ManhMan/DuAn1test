@@ -142,6 +142,7 @@
             this.dtgv_frmSP.RowTemplate.Height = 25;
             this.dtgv_frmSP.Size = new System.Drawing.Size(1176, 272);
             this.dtgv_frmSP.TabIndex = 0;
+            this.dtgv_frmSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_frmSP_CellClick);
             // 
             // groupBox1
             // 
@@ -267,6 +268,7 @@
             this.tb_tensp.Name = "tb_tensp";
             this.tb_tensp.Size = new System.Drawing.Size(162, 27);
             this.tb_tensp.TabIndex = 20;
+            this.tb_tensp.TextChanged += new System.EventHandler(this.tb_tensp_TextChanged);
             // 
             // label10
             // 
@@ -284,6 +286,7 @@
             this.tbt_stock.Name = "tbt_stock";
             this.tbt_stock.Size = new System.Drawing.Size(162, 27);
             this.tbt_stock.TabIndex = 14;
+            this.tbt_stock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbt_stock_KeyPress);
             // 
             // tbt_giaban
             // 
@@ -292,6 +295,7 @@
             this.tbt_giaban.Name = "tbt_giaban";
             this.tbt_giaban.Size = new System.Drawing.Size(162, 27);
             this.tbt_giaban.TabIndex = 13;
+            this.tbt_giaban.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbt_giaban_KeyPress);
             // 
             // tbt_gianhap
             // 
@@ -300,6 +304,7 @@
             this.tbt_gianhap.Name = "tbt_gianhap";
             this.tbt_gianhap.Size = new System.Drawing.Size(162, 27);
             this.tbt_gianhap.TabIndex = 12;
+            this.tbt_gianhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbt_gianhap_KeyPress);
             // 
             // tbt_maSP
             // 
@@ -409,6 +414,7 @@
             this.btn_sua.TabIndex = 3;
             this.btn_sua.Text = "Cập Nhập";
             this.btn_sua.UseVisualStyleBackColor = false;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // btn_them
             // 

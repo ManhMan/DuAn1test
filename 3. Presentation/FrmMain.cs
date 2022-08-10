@@ -1,6 +1,7 @@
 ﻿using _2.BUS.IServices;
 using _2.BUS.Services;
 
+
 namespace _3._Presentation
 {
     public partial class FrmMain : Form
@@ -35,10 +36,12 @@ namespace _3._Presentation
             lb_tenNV.Text = role.RoleName + ": " + nhanvien.FullName;
         }
         private Form activeForm;
+        
         public void ChangeForm(Form form)
         {
             if (activeForm != null)
             {
+                
                 activeForm.Close();
             }
             activeForm = form;

@@ -62,6 +62,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cbb_listcamera = new System.Windows.Forms.ComboBox();
             this.btn_capNhapHĐ = new System.Windows.Forms.Button();
             this.lb_point = new System.Windows.Forms.Label();
@@ -414,6 +415,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.cbb_listcamera);
             this.groupBox1.Controls.Add(this.btn_capNhapHĐ);
             this.groupBox1.Controls.Add(this.lb_point);
@@ -437,6 +439,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giỏ hàng";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(854, 208);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 27);
+            this.textBox1.TabIndex = 25;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // cbb_listcamera
             // 
@@ -633,6 +643,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 800;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmBanHang
@@ -644,6 +655,8 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmBanHang";
             this.Text = "FrmBanHang";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBanHang_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmBanHang_FormClosed);
             this.Load += new System.EventHandler(this.FrmBanHang_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -715,5 +728,6 @@
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.Timer timer1;
+        private TextBox textBox1;
     }
 }
