@@ -24,6 +24,7 @@ namespace _3._Presentation
         public List<OrderDetailVM> _lstOrderDetail;
         public int pID;
         public Customer c;
+        public int oID;
         public FrmBanHang()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace _3._Presentation
             _customer = new QLCustomerServices();
             _lstOrderDetail = new List<OrderDetailVM>();
             c = new Customer();
+            loadHDcho();
             loadSanPham();
         }
         public void loadSanPham()
@@ -158,7 +160,7 @@ namespace _3._Presentation
             {
                 var customer = _customer.GetCustomerFromDB().FirstOrDefault(x => x.ID == o.CustomerID);
                 int x;
-                if (tbt_giamgia.Text=="" || Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text))
+                if (tbt_giamgia.Text == "" || Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text))
                 {
                     MessageBox.Show("Vui lòng nhập đúng số tiền");
                 }
@@ -322,6 +324,8 @@ namespace _3._Presentation
                     lb_totalcart.Text = "";
                     MessageBox.Show($"Tạo hóa đơn thành công. ID: {o.Id}");
                     loadSanPham();
+                    loadHDcho();
+                    _lstOrderDetail = new List<OrderDetailVM>();
                     dtg_giohang.Rows.Clear();
                 }
                 else
@@ -375,5 +379,112 @@ namespace _3._Presentation
             }
         }
 
+        private void dgv_hdcho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow r = dgv_hdcho.Rows[e.RowIndex];
+                oID = Convert.ToInt32(r.Cells[0].Value.ToString());
+                tbt_mahd.Text = oID.ToString();
+
+                var od = _orderDetail.GetOderDetailFromDB().Where(x => x.OderID == oID);
+                var cid = _order.GetOderFromDB().FirstOrDefault(x => x.Id == oID).CustomerID;
+                var c = _customer.GetCustomerFromDB().FirstOrDefault(x => x.ID == cid);
+                tb_sdt.Text = c.Phone;
+
+                _lstOrderDetail = new List<OrderDetailVM>();
+                foreach (var item in od)
+                {
+                    var p = _product.GetProductFromDB().FirstOrDefault(x => x.Id == item.ProducID);
+
+                    OrderDetailVM orderDetailVM = new OrderDetailVM()
+                    {
+                        ProductID = p.Id,
+                        ProductName = p.Name,
+                        Price = p.Price,
+                        Quantity = od.FirstOrDefault(x => x.ProducID == p.Id).Quantity
+                    };
+                    _lstOrderDetail.Add(orderDetailVM);
+
+                    loadGioHang();
+                }
+            }
+        }
+
+        public void loadHDcho()
+        {
+            dgv_hdcho.Rows.Clear();
+            var hdCho = _order.GetOderFromDB().Where(x => x.Status == false);
+            foreach (var item in hdCho)
+            {
+                dgv_hdcho.Rows.Add(item.Id.ToString());
+            }
+        }
+
+        private void btn_capNhapHĐ_Click(object sender, EventArgs e)
+        {
+            if (oID != null)
+            {
+                if (_lstOrderDetail.Any())
+                {
+                    int total = 0;
+                    c = _customer.GetCustomerFromDB().FirstOrDefault(x => x.Phone == tb_sdt.Text);
+                    if (c != null)
+                    {
+                        var order = _order.GetOderFromDB().FirstOrDefault(x => x.Id == oID);
+                        var odd = _orderDetail.GetOderDetailFromDB().Where(x => x.OderID == oID);
+                        foreach (var item in odd)
+                        {
+                            _orderDetail.DeleteOderDetail(item);
+                        }
+
+
+                        foreach (var item in _lstOrderDetail)
+                        {
+                            OrderDetail od = new OrderDetail()
+                            {
+                                OderID = oID,
+                                ProducID = item.ProductID,
+                                Price = item.Price,
+                                Quantity = item.Quantity
+                            };
+                            total += Convert.ToInt32(item.Price * item.Quantity);
+                            _orderDetail.AddOderDetail(od);
+                            var p = _product.GetProductFromDB().FirstOrDefault(x => x.Id == item.ProductID);
+                            p.Stock -= item.Quantity;
+                            _product.UpdateProduct(p);
+                        }
+
+                        int eID = _employee.GetEmployeeFromDB().FirstOrDefault(x => x.Email == Properties.Settings.Default.TKdaLogin).ID;
+                        order.dateCreate = DateTime.Now;
+                        order.EmployeeID = eID;
+                        order.CustomerID = c.ID;
+                        order.TotalPrice = total;
+                        _order.UpdateOder(order);
+
+                        tbt_mahd.Text = oID.ToString();
+                        lb_tongtien.Text = total.ToString();
+                        tb_sdt.Text = "";
+                        lb_totalcart.Text = "";
+                        MessageBox.Show($"Cập nhật hóa đơn thành công. ID: {oID}");
+                        loadSanPham();
+                        loadHDcho();
+                        dtg_giohang.Rows.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng nhập khách hàng");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Chưa có sản phẩm nào trong giỏ hàng");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn chưa thanh toán");
+            }
+        }
     }
 }

@@ -57,6 +57,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="Column7.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -100,6 +103,21 @@
         dgSO8RzWIYCVEJfXlkbUvFR03RG8iDwPRsDRsXvJM5s6DKapX4jKa/NGvc1iS3KnaT6BdfzU4TwLOkZ4
         pubBEJXLtaLymvAF89pFXyO6rV5E4Evk2RqeOtqz0kzgi9SL+Itl1OK4/wH0YzzFPFMPJgAAAABJRU5E
         rkJggg==
+</value>
+  </data>
+  <data name="btn_capNhapHĐ.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAkhJREFUSEu1
+        lL1rVEEUxccvbJb93o1G/EILwUILBcEihWBAgtoEbUV0961REsgfYJEIKhI0Cipop4VFotjYSIy+TQoL
+        7RQbExRSCH4uGhLj5jfvndf4kre78HLgMDPn3jl35u7bMVHI5/PtmUzGgU/ge/gD/tT8KeyBW5TugfUl
+        WEun08ckhSHjW3AW1htwDrN7cKvdy/qN9Jue2f/IZrOdBL8oyXIeuvAysT6Meu0cvlQsyPtO7DjjW63D
+        BTA4TWBBCbOsh+xtFA6hWCy2YXqN3D/a88/u03xYaT4QumBwoqlcLrdfoWXBAZJwN7S3/qi9AW8ozZhE
+        IlFA+KrAJzZsVigK68j9rD0h4nFded7p7yowz5X3Sm6EyAK2dV6WTj9nRaoOeWKTwMSig70nGS8wDuBx
+        n/EhLd4VJJ235nChyda0BkxHVGBcUrygwAdboNX2NA3M7V/fFuiTFC8w/7bSBaZsAXhVUrzAeFQFXkiK
+        F7SmXwX+Mo//My0UChsw9/5ocMXa9EAF7Nve7FMRhtvTbqqVd8atjEjxwZO8EfPgsRuV3DomywdN1anD
+        X2bs4lqpPuh/N+YzsCRpvcbGmCxv4+QVM9abNq5z1Lwq7VFkaVDkGazBAR6tTZKXhuscgDXv5BPOFanR
+        wHga2nZ5Xxcc54adpm5WGbd0BLNB+nyb+T5OfkZt+c38sCyikUqltmN6B9PXQSF+/FNm4twhmYnlx+ZR
+        9xqKnTDVszu0vTUkk8mdFOhiutrvtTNNS2YYn9OSDj9rORizCH1W23fuBUI8AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -161,10 +161,16 @@ namespace _3._Presentation
             rad_khd.Checked = r.Cells[6].Value.ToString() == "Không hoạt động" ? true : false;
             linkAnh = employee.LinkAnh;
             layEmail = tbt_Email.Text;
-            //pictureBox_avt.Image = Image.FromFile(linkAnh);
-            //pictureBox_avt.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (linkAnh != null) {
+                pictureBox_avt.Image = Image.FromFile(linkAnh);
+                pictureBox_avt.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+            else
+            {
+                pictureBox_avt.Image = null;
+            }
         }
-        private void btn_sua_Click(object sender, EventArgs e)
+            private void btn_sua_Click(object sender, EventArgs e)
         {
             var up = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault(p => p.Email == layEmail);
             if (tbt_Email.Text != layEmail)
