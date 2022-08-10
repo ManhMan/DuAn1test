@@ -35,8 +35,7 @@ namespace _1.DAL.Repositories
 
         public List<Order> GetOderFromDB()
         {
-            _lstOder = (from a in _context.Oders
-                             select a).ToList();
+            _lstOder = _context.Oders.ToList();
             return _lstOder;
         }
 
