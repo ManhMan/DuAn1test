@@ -35,6 +35,7 @@ namespace _3._Presentation
             _customer = new QLCustomerServices();
             _lstOrderDetail = new List<OrderDetailVM>();
             c = new Customer();
+            oID = -1;
             loadHDcho();
             loadSanPham();
         }
@@ -423,7 +424,7 @@ namespace _3._Presentation
 
         private void btn_capNhapHĐ_Click(object sender, EventArgs e)
         {
-            if (oID != null)
+            if (oID != -1)
             {
                 if (_lstOrderDetail.Any())
                 {
@@ -467,6 +468,7 @@ namespace _3._Presentation
                         tb_sdt.Text = "";
                         lb_totalcart.Text = "";
                         MessageBox.Show($"Cập nhật hóa đơn thành công. ID: {oID}");
+                        oID = -1;
                         loadSanPham();
                         loadHDcho();
                         dtg_giohang.Rows.Clear();
