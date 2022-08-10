@@ -2,6 +2,8 @@
 using _2.BUS.IServices;
 using _2.BUS.Services;
 using _2.BUS.ViewModel;
+using AForge.Video;
+using AForge.Video.DirectShow;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 
 namespace _3._Presentation
 {
@@ -38,6 +41,7 @@ namespace _3._Presentation
             oID = -1;
             loadHDcho();
             loadSanPham();
+            
         }
         public void loadSanPham()
         {
@@ -53,9 +57,19 @@ namespace _3._Presentation
             dtg_giohang.Rows.Clear();
             foreach (var item in _lstOrderDetail)
             {
-                dtg_giohang.Rows.Add(item.ProductID, item.ProductName, item.Price, item.Quantity);
+                dtg_giohang.Rows.Add(item.ProductID, item.MaSp, item.ProductName, item.Price, item.Quantity);
             }
             totalCart();
+            //dtg_giohang.ColumnCount = 4;
+            //dtg_giohang.Columns[0].Name = "Mã Sản Phẩm";
+            //dtg_giohang.Columns[1].Name = "Tên Sản Phẩm";
+            //dtg_giohang.Columns[2].Name = "Số Lượng";
+            //dtg_giohang.Columns[3].Name = "Đơn giá";
+            //foreach (var item in _lstOrderDetail)
+            //{
+            //    dtg_giohang.Rows.Add(item.MaSp, item.ProductName, item.Quantity, item.Price);
+            //}
+            //totalCart();
         }
 
         public void addCart(int pID)
@@ -69,7 +83,8 @@ namespace _3._Presentation
                     ProductID = p.Id,
                     ProductName = p.Name,
                     Price = p.Price,
-                    Quantity = 1
+                    Quantity = 1,
+                    MaSp = p.MaSp
                 };
                 _lstOrderDetail.Add(orderDetailVM);
             }
@@ -488,5 +503,83 @@ namespace _3._Presentation
                 MessageBox.Show("Vui lòng chọn hóa đơn chưa thanh toán");
             }
         }
+
+        FilterInfoCollection filterInfoCollection;
+        VideoCaptureDevice videoCaptureDevice;
+        private void FrmBanHang_Load(object sender, EventArgs e)
+        {
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo device in filterInfoCollection)
+            {
+                cbb_listcamera.Items.Add(device.Name);
+            }
+            cbb_listcamera.SelectedIndex = 0;
+            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_listcamera.SelectedIndex].MonikerString);
+            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+            
+            videoCaptureDevice.Start();
+            
+
+
+        }
+
+        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
+            BarcodeReader reader = new BarcodeReader();
+            var result = reader.Decode(bitmap);
+            if (result != null)
+            {
+                var p = _product.GetProductFromDB().FirstOrDefault(x => x.MaSp == result.ToString());
+                if (p == null)
+                {
+                    MessageBox.Show("Không tìm thấy sản phẩm", "Cảnh báo");
+                }
+                else
+                {
+                    var data = _lstOrderDetail.FirstOrDefault(x => x.ProductID == p.Id);
+                    if (data == null)
+                    {
+                        OrderDetailVM orderDetailVM = new OrderDetailVM()
+                        {
+                            ProductID = p.Id,
+                            ProductName = p.Name,
+                            Price = p.Price,
+                            Quantity = 1,
+                            MaSp = p.MaSp
+                        };
+                        _lstOrderDetail.Add(orderDetailVM);
+                        
+                        
+                    }
+                    else
+                    {
+                        if (data.Quantity == p.Stock)
+                        {
+                            MessageBox.Show("Sản phẩm trong giỏ hàng đã vượt quá số lượng cho phép");
+                        }
+                        else
+                        {
+                            data.Quantity++;
+                        }
+                    }
+                    
+
+                }
+
+            }
+            pictureBox1.Image = bitmap;
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            loadGioHang();
+
+            
+            
+        }
+
+        
     }
 }

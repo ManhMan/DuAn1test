@@ -8,6 +8,7 @@ namespace _1.DAL.Entities
 {
     public class OrderDetail
     {
+        
         public int ProducID { get; set; }
         public int OderID { get; set; }
         public int Quantity { get; set; }

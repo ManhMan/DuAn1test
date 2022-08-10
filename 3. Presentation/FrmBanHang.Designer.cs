@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBanHang));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -61,6 +62,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbb_listcamera = new System.Windows.Forms.ComboBox();
             this.btn_capNhapHĐ = new System.Windows.Forms.Button();
             this.lb_point = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -77,8 +79,9 @@
             this.dtg_giohang = new System.Windows.Forms.DataGridView();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hdcho)).BeginInit();
@@ -411,6 +414,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbb_listcamera);
             this.groupBox1.Controls.Add(this.btn_capNhapHĐ);
             this.groupBox1.Controls.Add(this.lb_point);
             this.groupBox1.Controls.Add(this.label11);
@@ -433,6 +437,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giỏ hàng";
+            // 
+            // cbb_listcamera
+            // 
+            this.cbb_listcamera.FormattingEnabled = true;
+            this.cbb_listcamera.Location = new System.Drawing.Point(680, 15);
+            this.cbb_listcamera.Name = "cbb_listcamera";
+            this.cbb_listcamera.Size = new System.Drawing.Size(151, 28);
+            this.cbb_listcamera.TabIndex = 1;
             // 
             // btn_capNhapHĐ
             // 
@@ -469,9 +481,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FloralWhite;
-            this.pictureBox1.Location = new System.Drawing.Point(845, 29);
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(837, 29);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(149, 173);
+            this.pictureBox1.Size = new System.Drawing.Size(157, 173);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
@@ -578,45 +591,49 @@
             this.dtg_giohang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6,
             this.Column8,
-            this.Column10,
-            this.Column9});
+            this.Column9,
+            this.Column10});
             this.dtg_giohang.Location = new System.Drawing.Point(6, 29);
             this.dtg_giohang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtg_giohang.Name = "dtg_giohang";
             this.dtg_giohang.RowHeadersWidth = 51;
             this.dtg_giohang.RowTemplate.Height = 25;
-            this.dtg_giohang.Size = new System.Drawing.Size(562, 253);
+            this.dtg_giohang.Size = new System.Drawing.Size(569, 253);
             this.dtg_giohang.TabIndex = 0;
             this.dtg_giohang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_giohang_CellClick);
             this.dtg_giohang.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_giohang_CellValueChanged);
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Mã sản phẩm";
+            this.Column6.HeaderText = "Mã SP";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.Width = 125;
             // 
             // Column8
             // 
-            this.Column8.HeaderText = "Tên sản phẩm";
+            this.Column8.HeaderText = "Tên SP";
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.Width = 125;
             // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Số Lượng";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 125;
+            // 
             // Column10
             // 
-            this.Column10.HeaderText = "Đơn giá";
+            this.Column10.HeaderText = "Giá";
             this.Column10.MinimumWidth = 6;
             this.Column10.Name = "Column10";
             this.Column10.Width = 125;
             // 
-            // Column9
+            // timer1
             // 
-            this.Column9.HeaderText = "Số lượng";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 125;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmBanHang
             // 
@@ -627,6 +644,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmBanHang";
             this.Text = "FrmBanHang";
+            this.Load += new System.EventHandler(this.FrmBanHang_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hdcho)).EndInit();
@@ -658,10 +676,6 @@
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column8;
-        private DataGridViewTextBoxColumn Column10;
-        private DataGridViewTextBoxColumn Column9;
         private TextBox tbt_mahd;
         private TextBox tbt_tienkhachdua;
         private TextBox tbt_giamgia;
@@ -695,5 +709,11 @@
         private Button btn_capNhapHĐ;
         private DataGridView dgv_hdcho;
         private DataGridViewTextBoxColumn Column7;
+        private ComboBox cbb_listcamera;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.Timer timer1;
     }
 }

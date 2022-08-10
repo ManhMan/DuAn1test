@@ -14,6 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+    <PackageReference Include="ZXing.Net" Version="0.14.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\2.BUS\2.BUS.csproj" />
   </ItemGroup>
 
