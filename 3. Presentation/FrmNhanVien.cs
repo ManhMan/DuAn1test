@@ -1,5 +1,5 @@
 ﻿using _1.DAL.Entities;
-
+using System.IO;
 using _2.BUS.IServices;
 using _2.BUS.Services;
 using System;
@@ -105,6 +105,13 @@ namespace _3._Presentation
                 else
                 {
                     int idss = _iQLEmployee.GetEmployeeFromDB().Count() + 1;
+
+                    // This will get the current PROJECT directory
+                    string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                    File.Copy(linkAnh, Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh)), true);
+                    linkAnh = Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh));
+                    //MessageBox.Show(linkAnh);
+
                     Employee employeee = new Employee()
                     {
 
@@ -189,6 +196,12 @@ namespace _3._Presentation
                     DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin không ?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
+                        // This will get the current PROJECT directory
+                        string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                        File.Copy(linkAnh, Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh)), true);
+                        linkAnh = Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh));
+                        //MessageBox.Show(linkAnh);
+
                         employee.FullName = tbt_tenNV.Text;
                         employee.Sex = rb_nam.Checked;
                         employee.Dob = dtp_ngaysinh.Value;
@@ -201,6 +214,8 @@ namespace _3._Presentation
                         {
                             _iQLEmployee.UpdateEmployee(employee);
                             MessageBox.Show("Cập nhật thông tin thành công");
+
+
                             loadNhanVien();
                         }
                         else
