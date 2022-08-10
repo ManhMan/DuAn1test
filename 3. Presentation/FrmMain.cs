@@ -25,9 +25,12 @@ namespace _3._Presentation
         {
             var layEmail = Properties.Settings.Default.TKdaLogin;
             var nhanvien = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault(p => p.Email == layEmail);
-            //string linkanh = nhanvien.LinkAnh.Replace(@"\", @"/");
-            //pic_avtNV.Image = Image.FromFile(linkanh);
-            //pic_avtNV.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (nhanvien.LinkAnh != null)
+            {
+                string linkanh = nhanvien.LinkAnh.Replace(@"\", @"/");
+                pic_avtNV.Image = Image.FromFile(linkanh);
+                pic_avtNV.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
             var role = _iQLRole.GetRoleFromDB().FirstOrDefault(x => x.ID == nhanvien.IDRoles);
             lb_tenNV.Text = role.RoleName + ": " + nhanvien.FullName;
         }
