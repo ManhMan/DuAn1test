@@ -325,6 +325,7 @@ namespace _3._Presentation
                     MessageBox.Show($"Tạo hóa đơn thành công. ID: {o.Id}");
                     loadSanPham();
                     loadHDcho();
+                    _lstOrderDetail = new List<OrderDetailVM>();
                     dtg_giohang.Rows.Clear();
                 }
                 else
@@ -422,60 +423,67 @@ namespace _3._Presentation
 
         private void btn_capNhapHĐ_Click(object sender, EventArgs e)
         {
-            if (_lstOrderDetail.Any())
+            if (oID != null)
             {
-                int total = 0;
-                c = _customer.GetCustomerFromDB().FirstOrDefault(x => x.Phone == tb_sdt.Text);
-                if (c != null)
+                if (_lstOrderDetail.Any())
                 {
-                    var order = _order.GetOderFromDB().FirstOrDefault(x => x.Id == oID);
-                    var odd = _orderDetail.GetOderDetailFromDB().Where(x => x.OderID == oID);
-                    foreach (var item in odd)
+                    int total = 0;
+                    c = _customer.GetCustomerFromDB().FirstOrDefault(x => x.Phone == tb_sdt.Text);
+                    if (c != null)
                     {
-                        _orderDetail.DeleteOderDetail(item);
-                    }
-
-
-                    foreach (var item in _lstOrderDetail)
-                    {
-                        OrderDetail od = new OrderDetail()
+                        var order = _order.GetOderFromDB().FirstOrDefault(x => x.Id == oID);
+                        var odd = _orderDetail.GetOderDetailFromDB().Where(x => x.OderID == oID);
+                        foreach (var item in odd)
                         {
-                            OderID = oID,
-                            ProducID = item.ProductID,
-                            Price = item.Price,
-                            Quantity = item.Quantity
-                        };
-                        total += Convert.ToInt32(item.Price * item.Quantity);
-                        _orderDetail.AddOderDetail(od);
-                        var p = _product.GetProductFromDB().FirstOrDefault(x => x.Id == item.ProductID);
-                        p.Stock -= item.Quantity;
-                        _product.UpdateProduct(p);
+                            _orderDetail.DeleteOderDetail(item);
+                        }
+
+
+                        foreach (var item in _lstOrderDetail)
+                        {
+                            OrderDetail od = new OrderDetail()
+                            {
+                                OderID = oID,
+                                ProducID = item.ProductID,
+                                Price = item.Price,
+                                Quantity = item.Quantity
+                            };
+                            total += Convert.ToInt32(item.Price * item.Quantity);
+                            _orderDetail.AddOderDetail(od);
+                            var p = _product.GetProductFromDB().FirstOrDefault(x => x.Id == item.ProductID);
+                            p.Stock -= item.Quantity;
+                            _product.UpdateProduct(p);
+                        }
+
+                        int eID = _employee.GetEmployeeFromDB().FirstOrDefault(x => x.Email == Properties.Settings.Default.TKdaLogin).ID;
+                        order.dateCreate = DateTime.Now;
+                        order.EmployeeID = eID;
+                        order.CustomerID = c.ID;
+                        order.TotalPrice = total;
+                        _order.UpdateOder(order);
+
+                        tbt_mahd.Text = oID.ToString();
+                        lb_tongtien.Text = total.ToString();
+                        tb_sdt.Text = "";
+                        lb_totalcart.Text = "";
+                        MessageBox.Show($"Cập nhật hóa đơn thành công. ID: {oID}");
+                        loadSanPham();
+                        loadHDcho();
+                        dtg_giohang.Rows.Clear();
                     }
-
-                    int eID = _employee.GetEmployeeFromDB().FirstOrDefault(x => x.Email == Properties.Settings.Default.TKdaLogin).ID;
-                    order.dateCreate = DateTime.Now;
-                    order.EmployeeID = eID;
-                    order.CustomerID = c.ID;
-                    order.TotalPrice = total;
-                    _order.UpdateOder(order);
-
-                    tbt_mahd.Text = oID.ToString();
-                    lb_tongtien.Text = total.ToString();
-                    tb_sdt.Text = "";
-                    lb_totalcart.Text = "";
-                    MessageBox.Show($"Cập nhật hóa đơn thành công. ID: {oID}");
-                    loadSanPham();
-                    loadHDcho();
-                    dtg_giohang.Rows.Clear();
+                    else
+                    {
+                        MessageBox.Show("Vui lòng nhập khách hàng");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập khách hàng");
+                    MessageBox.Show("Chưa có sản phẩm nào trong giỏ hàng");
                 }
             }
             else
             {
-                MessageBox.Show("Chưa có sản phẩm nào trong giỏ hàng");
+                MessageBox.Show("Vui lòng chọn hóa đơn chưa thanh toán");
             }
         }
     }

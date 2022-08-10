@@ -451,7 +451,7 @@
             // lb_point
             // 
             this.lb_point.AutoSize = true;
-            this.lb_point.Location = new System.Drawing.Point(712, 133);
+            this.lb_point.Location = new System.Drawing.Point(698, 133);
             this.lb_point.Name = "lb_point";
             this.lb_point.Size = new System.Drawing.Size(18, 20);
             this.lb_point.TabIndex = 23;
@@ -460,7 +460,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(587, 133);
+            this.label11.Location = new System.Drawing.Point(581, 133);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(96, 20);
             this.label11.TabIndex = 22;
@@ -478,7 +478,7 @@
             // lb_tenkh
             // 
             this.lb_tenkh.AutoSize = true;
-            this.lb_tenkh.Location = new System.Drawing.Point(712, 91);
+            this.lb_tenkh.Location = new System.Drawing.Point(698, 91);
             this.lb_tenkh.Name = "lb_tenkh";
             this.lb_tenkh.Size = new System.Drawing.Size(18, 20);
             this.lb_tenkh.TabIndex = 20;
@@ -487,7 +487,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(587, 91);
+            this.label10.Location = new System.Drawing.Point(581, 91);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 20);
             this.label10.TabIndex = 19;
@@ -496,7 +496,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(587, 51);
+            this.label9.Location = new System.Drawing.Point(581, 51);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(110, 20);
             this.label9.TabIndex = 18;
@@ -504,7 +504,7 @@
             // 
             // tb_sdt
             // 
-            this.tb_sdt.Location = new System.Drawing.Point(712, 47);
+            this.tb_sdt.Location = new System.Drawing.Point(697, 47);
             this.tb_sdt.Name = "tb_sdt";
             this.tb_sdt.Size = new System.Drawing.Size(125, 27);
             this.tb_sdt.TabIndex = 17;
