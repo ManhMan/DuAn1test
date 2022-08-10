@@ -1,5 +1,5 @@
 ﻿using _1.DAL.Entities;
-
+using System.IO;
 using _2.BUS.IServices;
 using _2.BUS.Services;
 using System;
@@ -105,6 +105,13 @@ namespace _3._Presentation
                 else
                 {
                     int idss = _iQLEmployee.GetEmployeeFromDB().Count() + 1;
+
+                    // This will get the current PROJECT directory
+                    string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                    File.Copy(linkAnh, Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh)), true);
+                    linkAnh = Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh));
+                    //MessageBox.Show(linkAnh);
+
                     Employee employeee = new Employee()
                     {
 
@@ -161,7 +168,8 @@ namespace _3._Presentation
             rad_khd.Checked = r.Cells[6].Value.ToString() == "Không hoạt động" ? true : false;
             linkAnh = employee.LinkAnh;
             layEmail = tbt_Email.Text;
-            if (linkAnh != null) {
+            if (linkAnh != null && File.Exists(linkAnh))
+            {
                 pictureBox_avt.Image = Image.FromFile(linkAnh);
                 pictureBox_avt.SizeMode = PictureBoxSizeMode.StretchImage;
             }
@@ -170,7 +178,7 @@ namespace _3._Presentation
                 pictureBox_avt.Image = null;
             }
         }
-            private void btn_sua_Click(object sender, EventArgs e)
+        private void btn_sua_Click(object sender, EventArgs e)
         {
             var up = _iQLEmployee.GetEmployeeFromDB().FirstOrDefault(p => p.Email == layEmail);
             if (tbt_Email.Text != layEmail)
@@ -189,6 +197,15 @@ namespace _3._Presentation
                     DialogResult dialogResult = MessageBox.Show("Bạn có muốn cập nhật thông tin không ?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
+                        if (employee.LinkAnh != linkAnh)
+                        {
+                            // This will get the current PROJECT directory
+                            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                            File.Copy(linkAnh, Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh)), true);
+                            linkAnh = Path.Combine(projectDirectory, "Resources", "Employee", Path.GetFileName(linkAnh));
+                            //MessageBox.Show(linkAnh);
+                        }
+
                         employee.FullName = tbt_tenNV.Text;
                         employee.Sex = rb_nam.Checked;
                         employee.Dob = dtp_ngaysinh.Value;
@@ -201,6 +218,8 @@ namespace _3._Presentation
                         {
                             _iQLEmployee.UpdateEmployee(employee);
                             MessageBox.Show("Cập nhật thông tin thành công");
+
+
                             loadNhanVien();
                         }
                         else
@@ -275,8 +294,8 @@ namespace _3._Presentation
             {
                 if (cbb_locTrangThai.Text == "Hoạt Động")
                 {
-                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.FullName.Contains(textBox_timKiem.Text) 
-                                                                            &&p.Status == true);
+                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.FullName.Contains(textBox_timKiem.Text)
+                                                                            && p.Status == true);
                     dgv_nhanvien.Rows.Clear();
                     foreach (var item in timkiem)
                     {
@@ -288,8 +307,8 @@ namespace _3._Presentation
                 }
                 if (cbb_locTrangThai.Text == "Không koạt Động")
                 {
-                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.FullName.Contains(textBox_timKiem.Text) 
-                                                                            &&p.Status == false);
+                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.FullName.Contains(textBox_timKiem.Text)
+                                                                            && p.Status == false);
                     dgv_nhanvien.Rows.Clear();
                     foreach (var item in timkiem)
                     {
@@ -319,7 +338,7 @@ namespace _3._Presentation
                 if (cbb_chucvu.Text == "")
                 {
                     var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.FullName.Contains(textBox_timKiem.Text)
-                                                                              &&p.Status == true);
+                                                                              && p.Status == true);
                     dgv_nhanvien.Rows.Clear();
                     foreach (var item in timkiem)
                     {
@@ -355,7 +374,7 @@ namespace _3._Presentation
             {
                 if (textBox_timKiem.Text != "")
                 {
-                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == true 
+                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == true
                                                                               && p.IDRoles == cbb_locChucVu.SelectedIndex + 1
                                                                               && p.FullName.Contains(textBox_timKiem.Text));
                     dgv_nhanvien.Rows.Clear();
@@ -386,7 +405,7 @@ namespace _3._Presentation
             {
                 if (textBox_timKiem.Text != "")
                 {
-                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == false 
+                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == false
                                                                            && p.IDRoles == cbb_locChucVu.SelectedIndex + 1
                                                                            && p.FullName.Contains(textBox_timKiem.Text));
                     dgv_nhanvien.Rows.Clear();
@@ -400,7 +419,7 @@ namespace _3._Presentation
                 }
                 if (textBox_timKiem.Text == "")
                 {
-                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == false 
+                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == false
                                                                            && p.IDRoles == cbb_locChucVu.SelectedIndex + 1);
                     dgv_nhanvien.Rows.Clear();
                     foreach (var item in timkiem)
@@ -429,7 +448,7 @@ namespace _3._Presentation
                 }
                 if (textBox_timKiem.Text == "")
                 {
-                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == true );
+                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == true);
                     dgv_nhanvien.Rows.Clear();
                     foreach (var item in timkiem)
                     {
@@ -444,7 +463,7 @@ namespace _3._Presentation
             {
                 if (textBox_timKiem.Text != "")
                 {
-                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == false 
+                    var timkiem = _iQLEmployee.GetEmployeeFromDB().Where(p => p.Status == false
                                                                            && p.FullName.Contains(textBox_timKiem.Text));
                     dgv_nhanvien.Rows.Clear();
                     foreach (var item in timkiem)
@@ -505,7 +524,7 @@ namespace _3._Presentation
 
 
         }
-        
+
         private void button_rset_Click(object sender, EventArgs e)
         {
             loadNhanVien();
