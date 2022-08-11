@@ -56,6 +56,7 @@ namespace _3._Presentation
         {
             InitializeComponent();
             _employee = new QLEmployeeServices();
+            this.CenterToScreen();
         }
 
         private void FrmForgotPW_Load(object sender, EventArgs e)
