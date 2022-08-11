@@ -169,7 +169,7 @@
             this.Column2.HeaderText = "Tên danh mục";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
+            this.Column2.Width = 250;
             // 
             // FrmDanhMuc
             // 
