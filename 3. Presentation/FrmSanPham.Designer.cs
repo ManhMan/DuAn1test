@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSanPham));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_timk = new System.Windows.Forms.Button();
             this.tbt_timkSP = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtgv_frmSP = new System.Windows.Forms.DataGridView();
@@ -87,7 +86,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btn_timk);
             this.groupBox2.Controls.Add(this.tbt_timkSP);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.dtgv_frmSP);
@@ -100,20 +98,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách sản phẩm";
             // 
-            // btn_timk
-            // 
-            this.btn_timk.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btn_timk.Image = ((System.Drawing.Image)(resources.GetObject("btn_timk.Image")));
-            this.btn_timk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_timk.Location = new System.Drawing.Point(371, 52);
-            this.btn_timk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_timk.Name = "btn_timk";
-            this.btn_timk.Size = new System.Drawing.Size(97, 31);
-            this.btn_timk.TabIndex = 8;
-            this.btn_timk.Text = "Tìm kiếm";
-            this.btn_timk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_timk.UseVisualStyleBackColor = false;
-            // 
             // tbt_timkSP
             // 
             this.tbt_timkSP.Location = new System.Drawing.Point(168, 55);
@@ -121,6 +105,7 @@
             this.tbt_timkSP.Name = "tbt_timkSP";
             this.tbt_timkSP.Size = new System.Drawing.Size(198, 27);
             this.tbt_timkSP.TabIndex = 3;
+            this.tbt_timkSP.TextChanged += new System.EventHandler(this.tbt_timkSP_TextChanged);
             // 
             // label5
             // 
@@ -268,7 +253,6 @@
             this.tb_tensp.Name = "tb_tensp";
             this.tb_tensp.Size = new System.Drawing.Size(162, 27);
             this.tb_tensp.TabIndex = 20;
-            this.tb_tensp.TextChanged += new System.EventHandler(this.tb_tensp_TextChanged);
             // 
             // label10
             // 
@@ -444,7 +428,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmSanPham";
             this.Text = "FrmSanPham";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSanPham_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSanPham_FormClosed);
             this.Load += new System.EventHandler(this.FrmSanPham_Load);
             this.panel1.ResumeLayout(false);
@@ -485,7 +468,6 @@
         private Label label5;
         private DataGridView dtgv_frmSP;
         private TextBox tbt_timkSP;
-        private Button btn_timk;
         private TextBox tb_tensp;
         private Label label10;
         private ComboBox cbb_nhasanxuat;
