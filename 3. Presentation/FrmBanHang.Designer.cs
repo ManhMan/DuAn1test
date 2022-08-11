@@ -162,6 +162,7 @@
             this.tbt_timkSP.Name = "tbt_timkSP";
             this.tbt_timkSP.Size = new System.Drawing.Size(194, 43);
             this.tbt_timkSP.TabIndex = 3;
+            this.tbt_timkSP.TextChanged += new System.EventHandler(this.tbt_timkSP_TextChanged);
             // 
             // label1
             // 

@@ -49,7 +49,7 @@ namespace _3._Presentation
         public void loadSanPham()
         {
             dtg_danhsachSP.Rows.Clear();
-            foreach (var item in _product.ShowProduct())
+            foreach (var item in _product.ShowProduct().Where(x=>x.Name.ToLower().Contains(tbt_timkSP.Text.ToLower()) && x.Status=="Kinh doanh"))
             {
                 dtg_danhsachSP.Rows.Add(item.Id, item.Name, item.ProducerName, item.Price, item.Stock);
             }
@@ -613,6 +613,11 @@ namespace _3._Presentation
         private void FrmBanHang_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+
+        private void tbt_timkSP_TextChanged(object sender, EventArgs e)
+        {
+            loadSanPham();
         }
     }
 }

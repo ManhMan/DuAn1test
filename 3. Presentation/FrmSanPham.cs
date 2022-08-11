@@ -83,7 +83,7 @@ namespace _3._Presentation
                             Stock = a.Stock,
                             OriginalPrice = a.OriginalPrice,
                             Price = a.Price,
-                            Status = a.Status == true ? "Kinh doanh" : "Ngưng kinh doang",
+                            Status = a.Status == true ? "Kinh doanh" : "Ngưng kinh doanh",
                             Note = a.Note
                         }).ToList();
 
@@ -171,6 +171,8 @@ namespace _3._Presentation
             {
                 cbb_listcamera.Items.Add(device.Name);
             }
+            // 0: camera laptop, 1: camera dien thoai
+            //cbb_listcamera.SelectedIndex = 0;
             cbb_listcamera.SelectedIndex = 1;
             //videoCaptureDevice = new VideoCaptureDevice();
             videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_listcamera.SelectedIndex].MonikerString);
@@ -345,7 +347,7 @@ namespace _3._Presentation
                         rd_kd.Checked = false;
                     }
                     tb_ghichu.Text = data.Note;
-                    if (data.LinkImage != null/* && File.Exists(data.LinkImage)*/)
+                    if (data.LinkImage != null && File.Exists(data.LinkImage))
                     {
                         pcb_anhSP.Image = Image.FromFile(data.LinkImage);
                         pcb_anhSP.SizeMode = PictureBoxSizeMode.StretchImage;
