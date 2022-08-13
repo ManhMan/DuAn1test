@@ -172,8 +172,8 @@ namespace _3._Presentation
                 cbb_listcamera.Items.Add(device.Name);
             }
             // 0: camera laptop, 1: camera dien thoai
-            //cbb_listcamera.SelectedIndex = 0;
-            cbb_listcamera.SelectedIndex = 1;
+            cbb_listcamera.SelectedIndex = 0;
+            //cbb_listcamera.SelectedIndex = 1;
             //videoCaptureDevice = new VideoCaptureDevice();
             videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_listcamera.SelectedIndex].MonikerString);
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;

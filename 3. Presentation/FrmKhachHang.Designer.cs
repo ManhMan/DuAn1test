@@ -134,6 +134,7 @@
             this.tbt_timkKH.Name = "tbt_timkKH";
             this.tbt_timkKH.Size = new System.Drawing.Size(198, 27);
             this.tbt_timkKH.TabIndex = 10;
+            this.tbt_timkKH.TextChanged += new System.EventHandler(this.tbt_timkKH_TextChanged);
             // 
             // label5
             // 

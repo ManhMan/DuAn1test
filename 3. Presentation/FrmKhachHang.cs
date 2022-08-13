@@ -161,5 +161,22 @@ namespace _3._Presentation
                 }
             }
         }
+
+        private void tbt_timkKH_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.ColumnCount = 6;
+
+            dataGridView1.Columns[0].Name = "Mã Khách Hàng";
+            dataGridView1.Columns[1].Name = "Tên Khách Hàng";
+            dataGridView1.Columns[2].Name = "Số Điện Thoại";
+            dataGridView1.Columns[3].Name = "Giới Tính";
+            dataGridView1.Columns[4].Name = "Địa Chỉ";
+            dataGridView1.Columns[5].Name = "Điểm";
+            dataGridView1.Rows.Clear();
+            foreach (var item in _qlCustomerServices.GetCustomerFromDB().Where(x=>x.Name.ToLower().Contains(tbt_timkKH.Text.ToLower()) || x.Phone.Contains(tbt_timkKH.Text) ))
+            {
+                dataGridView1.Rows.Add(item.ID, item.Name, item.Phone, item.Sex == true ? "Nam" : "Nữ", item.Address, item.Point);
+            }
+        }
     }
 }
