@@ -128,7 +128,7 @@ namespace _3._Presentation
             else
             {
                 OpenFileDialog op = new OpenFileDialog();
-                DialogResult dialog = MessageBox.Show("Bạn có muốn thêm sản phẩm không?", "Some tite", MessageBoxButtons.YesNo);
+                DialogResult dialog = MessageBox.Show("Bạn có muốn thêm sản phẩm không?", "Thêm", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.Yes)
                 {
 
@@ -136,7 +136,7 @@ namespace _3._Presentation
                     string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
                     File.Copy(linkavatar, Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar)), true);
                     linkavatar = Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar));
-                    _product=new Product();
+                    _product = new Product();
                     _product.MaSp = tbt_maSP.Text;
                     _product.Name = tb_tensp.Text;
                     _product.OriginalPrice = Convert.ToDecimal(tbt_gianhap.Text);
@@ -165,7 +165,7 @@ namespace _3._Presentation
         VideoCaptureDevice videoCaptureDevice;
         private void FrmSanPham_Load(object sender, EventArgs e)
         {
-            
+
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo device in filterInfoCollection)
             {
@@ -245,7 +245,7 @@ namespace _3._Presentation
             }
         }
 
-        
+
 
         private void tbt_gianhap_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -313,7 +313,7 @@ namespace _3._Presentation
                         _product.Note = tb_ghichu.Text;
                         _product.Status = rd_kd.Checked == true ? true : false;
                         _IQLProductServices.UpdateProduct(_product);
-                        MessageBox.Show("Sửa sản phẩm thành công");
+                        MessageBox.Show("Cập nhật sản phẩm thành công");
                         LoadData();
                         tensp = tb_tensp.Text;
                     }
@@ -369,7 +369,7 @@ namespace _3._Presentation
             var data = (from a in _IQLProductServices.GetProductFromDB()
                         join b in _IQLProducerServices.GetProducerFromDB() on a.ProducerID equals b.ID
                         join c in _CategoryrServices.GetCategoryFromDB() on a.CategoryID equals c.ID
-                        where  a.Name.ToLower().Contains(tbt_timkSP.Text.ToLower())
+                        where a.Name.ToLower().Contains(tbt_timkSP.Text.ToLower())
                         select new ProductVm
                         {
                             Id = a.MaSp,
@@ -379,7 +379,7 @@ namespace _3._Presentation
                             Stock = a.Stock,
                             OriginalPrice = a.OriginalPrice,
                             Price = a.Price,
-                            Status = a.Status == true ? "Kinh doanh" : "Ngưng kinh doang",
+                            Status = a.Status == true ? "Kinh doanh" : "Ngưng kinh doanh",
                             Note = a.Note
                         }).ToList();
 
@@ -387,8 +387,84 @@ namespace _3._Presentation
             {
                 dtgv_frmSP.Rows.Add(item.Id, item.Name, item.CategoryName, item.ProducerName, item.Stock, item.OriginalPrice, item.Price, item.Status, item.Note);
             }
-           
-
         }
+
+
+        public void showSpDaTonTai(string masp)
+        {
+            var p = _IQLProductServices.GetProductFromDB().FirstOrDefault(x => x.MaSp == masp);
+            if (p != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Mã sản phẩm đã tồn tại. Bạn có muốn cập nhật sản phẩm không?", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    tbt_maSP.Text = p.MaSp;
+                    tb_tensp.Text = p.Name;
+                    tbt_gianhap.Text = p.OriginalPrice.ToString();
+                    tbt_giaban.Text = p.Price.ToString();
+                    tbt_stock.Text = p.Stock.ToString();
+                    cbb_loaihang.SelectedIndex = p.CategoryID - 1;
+                    cbb_nhasanxuat.SelectedIndex = p.ProducerID - 1;
+                    tb_ghichu.Text = p.Note;
+                    if (p.Status == true)
+                    {
+                        rd_kd.Checked = true;
+                        rd_ngungkd.Checked = false;
+                    }
+                    else
+                    {
+                        rd_ngungkd.Checked = true;
+                        rd_kd.Checked = false;
+                    }
+                    if (p.LinkImage != null && File.Exists(p.LinkImage))
+                    {
+                        pcb_anhSP.Image = Image.FromFile(p.LinkImage);
+                        pcb_anhSP.SizeMode = PictureBoxSizeMode.StretchImage;
+                        linkavatar = p.LinkImage;
+                    }
+                    else
+                    {
+                        pcb_anhSP.Image = null;
+                    }
+                    //do something
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
+        }
+
+        //public void suaSpDaTonTai()
+        //{
+        //    var p = _IQLProductServices.GetProductFromDB().FirstOrDefault(x => x.MaSp == tbt_maSP.Text);
+        //    if (p != null)
+        //    {
+        //        DialogResult dialogResult = MessageBox.Show("Mã sản phẩm đã tồn tại. Bạn có muốn cập nhật sản phẩm không?", "Some Title", MessageBoxButtons.YesNo);
+        //        if (dialogResult == DialogResult.Yes)
+        //        {
+        //            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+        //            File.Copy(linkavatar, Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar)), true);
+        //            linkavatar = Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar));
+        //            _product.Name = tb_tensp.Text;
+        //            _product.OriginalPrice = Convert.ToDecimal(tbt_gianhap.Text);
+        //            _product.Price = Convert.ToDecimal(tbt_giaban.Text);
+        //            _product.Stock = Convert.ToInt32(tbt_stock.Text);
+        //            _product.ProducerID = cbb_nhasanxuat.SelectedIndex + 1;
+        //            _product.CategoryID = cbb_loaihang.SelectedIndex + 1;
+        //            _product.DateCreated = DateTime.Now;
+        //            _product.LinkImage = linkavatar;
+        //            _product.Note = tb_ghichu.Text;
+        //            _product.Status = rd_kd.Checked == true ? true : false;
+
+        //            _IQLProductServices.UpdateProduct(p);
+        //            //do something
+        //        }
+        //        else if (dialogResult == DialogResult.No)
+        //        {
+        //            //do something else
+        //        }
+        //    }
+        //}
     }
 }
