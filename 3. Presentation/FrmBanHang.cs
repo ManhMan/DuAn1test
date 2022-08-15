@@ -432,12 +432,23 @@ namespace _3._Presentation
 
         public void loadHDcho()
         {
+            //dgv_hdcho.Rows.Clear();
+            //var hdCho = _order.GetOderFromDB().Where(x => x.Status == false);
+            //foreach (var item in hdCho)
+            //{
+            //    dgv_hdcho.Rows.Add(item.Id.ToString());
+            //}
+
             dgv_hdcho.Rows.Clear();
-            var hdCho = _order.GetOderFromDB().Where(x => x.Status == false);
+            var hdCho = (from a in _order.GetOderFromDB()
+                        join b in _customer.GetCustomerFromDB() on a.CustomerID equals b.ID
+                        where a.Status == false
+                        select new { a,b});
             foreach (var item in hdCho)
             {
-                dgv_hdcho.Rows.Add(item.Id.ToString());
+                dgv_hdcho.Rows.Add(item.a.Id,item.b.Name);
             }
+
         }
 
         private void btn_capNhapHĐ_Click(object sender, EventArgs e)
