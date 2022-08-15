@@ -51,7 +51,7 @@ namespace _3._Presentation
             dtg_danhsachSP.Rows.Clear();
             foreach (var item in _product.ShowProduct().Where(x => x.Name.ToLower().Contains(tbt_timkSP.Text.ToLower()) && x.Status == "Kinh doanh" && x.Stock > 0))
             {
-                dtg_danhsachSP.Rows.Add(item.Id, item.Name, item.ProducerName, item.Price, item.Stock);
+                dtg_danhsachSP.Rows.Add(item.Masp, item.Name, item.ProducerName, item.Price, item.Stock);
             }
         }
 
@@ -158,7 +158,8 @@ namespace _3._Presentation
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow r = dtg_giohang.Rows[e.RowIndex];
-                pID = Convert.ToInt32(r.Cells[0].Value.ToString());
+                //pID = Convert.ToInt32(r.Cells[0].Value.ToString());
+                pID = _product.GetProductFromDB().FirstOrDefault(x => x.MaSp == r.Cells[0].Value.ToString()).Id;
             }
         }
 
@@ -426,6 +427,7 @@ namespace _3._Presentation
                     OrderDetailVM orderDetailVM = new OrderDetailVM()
                     {
                         ProductID = p.Id,
+                        MaSp = p.MaSp,
                         ProductName = p.Name,
                         Price = p.Price,
                         Quantity = od.FirstOrDefault(x => x.ProducID == p.Id).Quantity

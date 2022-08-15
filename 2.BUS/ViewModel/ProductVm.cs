@@ -11,6 +11,7 @@ namespace _2.BUS.ViewModel
     {
 
         public string Id { get; set; }
+        public string Masp { get; set; }
         public string Name { get; set; }
         public string ProducerName { get; set; }
         public string CategoryName { get; set; }

@@ -55,6 +55,7 @@ namespace _2.BUS.Services
                         select new ProductVm
                         {
                             Id = a.Id.ToString(),
+                            Masp = a.MaSp,
                             Name = a.Name,
                             ProducerName = b.Name,
                             Price = a.Price,
