@@ -32,7 +32,7 @@ namespace _3._Presentation
         {
             InitializeComponent();
             textBox1.Visible = false;
-            cbb_listcamera.Visible=false;
+            cbb_listcamera.Visible = false;
             _product = new QLProductServices();
             _orderDetail = new QLOderDetailServices();
             _order = new QLOderServices();
@@ -44,12 +44,12 @@ namespace _3._Presentation
 
             loadHDcho();
             loadSanPham();
-            
+
         }
         public void loadSanPham()
         {
             dtg_danhsachSP.Rows.Clear();
-            foreach (var item in _product.ShowProduct().Where(x=>x.Name.ToLower().Contains(tbt_timkSP.Text.ToLower()) && x.Status=="Kinh doanh"))
+            foreach (var item in _product.ShowProduct().Where(x => x.Name.ToLower().Contains(tbt_timkSP.Text.ToLower()) && x.Status == "Kinh doanh" && x.Stock > 0))
             {
                 dtg_danhsachSP.Rows.Add(item.Id, item.Name, item.ProducerName, item.Price, item.Stock);
             }
@@ -60,7 +60,7 @@ namespace _3._Presentation
             dtg_giohang.Rows.Clear();
             foreach (var item in _lstOrderDetail)
             {
-                dtg_giohang.Rows.Add( item.MaSp, item.ProductName, item.Quantity, item.Price);
+                dtg_giohang.Rows.Add(item.MaSp, item.ProductName, item.Quantity, item.Price);
             }
             totalCart();
             //dtg_giohang.ColumnCount = 4;
@@ -169,52 +169,59 @@ namespace _3._Presentation
 
         private void btn_thanhtoan_Click(object sender, EventArgs e)
         {
-            Order o = _order.GetOderFromDB().FirstOrDefault(x => x.Id == Convert.ToInt32(tbt_mahd.Text) && x.Status == false);
-            if (o == null)
+            if (int.TryParse(tbt_mahd.Text, out int m) && tbt_mahd.Text != "")
             {
-                MessageBox.Show("Đơn hàng không tồn tại hoặc đã thanh toán");
-                lb_tongtien.Text = "0";
-            }
-            else
-            {
-                var customer = _customer.GetCustomerFromDB().FirstOrDefault(x => x.ID == o.CustomerID);
-                int x;
-                if (tbt_giamgia.Text == "" || Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text))
+                Order o = _order.GetOderFromDB().FirstOrDefault(x => x.Id == Convert.ToInt32(tbt_mahd.Text) && x.Status == false);
+                if (o == null)
                 {
-                    MessageBox.Show("Vui lòng nhập đúng số tiền");
+                    MessageBox.Show("Đơn hàng không tồn tại hoặc đã thanh toán");
+                    lb_tongtien.Text = "0";
                 }
                 else
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn thanh toán không?", "Thanh toán", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    var customer = _customer.GetCustomerFromDB().FirstOrDefault(x => x.ID == o.CustomerID);
+                    int x;
+                    if (tbt_giamgia.Text == "" || Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text))
                     {
-                        o.Status = true;
-                        _order.UpdateOder(o);
-                        if (tbt_tienkhachdua.Text == "0" && Convert.ToDecimal(tbt_giamgia.Text) > o.TotalPrice)
+                        MessageBox.Show("Vui lòng nhập đúng số tiền");
+                    }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn thanh toán không?", "Thanh toán", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
                         {
-                            lb_tienthua.Text = "0";
-                            customer.Point -= Convert.ToInt32(o.TotalPrice);
-                        }
-                        else
-                        {
-                            if (tbt_giamgia.Text != "")
+                            o.Status = true;
+                            _order.UpdateOder(o);
+                            if (tbt_tienkhachdua.Text == "0" && Convert.ToDecimal(tbt_giamgia.Text) > o.TotalPrice)
                             {
-                                customer.Point = customer.Point + Convert.ToInt32(o.TotalPrice / 100) - Convert.ToInt32(tbt_giamgia.Text);
+                                lb_tienthua.Text = "0";
+                                customer.Point -= Convert.ToInt32(o.TotalPrice);
                             }
                             else
                             {
-                                customer.Point += Convert.ToInt32(o.TotalPrice / 100);
+                                if (tbt_giamgia.Text != "")
+                                {
+                                    customer.Point = customer.Point + Convert.ToInt32(o.TotalPrice / 100) - Convert.ToInt32(tbt_giamgia.Text);
+                                }
+                                else
+                                {
+                                    customer.Point += Convert.ToInt32(o.TotalPrice / 100);
+                                }
                             }
+                            _customer.UpdateCustomer(customer);
+                            MessageBox.Show("Thanh toán thành công");
+                            tbt_giamgia.Text = "";
+                            tbt_tienkhachdua.Text = "";
+                            lb_tongtien.Text = "0";
+                            lb_tienthua.Text = "0";
+                            rtb_ghichu.Text = "";
                         }
-                        _customer.UpdateCustomer(customer);
-                        MessageBox.Show("Thanh toán thành công");
-                        tbt_giamgia.Text = "";
-                        tbt_tienkhachdua.Text = "";
-                        lb_tongtien.Text = "0";
-                        lb_tienthua.Text = "0";
-                        rtb_ghichu.Text = "";
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập mã hóa đơn");
             }
         }
 
@@ -441,12 +448,12 @@ namespace _3._Presentation
 
             dgv_hdcho.Rows.Clear();
             var hdCho = (from a in _order.GetOderFromDB()
-                        join b in _customer.GetCustomerFromDB() on a.CustomerID equals b.ID
-                        where a.Status == false
-                        select new { a,b});
+                         join b in _customer.GetCustomerFromDB() on a.CustomerID equals b.ID
+                         where a.Status == false
+                         select new { a, b });
             foreach (var item in hdCho)
             {
-                dgv_hdcho.Rows.Add(item.a.Id,item.b.Name);
+                dgv_hdcho.Rows.Add(item.a.Id, item.b.Name);
             }
 
         }
@@ -531,10 +538,10 @@ namespace _3._Presentation
             //videoCaptureDevice = new VideoCaptureDevice();
             videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_listcamera.SelectedIndex].MonikerString);
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
-            
+
             videoCaptureDevice.Start();
             timer1.Start();
-            
+
 
 
         }
@@ -550,12 +557,12 @@ namespace _3._Presentation
 
             //}
             pictureBox1.Image = bitmap;
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        { 
-            if(pictureBox1.Image != null)
+        {
+            if (pictureBox1.Image != null)
             {
                 BarcodeReader reader = new BarcodeReader();
                 var result = reader.Decode((Bitmap)pictureBox1.Image);
@@ -617,13 +624,13 @@ namespace _3._Presentation
 
         private void FrmBanHang_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+
 
         }
 
         private void FrmBanHang_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
         }
 
         private void tbt_timkSP_TextChanged(object sender, EventArgs e)

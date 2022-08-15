@@ -34,7 +34,7 @@ namespace _3._Presentation
             dtg_hoadonchitiet.Rows.Clear();
             foreach (var item in _order.ShowOrder())
             {
-                dtg_hoadon.Rows.Add(item.ID, item.DateCreated, item.EmployeeEmail, item.CustomerPhoneNumber, item.TotalPrice, item.Status ? "Đã thanh toán" : "Chờ thanh toán", item.Note);
+                dtg_hoadon.Rows.Add(item.ID, item.DateCreated, item.EmployeeEmail, item.CustomerPhoneNumber=="0"?"Khách vãng lai": item.CustomerPhoneNumber, item.TotalPrice, item.Status ? "Đã thanh toán" : "Chờ thanh toán", item.Note);
             }
         }
         public void loadOrderDetail(int orderID)

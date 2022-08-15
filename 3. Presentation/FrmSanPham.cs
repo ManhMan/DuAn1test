@@ -29,7 +29,6 @@ namespace _3._Presentation
         public FrmSanPham()
         {
             InitializeComponent();
-            cbb_listcamera.Visible = false;
             _product = new Product();
             _IQLProductServices = new QLProductServices();
             _IQLProducerServices = new QLProducerServises();
@@ -161,40 +160,13 @@ namespace _3._Presentation
 
 
         }
-        FilterInfoCollection filterInfoCollection;
-        VideoCaptureDevice videoCaptureDevice;
         private void FrmSanPham_Load(object sender, EventArgs e)
         {
-
-            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo device in filterInfoCollection)
-            {
-                cbb_listcamera.Items.Add(device.Name);
-            }
-            // 0: camera laptop, 1: camera dien thoai
-            cbb_listcamera.SelectedIndex = 0;
-            //cbb_listcamera.SelectedIndex = 1;
-            //videoCaptureDevice = new VideoCaptureDevice();
-            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbb_listcamera.SelectedIndex].MonikerString);
-            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
-            videoCaptureDevice.Start();
         }
 
-        private void VideoCaptureDevice_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
-        {
-            Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
-            BarcodeReader reader = new BarcodeReader();
-            var result = reader.Decode(bitmap);
-            if (result != null)
-            {
-                tbt_maSP.Invoke(new MethodInvoker(delegate { tbt_maSP.Text = result.ToString(); }));
-            }
-            pictureBox1.Image = bitmap;
-        }
 
         private void FrmSanPham_FormClosed(object sender, FormClosedEventArgs e)
         {
-            timer1.Stop();
         }
 
 
@@ -226,25 +198,6 @@ namespace _3._Presentation
                 }
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            BarcodeReader reader = new BarcodeReader();
-            Result result = reader.Decode((Bitmap)pictureBox1.Image);
-            try
-            {
-                string decoded = result.ToString().Trim();
-                if (decoded != "")
-                {
-                    tbt_maSP.Text = decoded;
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
 
 
         private void tbt_gianhap_KeyPress(object sender, KeyPressEventArgs e)
@@ -299,9 +252,12 @@ namespace _3._Presentation
                     DialogResult dialog = MessageBox.Show("Bạn có muốn cập nhật sản phẩm không?", "Chú ý", MessageBoxButtons.YesNo);
                     if (dialog == DialogResult.Yes)
                     {
-                        string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-                        File.Copy(linkavatar, Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar)), true);
-                        linkavatar = Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar));
+                        if (linkavatar != _product.LinkImage)
+                        {
+                            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                            File.Copy(linkavatar, Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar)), true);
+                            linkavatar = Path.Combine(projectDirectory, "Resources", "Product", Path.GetFileName(linkavatar));
+                        }
                         _product.Name = tb_tensp.Text;
                         _product.OriginalPrice = Convert.ToDecimal(tbt_gianhap.Text);
                         _product.Price = Convert.ToDecimal(tbt_giaban.Text);

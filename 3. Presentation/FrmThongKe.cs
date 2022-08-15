@@ -65,7 +65,7 @@ namespace _3._Presentation
 
             foreach (var i in x)
             {
-                dtgv_show.Rows.Add(i.a.Id, i.d.Name, i.c.Quantity, i.c.Price, i.c.Quantity * i.c.Price, i.b.Phone);
+                dtgv_show.Rows.Add(i.a.Id, i.d.Name, i.c.Quantity, i.c.Price, i.c.Quantity * i.c.Price, i.b.Phone == "0" ? "Khách vãng lai" : i.b.Phone);
             }
 
             lb_doanhthu.Text = x.Select(x => x.a).Distinct().Sum(x => x.TotalPrice).ToString();

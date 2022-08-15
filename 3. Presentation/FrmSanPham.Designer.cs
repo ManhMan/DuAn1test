@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSanPham));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -42,8 +41,6 @@
             this.rd_kd = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.cbb_loaihang = new System.Windows.Forms.ComboBox();
-            this.cbb_listcamera = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbb_nhasanxuat = new System.Windows.Forms.ComboBox();
             this.tb_tensp = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,13 +59,11 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_sua = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_frmSP)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_anhSP)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -138,8 +133,6 @@
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.cbb_loaihang);
-            this.groupBox1.Controls.Add(this.cbb_listcamera);
-            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.cbb_nhasanxuat);
             this.groupBox1.Controls.Add(this.tb_tensp);
             this.groupBox1.Controls.Add(this.label10);
@@ -219,24 +212,6 @@
             this.cbb_loaihang.Size = new System.Drawing.Size(162, 28);
             this.cbb_loaihang.TabIndex = 22;
             // 
-            // cbb_listcamera
-            // 
-            this.cbb_listcamera.FormattingEnabled = true;
-            this.cbb_listcamera.Location = new System.Drawing.Point(453, 16);
-            this.cbb_listcamera.Name = "cbb_listcamera";
-            this.cbb_listcamera.Size = new System.Drawing.Size(151, 28);
-            this.cbb_listcamera.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FloralWhite;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(774, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(199, 188);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // cbb_nhasanxuat
             // 
             this.cbb_nhasanxuat.FormattingEnabled = true;
@@ -302,10 +277,10 @@
             // 
             this.pcb_anhSP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pcb_anhSP.Image = ((System.Drawing.Image)(resources.GetObject("pcb_anhSP.Image")));
-            this.pcb_anhSP.Location = new System.Drawing.Point(610, 40);
+            this.pcb_anhSP.Location = new System.Drawing.Point(691, 40);
             this.pcb_anhSP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pcb_anhSP.Name = "pcb_anhSP";
-            this.pcb_anhSP.Size = new System.Drawing.Size(158, 188);
+            this.pcb_anhSP.Size = new System.Drawing.Size(196, 208);
             this.pcb_anhSP.TabIndex = 9;
             this.pcb_anhSP.TabStop = false;
             this.pcb_anhSP.Click += new System.EventHandler(this.pcb_anhSP_Click);
@@ -414,10 +389,6 @@
             this.btn_them.UseVisualStyleBackColor = false;
             this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // FrmSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -438,7 +409,6 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_anhSP)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -471,14 +441,11 @@
         private TextBox tb_tensp;
         private Label label10;
         private ComboBox cbb_nhasanxuat;
-        private PictureBox pictureBox1;
-        private ComboBox cbb_listcamera;
         private Label label8;
         private ComboBox cbb_loaihang;
         private TextBox tb_ghichu;
         private Panel panel2;
         private RadioButton rd_ngungkd;
         private RadioButton rd_kd;
-        private System.Windows.Forms.Timer timer1;
     }
 }

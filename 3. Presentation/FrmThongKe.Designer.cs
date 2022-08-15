@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmThongKe));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tb_sdt = new System.Windows.Forms.TextBox();
@@ -41,7 +40,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtp_ngay = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_timk = new System.Windows.Forms.Button();
             this.tb_timkiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtgv_show = new System.Windows.Forms.DataGridView();
@@ -190,7 +188,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn_timk);
             this.groupBox1.Controls.Add(this.tb_timkiem);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtgv_show);
@@ -203,23 +200,9 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hàng hóa";
             // 
-            // btn_timk
-            // 
-            this.btn_timk.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btn_timk.Image = ((System.Drawing.Image)(resources.GetObject("btn_timk.Image")));
-            this.btn_timk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_timk.Location = new System.Drawing.Point(354, 56);
-            this.btn_timk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btn_timk.Name = "btn_timk";
-            this.btn_timk.Size = new System.Drawing.Size(97, 31);
-            this.btn_timk.TabIndex = 9;
-            this.btn_timk.Text = "Tìm kiếm";
-            this.btn_timk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_timk.UseVisualStyleBackColor = false;
-            // 
             // tb_timkiem
             // 
-            this.tb_timkiem.Location = new System.Drawing.Point(91, 56);
+            this.tb_timkiem.Location = new System.Drawing.Point(96, 52);
             this.tb_timkiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_timkiem.Name = "tb_timkiem";
             this.tb_timkiem.Size = new System.Drawing.Size(254, 27);
@@ -490,6 +473,5 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
-        private Button btn_timk;
     }
 }
