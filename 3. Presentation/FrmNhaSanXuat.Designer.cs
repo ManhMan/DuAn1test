@@ -179,7 +179,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmNhaSanXuat";
-            this.Text = "FrmNhaSanXuat";
+            this.Text = "Nhà sản xuất";
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_nsx)).EndInit();

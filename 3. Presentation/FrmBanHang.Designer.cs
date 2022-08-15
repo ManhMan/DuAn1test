@@ -664,7 +664,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmBanHang";
-            this.Text = "FrmBanHang";
+            this.Text = "Bán hàng";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBanHang_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmBanHang_FormClosed);
             this.Load += new System.EventHandler(this.FrmBanHang_Load);

@@ -427,7 +427,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmSanPham";
-            this.Text = "FrmSanPham";
+            this.Text = "Sản phẩm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSanPham_FormClosed);
             this.Load += new System.EventHandler(this.FrmSanPham_Load);
             this.panel1.ResumeLayout(false);
