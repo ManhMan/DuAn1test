@@ -183,7 +183,7 @@ namespace _3._Presentation
                 {
                     var customer = _customer.GetCustomerFromDB().FirstOrDefault(x => x.ID == o.CustomerID);
                     int x;
-                    if (tbt_giamgia.Text == "" || Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text))
+                    if (tbt_giamgia.Text == "" || Convert.ToDecimal(lb_tienthua.Text) < 0 || tbt_tienkhachdua.Text == "" || (!int.TryParse(tbt_giamgia.Text, out x) && tbt_giamgia.Text != "") || !int.TryParse(tbt_tienkhachdua.Text, out int y) || x > customer.Point || x < 0 || Convert.ToDecimal(tbt_giamgia.Text) > Convert.ToDecimal(lb_tongtien.Text) || x>customer.Point)
                     {
                         MessageBox.Show("Vui lòng nhập đúng số tiền");
                     }
