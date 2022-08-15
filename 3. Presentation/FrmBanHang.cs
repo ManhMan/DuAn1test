@@ -148,7 +148,8 @@ namespace _3._Presentation
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow r = dtg_danhsachSP.Rows[e.RowIndex];
-                pID = Convert.ToInt32(r.Cells[0].Value.ToString());
+                //pID = Convert.ToInt32(r.Cells[0].Value.ToString());
+                pID = _product.GetProductFromDB().FirstOrDefault(x => x.MaSp == r.Cells[0].Value.ToString()).Id;
                 addCart(pID);
             }
         }
