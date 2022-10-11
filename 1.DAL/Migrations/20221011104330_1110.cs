@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _1.DAL.Migrations
 {
-    public partial class tien : Migration
+    public partial class _1110 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -229,8 +229,9 @@ namespace _1.DAL.Migrations
                 columns: new[] { "ID", "Address", "Name", "Phone", "Point", "Sex" },
                 values: new object[,]
                 {
-                    { 1, " 10 Minh Khai, Hà Nội", "Nguyễn Công Tiến", "0987654321", 10000, true },
-                    { 2, " 69 Trịnh Văn Bô, Hà Nội", "Nguyễn Mạnh Thắng", "0987777777", 10000, true }
+                    { 1, "n/a", "Khách vãng lai", "0", 0, true },
+                    { 2, " 10 Minh Khai, Hà Nội", "Nguyễn Công Tiến", "0987654321", 10000, true },
+                    { 3, " 69 Trịnh Văn Bô, Hà Nội", "Nguyễn Mạnh Thắng", "0987777777", 10000, true }
                 });
 
             migrationBuilder.InsertData(
@@ -258,8 +259,8 @@ namespace _1.DAL.Migrations
                 columns: new[] { "ID", "Address", "Dob", "Email", "FullName", "IDRoles", "LinkAnh", "MaNV", "Password", "Phone", "Sex", "Status" },
                 values: new object[,]
                 {
-                    { 1, "174 Phương Canh", new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(435), "manhman2806@gmail.com", "Bùi Thế Mạnh", 1, null, "NV1", "123", "0379200866", false, true },
-                    { 2, "173 Phương Canh", new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(439), "khoanhph18902@gmail.com", "Nguyễn Hữu Khoa", 2, null, "NV2", "123", "0972439693", true, true }
+                    { 1, "174 Phương Canh", new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6926), "manhman2806@gmail.com", "Bùi Thế Mạnh", 1, null, "NV1", "123", "0379200866", false, true },
+                    { 2, "173 Phương Canh", new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6930), "khoanhph18902@gmail.com", "Nguyễn Hữu Khoa", 2, null, "NV2", "123", "0972439693", true, true }
                 });
 
             migrationBuilder.InsertData(
@@ -267,21 +268,21 @@ namespace _1.DAL.Migrations
                 columns: new[] { "Id", "CategoryID", "DateCreated", "LinkImage", "MaSp", "Name", "Note", "OriginalPrice", "Price", "ProducerID", "Status", "Stock" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(316), "", "01", "Bim bim", "", 5000m, 6000m, 1, true, 10 },
-                    { 2, 2, new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(332), "", "02", "Coca Cola", "", 10000m, 12000m, 2, true, 20 },
-                    { 3, 3, new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(335), "", "03", "Vodka 69%", "", 10000m, 60000m, 3, true, 50 },
-                    { 4, 4, new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(338), "", "04", "Clear Men Active Vibe", "", 100000m, 150000m, 4, true, 5 }
+                    { 1, 1, new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6817), "", "01", "Bim bim Tôm Cay", "", 5000m, 6000m, 1, true, 10 },
+                    { 2, 2, new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6835), "", "02", "Coca Cola", "", 10000m, 12000m, 2, true, 20 },
+                    { 3, 3, new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6838), "", "03", "Absolut Vodka", "", 10000m, 60000m, 3, true, 50 },
+                    { 4, 4, new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6841), "", "04", "Dầu gội Clear Men", "", 100000m, 150000m, 4, true, 5 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "CustomerID", "EmployeeID", "Note", "Status", "TotalPrice", "dateCreate" },
-                values: new object[] { 1, 1, 1, null, true, 60000m, new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(373) });
+                values: new object[] { 1, 1, 1, null, true, 60000m, new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6868) });
 
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "CustomerID", "EmployeeID", "Note", "Status", "TotalPrice", "dateCreate" },
-                values: new object[] { 2, 2, 2, null, true, 210000m, new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(377) });
+                values: new object[] { 2, 2, 2, null, true, 210000m, new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6871) });
 
             migrationBuilder.InsertData(
                 table: "OderDetails",

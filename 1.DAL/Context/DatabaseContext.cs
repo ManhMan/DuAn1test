@@ -59,7 +59,7 @@ namespace _1.DAL.Context
             if (!optionsBuilder.IsConfigured)
             {
                 // Lấy code về muốn kết nối database thì phải sửa lại dòng này
-                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-T4L1DE8\SQLEXPRESS;Initial Catalog=databaseDuAn1;Persist Security Info=True; User ID =khoa; Password =khoa123");
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-FOSRL05\THANG;Initial Catalog=databaseDuAn1;Persist Security Info=True; User ID =thangnm; Password =123");
             }
         }
         
