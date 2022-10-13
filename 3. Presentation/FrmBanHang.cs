@@ -110,26 +110,26 @@ namespace _3._Presentation
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow r = dtg_giohang.Rows[e.RowIndex];
-                if (int.TryParse(dtg_giohang.Rows[r.Index].Cells[3].Value.ToString(), out int x))
+                if (int.TryParse(dtg_giohang.Rows[r.Index].Cells[2].Value.ToString(), out int x))
                 {
-                    if (dtg_giohang.Rows[r.Index].Cells[3].Value != _lstOrderDetail[r.Index].Quantity.ToString())
+                    if (dtg_giohang.Rows[r.Index].Cells[2].Value != _lstOrderDetail[r.Index].Quantity.ToString())
                     {
-                        if (Convert.ToInt32(dtg_giohang.Rows[r.Index].Cells[3].Value) <= 0)
+                        if (Convert.ToInt32(dtg_giohang.Rows[r.Index].Cells[2].Value) <= 0)
                         {
                             MessageBox.Show("Nhập sai số lượng");
-                            dtg_giohang.Rows[r.Index].Cells[3].Value = _lstOrderDetail[r.Index].Quantity;
+                            dtg_giohang.Rows[r.Index].Cells[2].Value = _lstOrderDetail[r.Index].Quantity;
                         }
                         else
                         {
                             var p = _product.GetProductFromDB().FirstOrDefault(x => x.Id == _lstOrderDetail[r.Index].ProductID);
-                            if (p.Stock < Convert.ToInt32(dtg_giohang.Rows[r.Index].Cells[3].Value))
+                            if (p.Stock < Convert.ToInt32(dtg_giohang.Rows[r.Index].Cells[2].Value))
                             {
                                 MessageBox.Show("Sản phẩm trong giỏ hàng đã vượt quá số lượng cho phép");
-                                dtg_giohang.Rows[r.Index].Cells[3].Value = _lstOrderDetail[r.Index].Quantity;
+                                dtg_giohang.Rows[r.Index].Cells[2].Value = _lstOrderDetail[r.Index].Quantity;
                             }
                             else
                             {
-                                _lstOrderDetail[r.Index].Quantity = Convert.ToInt32(dtg_giohang.Rows[r.Index].Cells[3].Value);
+                                _lstOrderDetail[r.Index].Quantity = Convert.ToInt32(dtg_giohang.Rows[r.Index].Cells[2].Value);
                                 totalCart();
                             }
                         }
@@ -138,7 +138,7 @@ namespace _3._Presentation
                 else
                 {
                     MessageBox.Show("Nhập sai số lượng");
-                    dtg_giohang.Rows[r.Index].Cells[3].Value = _lstOrderDetail[r.Index].Quantity;
+                    dtg_giohang.Rows[r.Index].Cells[2].Value = _lstOrderDetail[r.Index].Quantity;
                 }
             }
         }
