@@ -10,9 +10,12 @@ namespace _2.BUS.ViewModel
     public class ProductVm
     {
 
-        public int Id { get; set; }
+        public string Id { get; set; }
+        public string Masp { get; set; }
         public string Name { get; set; }
         public string ProducerName { get; set; }
+        public string CategoryName { get; set; }
+
         public decimal Price { set; get; }
         public decimal OriginalPrice { set; get; }
         public int Stock { set; get; }
@@ -20,6 +23,6 @@ namespace _2.BUS.ViewModel
         public string linkImage { set; get; }
         public string Note { set; get; }
 
-        public bool Status { set; get; }
+        public string Status { set; get; }
     }
 }

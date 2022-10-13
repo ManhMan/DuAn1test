@@ -10,7 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Employee\" />
+    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+    <PackageReference Include="ZXing.Net" Version="0.14.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +43,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Employee\" />
+    <Folder Include="Resources\Product\" />
   </ItemGroup>
 
 </Project>

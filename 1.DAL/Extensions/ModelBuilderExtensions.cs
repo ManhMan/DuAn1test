@@ -13,8 +13,9 @@ namespace _1.DAL.Extensions
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().HasData(
-                new Customer() { ID = 1, Name = "Nguyễn Công Tiến", Phone = "0987654321", Sex = true, Address = " 10 Minh Khai, Hà Nội", Point=10000 },
-                new Customer() { ID = 2, Name = "Nguyễn Mạnh Thắng", Phone = "0987777777", Sex = true, Address = " 69 Trịnh Văn Bô, Hà Nội", Point = 10000 }
+                new Customer() { ID = 1, Name = "Khách vãng lai", Phone = "0", Sex = true, Address = "n/a", Point = 0 },
+                new Customer() { ID = 2, Name = "Nguyễn Công Tiến", Phone = "0987654321", Sex = true, Address = " 10 Minh Khai, Hà Nội", Point=10000 },
+                new Customer() { ID = 3, Name = "Nguyễn Mạnh Thắng", Phone = "0987777777", Sex = true, Address = " 69 Trịnh Văn Bô, Hà Nội", Point = 10000 }
                 );
             modelBuilder.Entity<Role>().HasData(
                 new Role() { ID = 1, RoleName = "Quản lý" },
@@ -33,10 +34,10 @@ namespace _1.DAL.Extensions
                 new Producer() { ID = 4, Name = "Clear" }
                 );
             modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = 1, MaSp = "01", Name = "Bim bim", ProducerID = 1, CategoryID = 1, Price = 6000, OriginalPrice = 5000, Stock = 10, DateCreated = DateTime.Now, Status = true, Note = "" , LinkImage =""},
+                new Product() { Id = 1, MaSp = "01", Name = "Bim bim Tôm Cay", ProducerID = 1, CategoryID = 1, Price = 6000, OriginalPrice = 5000, Stock = 10, DateCreated = DateTime.Now, Status = true, Note = "" , LinkImage =""},
                 new Product() { Id = 2, MaSp = "02", Name = "Coca Cola", ProducerID = 2, CategoryID = 2, Price = 12000, OriginalPrice = 10000, Stock = 20, DateCreated = DateTime.Now, Status = true, Note = "", LinkImage = "" },
-                new Product() { Id = 3, MaSp = "03", Name = "Vodka 69%", ProducerID = 3, CategoryID = 3, Price = 60000, OriginalPrice = 10000, Stock = 50, DateCreated = DateTime.Now, Status = true, Note = "", LinkImage = "" },
-                new Product() { Id = 4, MaSp = "04", Name = "Clear Men Active Vibe", ProducerID = 4, CategoryID = 4, Price = 150000, OriginalPrice = 100000, Stock = 5, DateCreated = DateTime.Now, Status = true, Note = "" , LinkImage =""}
+                new Product() { Id = 3, MaSp = "03", Name = "Absolut Vodka", ProducerID = 3, CategoryID = 3, Price = 60000, OriginalPrice = 10000, Stock = 50, DateCreated = DateTime.Now, Status = true, Note = "", LinkImage = "" },
+                new Product() { Id = 4, MaSp = "04", Name = "Dầu gội Clear Men", ProducerID = 4, CategoryID = 4, Price = 150000, OriginalPrice = 100000, Stock = 5, DateCreated = DateTime.Now, Status = true, Note = "" , LinkImage =""}
                 );
             modelBuilder.Entity<Order>().HasData(
                 new Order() { Id = 1, dateCreate = DateTime.Now, EmployeeID = 1, CustomerID = 1, TotalPrice = 60000, Status = true },

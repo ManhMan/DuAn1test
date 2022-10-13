@@ -60,12 +60,12 @@ namespace _3._Presentation
                      join b in _customer.GetCustomerFromDB() on a.CustomerID equals b.ID
                      join c in _orderdetail.GetOderDetailFromDB() on a.Id equals c.OderID
                      join d in _product.GetProductFromDB() on c.ProducID equals d.Id
-                     where b.Phone.Contains(tb_sdt.Text) && d.Name.Contains(tb_timkiem.Text)
+                     where b.Phone.Contains(tb_sdt.Text) && d.Name.ToLower().Contains(tb_timkiem.Text.ToLower())
                      select new { a, b, c, d });
 
             foreach (var i in x)
             {
-                dtgv_show.Rows.Add(i.a.Id, i.d.Name, i.c.Quantity, i.c.Price, i.c.Quantity * i.c.Price, i.b.Phone);
+                dtgv_show.Rows.Add(i.a.Id, i.d.Name, i.c.Quantity, i.c.Price, i.c.Quantity * i.c.Price, i.b.Phone == "0" ? "Khách vãng lai" : i.b.Phone);
             }
 
             lb_doanhthu.Text = x.Select(x => x.a).Distinct().Sum(x => x.TotalPrice).ToString();

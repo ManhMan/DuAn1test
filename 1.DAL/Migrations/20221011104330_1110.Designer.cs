@@ -12,8 +12,8 @@ using _1.DAL.Context;
 namespace _1.DAL.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220809141617_tien")]
-    partial class tien
+    [Migration("20221011104330_1110")]
+    partial class _1110
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,6 +101,15 @@ namespace _1.DAL.Migrations
                         new
                         {
                             ID = 1,
+                            Address = "n/a",
+                            Name = "Khách vãng lai",
+                            Phone = "0",
+                            Point = 0,
+                            Sex = true
+                        },
+                        new
+                        {
+                            ID = 2,
                             Address = " 10 Minh Khai, Hà Nội",
                             Name = "Nguyễn Công Tiến",
                             Phone = "0987654321",
@@ -109,7 +118,7 @@ namespace _1.DAL.Migrations
                         },
                         new
                         {
-                            ID = 2,
+                            ID = 3,
                             Address = " 69 Trịnh Văn Bô, Hà Nội",
                             Name = "Nguyễn Mạnh Thắng",
                             Phone = "0987777777",
@@ -176,7 +185,7 @@ namespace _1.DAL.Migrations
                         {
                             ID = 1,
                             Address = "174 Phương Canh",
-                            Dob = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(435),
+                            Dob = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6926),
                             Email = "manhman2806@gmail.com",
                             FullName = "Bùi Thế Mạnh",
                             IDRoles = 1,
@@ -190,7 +199,7 @@ namespace _1.DAL.Migrations
                         {
                             ID = 2,
                             Address = "173 Phương Canh",
-                            Dob = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(439),
+                            Dob = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6930),
                             Email = "khoanhph18902@gmail.com",
                             FullName = "Nguyễn Hữu Khoa",
                             IDRoles = 2,
@@ -273,7 +282,7 @@ namespace _1.DAL.Migrations
                             EmployeeID = 1,
                             Status = true,
                             TotalPrice = 60000m,
-                            dateCreate = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(373)
+                            dateCreate = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6868)
                         },
                         new
                         {
@@ -282,7 +291,7 @@ namespace _1.DAL.Migrations
                             EmployeeID = 2,
                             Status = true,
                             TotalPrice = 210000m,
-                            dateCreate = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(377)
+                            dateCreate = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6871)
                         });
                 });
 
@@ -437,10 +446,10 @@ namespace _1.DAL.Migrations
                         {
                             Id = 1,
                             CategoryID = 1,
-                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(316),
+                            DateCreated = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6817),
                             LinkImage = "",
                             MaSp = "01",
-                            Name = "Bim bim",
+                            Name = "Bim bim Tôm Cay",
                             Note = "",
                             OriginalPrice = 5000m,
                             Price = 6000m,
@@ -452,7 +461,7 @@ namespace _1.DAL.Migrations
                         {
                             Id = 2,
                             CategoryID = 2,
-                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(332),
+                            DateCreated = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6835),
                             LinkImage = "",
                             MaSp = "02",
                             Name = "Coca Cola",
@@ -467,10 +476,10 @@ namespace _1.DAL.Migrations
                         {
                             Id = 3,
                             CategoryID = 3,
-                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(335),
+                            DateCreated = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6838),
                             LinkImage = "",
                             MaSp = "03",
-                            Name = "Vodka 69%",
+                            Name = "Absolut Vodka",
                             Note = "",
                             OriginalPrice = 10000m,
                             Price = 60000m,
@@ -482,10 +491,10 @@ namespace _1.DAL.Migrations
                         {
                             Id = 4,
                             CategoryID = 4,
-                            DateCreated = new DateTime(2022, 8, 9, 21, 16, 16, 532, DateTimeKind.Local).AddTicks(338),
+                            DateCreated = new DateTime(2022, 10, 11, 17, 43, 29, 950, DateTimeKind.Local).AddTicks(6841),
                             LinkImage = "",
                             MaSp = "04",
-                            Name = "Clear Men Active Vibe",
+                            Name = "Dầu gội Clear Men",
                             Note = "",
                             OriginalPrice = 100000m,
                             Price = 150000m,

@@ -54,7 +54,8 @@ namespace _2.BUS.Services
                         join b in _iQLProducer.GetProducerFromDB() on a.ProducerID equals b.ID
                         select new ProductVm
                         {
-                            Id = a.Id,
+                            Id = a.Id.ToString(),
+                            Masp = a.MaSp,
                             Name = a.Name,
                             ProducerName = b.Name,
                             Price = a.Price,
@@ -63,7 +64,7 @@ namespace _2.BUS.Services
                             DateCreated = a.DateCreated,
                             linkImage = a.LinkImage,
                             Note = a.Note,
-                            Status = a.Status
+                            Status = a.Status == true ? "Kinh doanh" : "Ngưng kinh doanh"
                         }).ToList();
             return data;
         }
